@@ -1,0 +1,26 @@
+<launch>
+  <!-- Argument for the URDF file path -->
+  <arg name="robot_description" default="/home/er/catkin_ws/src/mycobot_ros/mycobot_description/urdf/mycobot/mycobot_urdf.urdf" />
+
+  <!-- Load the URDF file into the parameter server -->
+  <param name="robot_description" textfile="$(arg robot_description)" />
+
+  <!-- <param name="use_sim_time" value="false" /> -->
+  <node name="pub_joint_states" pkg="gamesmanros" type="joint_states.py" output="screen" />
+
+  <!-- Robot State Publisher to publish the TF tree -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false">
+    <param name="robot_description" value="$(arg robot_description)" />
+  </node>
+
+  <!-- <include file="$(find lab4_cam)/launch/run_cam.launch" /> -->
+
+  <!-- <node name="camera_tf" pkg="gamesmanros" type="transformBroadcast.py" output="screen" /> -->
+
+  <!-- <include file="$(find lab4_cam)/launch/ar_track.launch" /> -->
+
+  <!-- Optional: You can include a joint state publisher if necessary -->
+  <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="false"/>
+  </node> -->
+</launch>

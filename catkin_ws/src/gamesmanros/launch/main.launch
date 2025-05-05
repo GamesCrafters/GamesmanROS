@@ -1,0 +1,5 @@
+<launch>
+  <!-- Run main.py -->
+  <node pkg="gamesmanros" type="main.py" name="main_node" output="screen">
+  </node>
+</launch>
