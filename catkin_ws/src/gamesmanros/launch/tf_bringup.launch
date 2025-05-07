@@ -1,6 +1,6 @@
 <launch>
   <!-- Argument for the URDF file path -->
-  <arg name="robot_description" default="/home/er/catkin_ws/src/mycobot_ros/mycobot_description/urdf/mycobot/mycobot_urdf.urdf" />
+  <arg name="robot_description" default="/home/er/catkin_ws/src/mycobot_ros/mycobot_description/urdf/mycobot/mycobot_with_camera_flange.urdf" />
 
   <!-- Load the URDF file into the parameter server -->
   <param name="robot_description" textfile="$(arg robot_description)" />
