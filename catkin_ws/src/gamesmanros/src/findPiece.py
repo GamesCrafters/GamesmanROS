@@ -1,11 +1,5 @@
-#!/usr/bin/env python
-#The line above tells Linux that this file is a Python script,
-#and that the OS should use the Python interpreter in /usr/bin/env
-#to run it. Don't forget to use "chmod +x [filename]" to make
-#this script executable.
+#!/usr/bin/env python3
 
-#Import the rospy package. For an import to work, it must be specified
-#in both the package manifest AND the Python file in which it is used.
 import rospy
 import tf2_ros
 import sys
@@ -18,16 +12,16 @@ from std_msgs.msg import Header, String
 
 class PieceFinder():
   def __init__(self, name):
-    # rospy.init_node('piece_locator_' + name, anonymous=True)
     self.name = name
     #Create a publisher and a tf buffer, which is primed with a tf listener
     self.tfBuffer = tf2_ros.Buffer()
     self.tfListener = tf2_ros.TransformListener(self.tfBuffer)
-    self.position = [0, 0.1, 0.3] #Some valid default
+    self.position = [0.0, 0.15, 0.25] #Some valid default
 
 
     self.tf_listener = tf.TransformListener()
     self.tfbr = tf.TransformBroadcaster()
+
     try:
       self.findPiece(self.name)
       rospy.spin()
@@ -111,7 +105,6 @@ class PieceFinder():
       except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
         pass
         # Use our rate object to sleep until it is time to publish again
-        r.sleep()
 
 
 

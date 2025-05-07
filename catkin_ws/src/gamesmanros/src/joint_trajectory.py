@@ -14,11 +14,6 @@ class JointTrajectoryActionServer:
     def __init__(self):
         rospy.init_node('joint_trajectory_action_server')
 
-        # Initialize MoveIt! Commander
-        self.robot = RobotCommander()
-        # self.scene = PlanningSceneInterface()
-        self.group = MoveGroupCommander("arm_group")  # Replace "arm" with the name of your MoveIt! group
-
         # Action server setup
         self.server = actionlib.SimpleActionServer(
             'arm_group/follow_joint_trajectory', 
@@ -42,18 +37,8 @@ class JointTrajectoryActionServer:
 
         # Loop through each trajectory point and execute
         for point in goal.trajectory.points:
-            current_state = self.robot.get_current_state()
-            self.group.set_start_state(current_state)
-
-            self.group.set_joint_value_target(list(point.positions))
-
             feedback.desired = point
             self.server.publish_feedback(feedback)
-
-            # Plan and execute the trajectory point
-            # success = self.group.go(wait=True)
-
-            # print(success)
 
             angles = list(point.positions)
 

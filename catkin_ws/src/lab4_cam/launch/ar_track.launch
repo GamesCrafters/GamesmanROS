@@ -1,5 +1,4 @@
 <launch>
-
     <arg name="marker_size"          default="1" />
     <arg name="max_new_marker_error" default="0.05" />
     <arg name="max_track_error"      default="0.05" />
@@ -16,5 +15,5 @@
 
 		<remap from="camera_image"  to="$(arg cam_image_topic)" />
 		<remap from="camera_info"   to="$(arg cam_info_topic)" />
-	</node>
+	  </node>
 </launch>

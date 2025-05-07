@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
 import requests
-# import moveRobot
-# from follow_display import robot
 from centers import get_centers, get_pickup, get_capture, get_piece_ARTag_frame
 from robotControl import getType
 # from findPiece import PieceFinder
@@ -44,40 +42,6 @@ Static_URL = URL + "/positions/?p="
 centers = get_centers()[games_data[user_game]["id"]]
 ###############################################################################
 
-# Input: starting position string and ending position string
-# Output: List of start coord and end cood [[x1, y1], [x2, y2]]
-
-
-# def position_to_coord(start, end):
-#     start_cord = None
-#     end_cord = None
-
-#     start = start[2:]
-#     end = end[2:]
-
-#     if len(start) != len(end):
-#         print("error")
-#         exit()
-#     else:
-#         for i in range(len(start)):
-#             if start[i] != end[i]:
-#                 if start[i] == "-":
-#                     end_cord = centers[i]
-#                 else:
-#                     start_cord = centers[i]
-#         return [start_cord, end_cord]
-
-
-# Input: starting coord and ending coord
-# Output: List of start position string and end position string ["RA_3_3_000", "RA_3_3_01230"]
-# def coor_to_position(postion, start, end):
-#     start_index = centers.index(start)
-#     end_index = centers.index(end)
-
-#     return postion[:start_index] + postion[end_index] + postion[start_index+1:end_index] + postion[start_index] + postion[end_index+1:]
-
-###############################################################################
-
 def pick_best_move(moves):
     position_values = {}
     for i in range(len(moves)):
@@ -114,7 +78,7 @@ def pick_best_position(moves):
         print('error: in pick_best_postion')
         exit()
 
-def process_human_player(moves):
+def process_human_player_keyboard(moves):
     moves_available = []
     print("Moves Available:")
     for i in range(len(moves)):
@@ -146,7 +110,7 @@ A_turn = True
 while (len(moves_data) > 0):
     if A_turn:
         if humanA:
-            index = process_human_player(moves_data)
+            index = process_human_player_keyboard(moves_data)
             move = moves_data[index]['autoguiMove']
             new_position = moves_data[index]['position']
         else:
@@ -162,7 +126,7 @@ while (len(moves_data) > 0):
         A_turn = False
     else:
         if humanB:
-            index = process_human_player(moves_data)
+            index = process_human_player_keyboard(moves_data)
             move = moves_data[index]['autoguiMove']
             new_position = moves_data[index]['position']
         else:
