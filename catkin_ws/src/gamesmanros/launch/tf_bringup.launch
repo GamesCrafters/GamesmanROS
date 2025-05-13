@@ -1,6 +1,6 @@
 <launch>
   <!-- Argument for the URDF file path -->
-  <arg name="robot_description" default="/home/er/catkin_ws/src/mycobot_ros/mycobot_description/urdf/mycobot/mycobot_with_camera_flange.urdf" />
+  <arg name="robot_description" default="/home/er/catkin_ws/src/mycobot_ros/mycobot_description/urdf/mycobot/mycobot_urdf.urdf" />
 
   <!-- Load the URDF file into the parameter server -->
   <param name="robot_description" textfile="$(arg robot_description)" />
@@ -22,5 +22,15 @@
   <!-- Optional: You can include a joint state publisher if necessary -->
   <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
     <param name="use_gui" value="false"/>
+  </node> -->
+
+  <!-- Run joint_trajectory.py -->
+  <node pkg="gamesmanros" type="joint_trajectory.py" name="joint_trajectory_node" output="screen">
+    <!-- <param name="use_sim_time" value="true" /> -->
+  </node>
+
+  <!-- Run low_level_controller.py -->
+  <!-- <node pkg="gamesmanros" type="low_level_controller.py" name="plan_test_node" output="screen">
+    <param name="use_sim_time" value="true" />
   </node> -->
 </launch>

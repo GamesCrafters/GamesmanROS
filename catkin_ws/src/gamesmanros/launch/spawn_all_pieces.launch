@@ -1,0 +1,61 @@
+<launch>
+    <!-- Loop through 16 IDs -->
+    <group ns="pieces">
+      <param name="piece_prefix" value="ar_marker_" />
+      <include file="$(find gamesmanros)/launch/spawn_piece.launch">
+        <arg name="id" value="0" />
+      </include>
+      <include file="$(find gamesmanros)/launch/spawn_piece.launch">
+        <arg name="id" value="1" />
+      </include>
+      <include file="$(find gamesmanros)/launch/spawn_piece.launch">
+        <arg name="id" value="2" />
+      </include>
+      <include file="$(find gamesmanros)/launch/spawn_piece.launch">
+        <arg name="id" value="3" />
+      </include>
+      <include file="$(find gamesmanros)/launch/spawn_piece.launch">
+        <arg name="id" value="4" />
+      </include>
+      <include file="$(find gamesmanros)/launch/spawn_piece.launch">
+        <arg name="id" value="5" />
+      </include>
+      <include file="$(find gamesmanros)/launch/spawn_piece.launch">
+        <arg name="id" value="6" />
+      </include>
+      <include file="$(find gamesmanros)/launch/spawn_piece.launch">
+        <arg name="id" value="7" />
+      </include>
+      <include file="$(find gamesmanros)/launch/spawn_piece.launch">
+        <arg name="id" value="8" />
+      </include>
+      <include file="$(find gamesmanros)/launch/spawn_piece.launch">
+        <arg name="id" value="9" />
+      </include>
+      <include file="$(find gamesmanros)/launch/spawn_piece.launch">
+        <arg name="id" value="10" />
+      </include>
+      <include file="$(find gamesmanros)/launch/spawn_piece.launch">
+        <arg name="id" value="11" />
+      </include>
+      <include file="$(find gamesmanros)/launch/spawn_piece.launch">
+        <arg name="id" value="12" />
+      </include>
+      <include file="$(find gamesmanros)/launch/spawn_piece.launch">
+        <arg name="id" value="13" />
+      </include>
+      <include file="$(find gamesmanros)/launch/spawn_piece.launch">
+        <arg name="id" value="14" />
+      </include>
+      <include file="$(find gamesmanros)/launch/spawn_piece.launch">
+        <arg name="id" value="15" />
+      </include>
+      <include file="$(find gamesmanros)/launch/spawn_piece.launch">
+        <arg name="id" value="16" />
+      </include>
+      <include file="$(find gamesmanros)/launch/spawn_piece.launch">
+        <arg name="id" value="17" />
+      </include>  
+    </group>
+  </launch>
+  

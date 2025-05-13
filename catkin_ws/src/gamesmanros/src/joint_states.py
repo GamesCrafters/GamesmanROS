@@ -15,7 +15,8 @@ class JointStateRepublisher:
 
         # Initialize the JointState message
         self.joint_state_msg = JointState()
-        self.joint_state_msg.name = ['joint2_to_joint1', 'joint3_to_joint2', 'joint4_to_joint3', 'joint5_to_joint4', 'joint6_to_joint5', 'joint6output_to_joint6']  # Replace with actual joint names
+        self.joint_state_msg.name = ['joint2_to_joint1', 'joint3_to_joint2', 'joint4_to_joint3',
+                                    'joint5_to_joint4', 'joint6_to_joint5', 'joint6output_to_joint6'] # Actual names of joints (URDF)
         self.joint_state_msg.position = [0.0] * 6  # Initialize with zero angles for 6 joints
 
     def joint_angles_callback(self, msg):

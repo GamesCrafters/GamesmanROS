@@ -2,109 +2,98 @@
 
 import rospy
 import tf2_ros
-import sys
-import quaternions
-import numpy as np
 import tf
+from geometry_msgs.msg import Point, PointStamped, Quaternion, Pose
+from std_msgs.msg import Header
 
-from geometry_msgs.msg import Point, PointStamped, Quaternion, QuaternionStamped, Pose
-from std_msgs.msg import Header, String
+class PieceFinder:
+    def __init__(self):
+        rospy.init_node('piece_finder')
+        self.name = rospy.get_param("~frame_id", "ar_marker_0")
+        self.position = [0.0, 0.15, 0.25]  # Default fallback position
 
-class PieceFinder():
-  def __init__(self, name):
-    self.name = name
-    #Create a publisher and a tf buffer, which is primed with a tf listener
-    self.tfBuffer = tf2_ros.Buffer()
-    self.tfListener = tf2_ros.TransformListener(self.tfBuffer)
-    self.position = [0.0, 0.15, 0.25] #Some valid default
+        # TF2
+        self.tfBuffer = tf2_ros.Buffer()
+        self.tfListener = tf2_ros.TransformListener(self.tfBuffer)
+        self.tfbr = tf.TransformBroadcaster()
+        self.tf_listener = tf.TransformListener()
 
+        # Publisher for pose
+        self.pose_pub = rospy.Publisher(f"/piece_position/{self.name}", Pose, queue_size=10)
 
-    self.tf_listener = tf.TransformListener()
-    self.tfbr = tf.TransformBroadcaster()
+        rospy.loginfo(f"[PieceFinder] Tracking {self.name}")
+        self.find_piece_loop()
 
+    def find_piece_loop(self):
+        rate = rospy.Rate(10)  # 10 Hz loop
+
+        while not rospy.is_shutdown():
+            try:
+                # Get transforms
+                cam_to_base = self.tfBuffer.lookup_transform("joint1", "usb_cam", rospy.Time(0), rospy.Duration(1.0))
+                tag_in_cam = self.tfBuffer.lookup_transform("usb_cam", self.name, rospy.Time(0), rospy.Duration(1.0))
+
+                # Broadcast aligned frames
+                self.tfbr.sendTransform(
+                    (cam_to_base.transform.translation.x,
+                     cam_to_base.transform.translation.y,
+                     cam_to_base.transform.translation.z),
+                    (0, 0, 0, 1),
+                    rospy.Time.now(),
+                    "aligned_usb_cam",
+                    "joint1"
+                )
+
+                self.tfbr.sendTransform(
+                    (tag_in_cam.transform.translation.x,
+                     -tag_in_cam.transform.translation.y + 0.05,
+                     0),
+                    (0, 0, 0, 1),
+                    rospy.Time.now(),
+                    f"aligned_{self.name}",
+                    "aligned_usb_cam"
+                )
+
+                # Get final transform in base frame
+                aligned_tf = self.tfBuffer.lookup_transform("aligned_usb_cam", f"aligned_{self.name}", rospy.Time(0), rospy.Duration(1.0))
+
+                point = Point(
+                    x=aligned_tf.transform.translation.x,
+                    y=aligned_tf.transform.translation.y,
+                    z=aligned_tf.transform.translation.z
+                )
+
+                quat = Quaternion(
+                    x=aligned_tf.transform.rotation.x,
+                    y=aligned_tf.transform.rotation.y,
+                    z=aligned_tf.transform.rotation.z,
+                    w=aligned_tf.transform.rotation.w
+                )
+
+                # Convert to joint1 frame
+                self.tf_listener.waitForTransform("joint1", "aligned_usb_cam", rospy.Time(), rospy.Duration(1.0))
+                point_in_base = self.tf_listener.transformPoint(
+                    "joint1",
+                    PointStamped(header=Header(stamp=rospy.Time(), frame_id="aligned_usb_cam"), point=point)
+                )
+
+                self.position = [point_in_base.point.x, point_in_base.point.y, point_in_base.point.z]
+
+                # Publish
+                pose_msg = Pose()
+                pose_msg.position = point_in_base.point
+                pose_msg.orientation = quat
+                self.pose_pub.publish(pose_msg)
+
+            except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException,
+                    tf.Exception) as e:
+                #rospy.logwarn_throttle(5, f"[{self.name}] TF lookup failed: {e}")
+                continue
+
+            rate.sleep()
+
+if __name__ == '__main__':
     try:
-      self.findPiece(self.name)
-      rospy.spin()
+        PieceFinder()
     except rospy.ROSInterruptException:
-      pass
-
-  def get_position(self):
-    return self.position
-
-  #Define the method which contains the main functionality of the node.
-  def findPiece(self, ar_frame):
-    """
-    Locates the position of a provided piece
-
-    Inputs:
-    - ar_frame: the tf frame of the AR tag on a given piece
-    """
-
-    ################################### YOUR CODE HERE ##############
-
-    # Create a timer object that will sleep long enough to result in
-    # a 10Hz publishing rate
-    r = rospy.Rate(10) # 10hz
-
-    # Loop until the node is killed with Ctrl-C
-    while not rospy.is_shutdown():
-      try:
-        cam_to_base_trans = self.tfBuffer.lookup_transform("joint1", "usb_cam", rospy.Time())
-        ar_tag_trans = self.tfBuffer.lookup_transform("usb_cam", ar_frame, rospy.Time())
-
-        #TODO MODIFY THIS OFFSET
-        # Process trans to get your state error
-        cam_trans_x = cam_to_base_trans.transform.translation.x
-        cam_trans_y = cam_to_base_trans.transform.translation.y
-        cam_trans_z = cam_to_base_trans.transform.translation.z
-
-        input_x = ar_tag_trans.transform.translation.x
-        input_y = ar_tag_trans.transform.translation.y 
-        input_z = ar_tag_trans.transform.translation.z
-
-        self.tfbr.sendTransform((cam_trans_x, cam_trans_y, cam_trans_z),
-                          (0, 0, 0, 1),
-                          rospy.Time.now(),
-                          "aligned_usb_cam",
-                          "joint1")
-        self.tfbr.sendTransform((input_x, -input_y+0.05, 0),
-                          (0, 0, 0, 1),
-                          rospy.Time.now(),
-                          "aligned_" + ar_frame,
-                          "aligned_usb_cam")
-        
-        ar_tag_trans = self.tfBuffer.lookup_transform("aligned_usb_cam", "aligned_" + ar_frame, rospy.Time())
-
-        #TODO MODIFY THIS OFFSET
-        # Process trans to get your state error
-
-        input_x = ar_tag_trans.transform.translation.x
-        input_y = ar_tag_trans.transform.translation.y 
-        input_z = ar_tag_trans.transform.translation.z
-
-
-        piece = Point()
-        piece.x = input_x
-        piece.y = input_y
-        piece.z = input_z
-
-        orientation = Quaternion()
-        orientation.x = ar_tag_trans.transform.rotation.x
-        orientation.y = ar_tag_trans.transform.rotation.y
-        orientation.z = ar_tag_trans.transform.rotation.z
-        orientation.w = ar_tag_trans.transform.rotation.w
-
-
-        self.tf_listener.waitForTransform("joint1", "aligned_usb_cam", rospy.Time(), rospy.Duration(10.0))
-        center_in_base = self.tf_listener.transformPoint("joint1", PointStamped(header=Header(stamp=rospy.Time(), frame_id="aligned_usb_cam"), point=piece))
-
-        x, y, z = center_in_base.point.x, center_in_base.point.y, center_in_base.point.z
-        self.position = [x, y, z]
-        #################################### end your code ###############
-        
-      except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
         pass
-        # Use our rate object to sleep until it is time to publish again
-
-
-

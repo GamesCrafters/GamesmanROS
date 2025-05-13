@@ -1,0 +1,8 @@
+<launch>
+    <arg name="id" />
+    <param name="frame_id" value="$(arg id)" />
+    <node pkg="gamesmanros" type="findPiece.py" name="piece_$(arg id)" output="screen">
+      <param name="frame_id" value="ar_marker_$(arg id)" />
+    </node>
+</launch>
+  

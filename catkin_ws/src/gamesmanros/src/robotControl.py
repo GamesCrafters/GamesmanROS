@@ -1,8 +1,10 @@
 import numpy as np
 from low_level_controller import *
 import time
-from centers import get_piece_ARTag_frame, set_piece_ARTag_frame, get_dim
-from findPiece import PieceFinder
+from centers import *
+import threading
+import rospy
+from artag_listener import ARTagListener
 
 ########################################################
 def getType(gameId):
@@ -22,16 +24,34 @@ def getType(gameId):
 
 ########################################################
 
+class BaseType:
+    def __init__(self, game, vision=False):
+        self.game = game
+        self.vision = vision
+
+        self.centers = get_centers(game)
+        self.pickup = get_pickup(game)
+        self.capture = get_capture(game)
+        self.dim = get_dim(game)
+
+        self.control = RobotControl(dim=self.dim)
+
+        if self.vision:
+            self.listener = ARTagListener()
+
+            # Start the ROS callback thread only if not already spinning
+            if not rospy.core.is_initialized():
+                rospy.init_node("robot_control_node", anonymous=True)
+
+            self.spin_thread = threading.Thread(target=rospy.spin, daemon=True)
+            self.spin_thread.start()
+
 """
 Place
 """
-class Type1:
-    def __init__(self, game, centers, pickup=None, capture=None):
-        self.centers = centers
-        self.counter = 0
-        self.pickup = [[0.5,3.5], [1.5,3.5], [2.5,3.5]],
-        self.control = RobotControl()
-        self.game = game
+class Type1(BaseType):
+    def __init__(self, game, vision=False):
+        super().__init__(game, vision)
 
     def processMove(self, move, positions=None):
         move_string_split = move.split('_')
@@ -50,11 +70,9 @@ class Type1:
 """
 Captures
 """
-class Type2:
-    def __init__(self, centers, pickup, capture):
-        self.centers = centers
-        self.pickup = pickup
-        self.capture = capture
+class Type2(BaseType):
+    def __init__(self, game, vision=False):
+        super().__init__(game, vision)
 
     def processMove(self, move, positions=None):
         move_string_split = move.split('_')
@@ -72,9 +90,9 @@ class Type2:
 """
 Removal
 """
-class Type3:
-    def __init__(self, centers):
-        self.centers = centers
+class Type3(BaseType):
+    def __init__(self, game, vision=False):
+        super().__init__(game, vision)
 
     def processMove(self, move, positions=None):
         # move_string_split = move.split('_')
@@ -85,23 +103,22 @@ class Type3:
 """
 Re-Arranger
 """
-class Type4:
-    def __init__(self, game, centers, pickup=None, capture=None):
-        self.centers = centers
-        self.control = RobotControl(dim=get_dim()[game])
-        self.game = game
+class Type4(BaseType):
+    def __init__(self, game, vision=False):
+        super().__init__(game, vision)
 
     def processMove(self, move, positions=None):
         move_string_split = move.split('_')
         start_index = int(move_string_split[1])
         end_index = int(move_string_split[2])
 
-        # start_frame = get_piece_ARTag_frame(self.game, start_index)
-        # set_piece_ARTag_frame(self.game, end_index, start_frame)
+        if self.vision:
+            start_coord = process_ar_location(self.game, self.listener, start_index, end_index)
+            end_coord = self.centers[end_index]
+        else:
+            start_coord, end_coord = (self.centers[start_index], self.centers[end_index])
 
-        start_cord = self.centers[start_index]
-        end_cord = self.centers[end_index]
-        coords = [start_cord, end_cord]
+        coords = [start_coord, end_coord]
         self.playMove(coords)
         return coords
 
@@ -112,9 +129,9 @@ class Type4:
 """
 Place + Re-Arranger
 """
-class Type5:
-    def __init__(self, centers):
-        self.centers = centers
+class Type5(BaseType):
+    def __init__(self, game, vision=False):
+        super().__init__(game, vision)
 
     def processMove(self, move, positions=None):
         # move_string_split = move.split('_')
@@ -125,23 +142,22 @@ class Type5:
 """
 Re-Arranger + Removal
 """
-class Type6:
-    def __init__(self, game, centers, pickup=None, capture=None):
-        self.centers = centers
-        self.control = RobotControl(dim=get_dim()[game])
-        self.game = game
+class Type6(BaseType):
+    def __init__(self, game, vision=False):
+        super().__init__(game, vision)
 
     def processMove(self, move, positions=None):
         move_string_split = move.split('_')
         start_index = int(move_string_split[1])
         end_index = int(move_string_split[2])
 
-        # start_frame = get_piece_ARTag_frame(self.game, start_index)
-        # set_piece_ARTag_frame(self.game, end_index, start_frame)
+        if self.vision:
+            start_coord = process_ar_location(self.game, self.listener, start_index, end_index)
+            end_coord = self.centers[end_index]
+        else:
+            start_coord, end_coord = (self.centers[start_index], self.centers[end_index])
 
-        start_cord = self.centers[start_index]
-        end_cord = self.centers[end_index]
-        coords = [start_cord, end_cord]
+        coords = [start_coord, end_coord]
         self.playMove(coords)
         return coords
 
@@ -153,12 +169,9 @@ class Type6:
 """
 Re-Arranger + Capture
 """
-class Type7:
-    def __init__(self, game, centers, pickup=None, capture=None):
-        self.centers = centers
-        self.pickup = pickup
-        self.capture = capture
-        self.control = RobotControl(dim=get_dim()[game])
+class Type7(BaseType):
+    def __init__(self, game, vision=False):
+        super().__init__(game, vision)
 
     def processMove(self, move, positions=None):
         move_string_split = move.split('_')
@@ -190,9 +203,9 @@ class Type7:
 """
 Place + Re-Arranger + Removal
 """
-class Type8:
-    def __init__(self, centers):
-        self.centers = centers
+class Type8(BaseType):
+    def __init__(self, game, vision=False):
+        super().__init__(game, vision)
 
     def processMove(self, move, positions=None):
         # move_string_split = move.split('_')
@@ -203,9 +216,9 @@ class Type8:
 """
 Place + Re-Arranger + Capture
 """
-class Type9:
-    def __init__(self, centers):
-        self.centers = centers
+class Type9(BaseType):
+    def __init__(self, game, vision=False):
+        super().__init__(game, vision)
 
     def processMove(self, move, positions=None):
         # move_string_split = move.split('_')
@@ -216,9 +229,9 @@ class Type9:
 """
 Re-Arranger + Capture + Removal
 """
-class Type10:
-    def __init__(self, centers):
-        self.centers = centers
+class Type10(BaseType):
+    def __init__(self, game, vision=False):
+        super().__init__(game, vision)
 
     def processMove(self, move, positions=None):
         # move_string_split = move.split('_')
@@ -229,9 +242,9 @@ class Type10:
 """
 Place + Re-Arranger + Capture + Removal
 """
-class Type11:
-    def __init__(self, centers):
-        self.centers = centers
+class Type11(BaseType):
+    def __init__(self, game, vision=False):
+        super().__init__(game, vision)
 
     def processMove(self, move, positions=None):
         # move_string_split = move.split('_')
