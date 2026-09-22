@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GamesmanROS 2 Architecture Rewrite</title>
+<style>
+  @page { size: 13.333in 7.5in; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:      #16202F;
+    --ink-2:    #45566E;
+    --ink-3:    #7B8DA6;
+    --rule:     #D8E0EA;
+    --bg:       #FFFFFF;
+    --bg-soft:  #F4F7FB;
+    --cal:      #003262;
+    --gold:     #C89A1E;
+    --bad:      #C0392B;
+    --bad-soft: #FCEEEC;
+    --good:     #0E7C63;
+    --good-soft:#E9F5F2;
+  }
+
+  html, body { background: #555; }
+  body {
+    font-family: -apple-system, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .slide {
+    width: 1280px; height: 720px;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+    padding: 54px 64px 48px;
+  }
+  .slide:last-child { page-break-after: auto; }
+
+  /* ---------- typography ---------- */
+  h1 { font-size: 34px; font-weight: 700; letter-spacing: -0.5px; color: var(--cal); }
+  h2 { font-size: 15px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+       color: var(--ink-3); margin-bottom: 10px; }
+  .sub { font-size: 17px; color: var(--ink-2); margin-top: 9px; line-height: 1.5; max-width: 1000px; }
+  p  { font-size: 15.5px; line-height: 1.58; color: var(--ink-2); }
+  code, .mono { font-family: 'SF Mono', Menlo, Consolas, monospace; font-size: 0.9em; }
+  code { background: var(--bg-soft); padding: 1px 5px; border-radius: 3px; color: var(--cal); }
+
+  .hrule { height: 3px; width: 54px; background: var(--gold); margin: 14px 0 26px; border-radius: 2px; }
+
+  .pagenum {
+    position: absolute; right: 64px; bottom: 26px;
+    font-size: 12px; color: var(--ink-3); letter-spacing: 0.06em;
+  }
+  .footmark {
+    position: absolute; left: 64px; bottom: 26px;
+    font-size: 12px; color: var(--ink-3); letter-spacing: 0.06em;
+  }
+
+  /* ---------- title slide ---------- */
+  .title-slide { padding: 0; display: flex; flex-direction: column; justify-content: center; }
+  .title-band { position: absolute; left: 0; top: 0; width: 14px; height: 100%; background: var(--cal); }
+  .title-inner { padding: 0 90px; }
+  .title-slide h1 { font-size: 56px; line-height: 1.1; letter-spacing: -1.4px; }
+  .title-slide .kicker {
+    font-size: 14px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px;
+  }
+  .title-slide .lede { font-size: 20px; color: var(--ink-2); margin-top: 22px; line-height: 1.5; max-width: 780px; }
+  .title-meta {
+    margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--rule);
+    font-size: 14.5px; color: var(--ink-3); max-width: 780px;
+  }
+
+  /* ---------- generic layout ---------- */
+  .cols   { display: flex; gap: 26px; }
+  .col    { flex: 1; }
+  .stack  { display: flex; flex-direction: column; gap: 14px; }
+
+  .card {
+    border: 1px solid var(--rule); border-radius: 9px;
+    padding: 18px 20px; background: var(--bg);
+  }
+  .card h3 { font-size: 16.5px; font-weight: 650; margin-bottom: 7px; color: var(--ink); }
+  .card p  { font-size: 14px; line-height: 1.5; }
+
+  .card-bad  { border-color: #EFC9C3; background: var(--bad-soft); }
+  .card-good { border-color: #B8DDD3; background: var(--good-soft); }
+  .card-bad h3  { color: var(--bad); }
+  .card-good h3 { color: var(--good); }
+
+  .tag {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.09em;
+    text-transform: uppercase; padding: 3px 9px; border-radius: 4px; margin-bottom: 9px;
+  }
+  .tag-bad  { background: #F6D7D1; color: #98291B; }
+  .tag-good { background: #CBEADF; color: #0A5D4A; }
+
+  ul { list-style: none; }
+  li { font-size: 14.5px; line-height: 1.55; color: var(--ink-2); padding-left: 17px;
+       position: relative; margin-bottom: 7px; }
+  li::before { content: ''; position: absolute; left: 0; top: 8px;
+               width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+
+  .kv { display: flex; gap: 10px; font-size: 13.5px; margin-bottom: 6px; line-height: 1.45; }
+  .kv .k { color: var(--ink-3); min-width: 96px; flex-shrink: 0; }
+  .kv .v { color: var(--ink-2); }
+
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+  th {
+    text-align: left; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-3); font-weight: 650; padding: 0 12px 9px 0; border-bottom: 1.5px solid var(--rule);
+  }
+  td { padding: 9px 12px 9px 0; border-bottom: 1px solid #EDF1F6; color: var(--ink-2); vertical-align: top; line-height: 1.45; }
+  td.file { font-family: 'SF Mono', Menlo, monospace; font-size: 12.5px; color: var(--cal); font-weight: 500; white-space: nowrap; }
+  td.em { color: var(--ink); font-weight: 550; }
+
+  .note {
+    font-size: 13px; color: var(--ink-3); font-style: italic;
+    border-left: 2.5px solid var(--rule); padding-left: 13px; line-height: 1.5;
+  }
+  svg text { font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif; }
+  .lbl  { font-size: 13px; fill: #16202F; font-weight: 550; }
+  .lbl-s{ font-size: 11px; fill: #7B8DA6; }
+  .lbl-m{ font-family: 'SF Mono', Menlo, monospace; font-size: 10.5px; fill: #45566E; }
+</style>
+</head>
+<body>
+
+<!-- ============ 1. TITLE ============ -->
+<section class="slide title-slide">
+  <div class="title-band"></div>
+  <div class="title-inner">
+    <div class="kicker">GamesCrafters &middot; Robotics</div>
+    <h1>Rebuilding GamesmanROS<br>on ROS 2</h1>
+    <div class="lede">
+      An architecture rewrite that replaces a blocking monolith with a lifecycle-managed
+      node graph &mdash; fixing the motion planning, gripper, and recovery failures
+      that made the original system unreliable.
+    </div>
+    <div class="title-meta">
+      ROS 2 Humble &middot; MoveIt 2 / OMPL &middot; OpenCV &middot; MyCobot 280 Pi<br>
+      <span style="color:var(--ink-2)">Status: 7 nodes implemented &middot; pre-hardware-validation</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. THE PROBLEM ============ -->
+<section class="slide">
+  <h2>Where we started</h2>
+  <h1>Three failures that weren't bugs &mdash; they were architecture</h1>
+  <div class="hrule"></div>
+
+  <div class="cols" style="margin-top: 6px;">
+    <div class="col card card-bad">
+      <span class="tag tag-bad">Failure 01</span>
+      <h3>Motion planning</h3>
+      <p><code>set_planner_id("LIN")</code> forced every move onto a straight Cartesian
+      line. On the MyCobot's constrained workspace, that line routinely passed through
+      IK-infeasible configurations.</p>
+      <p style="margin-top:9px"><strong style="color:var(--bad)">Result:</strong> planning
+      returned <code>False</code>, the move was silently skipped, and the game continued
+      as if the piece had moved.</p>
+    </div>
+    <div class="col card card-bad">
+      <span class="tag tag-bad">Failure 02</span>
+      <h3>Gripper control</h3>
+      <p>The gripper topic was fire-and-forget with no delivery guarantee, so the
+      workaround was to publish the same command 7+ times with <code>sleep()</code>
+      between each.</p>
+      <p style="margin-top:9px"><strong style="color:var(--bad)">Result:</strong> ~3s
+      lost per actuation, and no confirmation the gripper ever actually closed before
+      the arm moved on.</p>
+    </div>
+    <div class="col card card-bad">
+      <span class="tag tag-bad">Failure 03</span>
+      <h3>No lifecycle or recovery</h3>
+      <p><code>main.py</code> ran the game loop, node setup, user input, and HTTP calls
+      in one blocking script. Vision was instantiated <em>inside</em> the controller
+      behind a raw <code>rospy.spin</code> thread.</p>
+      <p style="margin-top:9px"><strong style="color:var(--bad)">Result:</strong> any
+      failure anywhere required killing and restarting the entire process.</p>
+    </div>
+  </div>
+
+  <p class="note" style="margin-top: 26px; max-width: 1050px;">
+    The common root cause: the system was a Python call stack that happened to use ROS,
+    not a distributed system. Every fix below is structural, not a patch.
+  </p>
+
+  <div class="footmark">The problem</div><div class="pagenum">02</div>
+</section>
+
+<!-- ============ 3. ROS 1 ARCHITECTURE ============ -->
+<section class="slide">
+  <h2>Before</h2>
+  <h1>ROS 1: one synchronous chain</h1>
+  <div class="hrule"></div>
+
+  <svg width="1152" height="452" viewBox="0 0 1152 452">
+    <defs>
+      <marker id="ar" markerWidth="9" markerHeight="9" refX="7.5" refY="3.2" orient="auto">
+        <path d="M0,0 L7.5,3.2 L0,6.4 z" fill="#8798AE"/>
+      </marker>
+      <marker id="arR" markerWidth="9" markerHeight="9" refX="7.5" refY="3.2" orient="auto">
+        <path d="M0,0 L7.5,3.2 L0,6.4 z" fill="#C0392B"/>
+      </marker>
+    </defs>
+
+    <!-- main chain -->
+    <rect x="86" y="14" width="250" height="46" rx="7" fill="#F4F7FB" stroke="#C6D2E0"/>
+    <text x="211" y="36" class="lbl" text-anchor="middle">main.py</text>
+    <text x="211" y="51" class="lbl-s" text-anchor="middle">game loop · input() · HTTP · init</text>
+
+    <line x1="211" y1="60" x2="211" y2="92" stroke="#8798AE" stroke-width="1.6" marker-end="url(#ar)"/>
+    <text x="222" y="80" class="lbl-m">blocking call</text>
+
+    <rect x="86" y="94" width="250" height="46" rx="7" fill="#F4F7FB" stroke="#C6D2E0"/>
+    <text x="211" y="116" class="lbl" text-anchor="middle">robotControl.py</text>
+    <text x="211" y="131" class="lbl-s" text-anchor="middle">Type1–Type11 · .play()</text>
+
+    <line x1="211" y1="140" x2="211" y2="172" stroke="#8798AE" stroke-width="1.6" marker-end="url(#ar)"/>
+    <text x="222" y="160" class="lbl-m">blocking call</text>
+
+    <rect x="86" y="174" width="250" height="46" rx="7" fill="#FCEEEC" stroke="#EFC9C3"/>
+    <text x="211" y="196" class="lbl" text-anchor="middle" fill="#C0392B">low_level_controller.py</text>
+    <text x="211" y="211" class="lbl-s" text-anchor="middle" fill="#B25147">set_planner_id("LIN") · gripper spam</text>
+
+    <line x1="211" y1="220" x2="211" y2="252" stroke="#8798AE" stroke-width="1.6" marker-end="url(#ar)"/>
+    <text x="222" y="240" class="lbl-m">go(wait=True)</text>
+
+    <rect x="86" y="254" width="250" height="46" rx="7" fill="#F4F7FB" stroke="#C6D2E0"/>
+    <text x="211" y="276" class="lbl" text-anchor="middle">MoveIt 1 (PILZ LIN)</text>
+    <text x="211" y="291" class="lbl-s" text-anchor="middle">Cartesian straight-line planner</text>
+
+    <line x1="211" y1="300" x2="211" y2="332" stroke="#8798AE" stroke-width="1.6" marker-end="url(#ar)"/>
+
+    <rect x="86" y="334" width="250" height="46" rx="7" fill="#F4F7FB" stroke="#C6D2E0"/>
+    <text x="211" y="356" class="lbl" text-anchor="middle">joint_trajectory_action_server</text>
+    <text x="211" y="371" class="lbl-s" text-anchor="middle">+ joint_states.py (deg → rad)</text>
+
+    <line x1="211" y1="380" x2="211" y2="408" stroke="#8798AE" stroke-width="1.6" marker-end="url(#ar)"/>
+    <rect x="86" y="410" width="250" height="34" rx="7" fill="#EAEFF5" stroke="#C6D2E0"/>
+    <text x="211" y="432" class="lbl" text-anchor="middle">myCobot driver</text>
+
+    <!-- brace: single process -->
+    <path d="M 66 14 q -12 0 -12 12 L 54 210 q 0 12 -12 12 q 12 0 12 12 L 54 432 q 0 12 12 12"
+          fill="none" stroke="#C0392B" stroke-width="1.6"/>
+    <text x="36" y="232" class="lbl" fill="#C0392B" text-anchor="middle"
+          transform="rotate(-90 36 232)">ONE BLOCKING PROCESS</text>
+
+    <!-- vision branch -->
+    <rect x="620" y="94" width="216" height="44" rx="7" fill="#FCEEEC" stroke="#EFC9C3"/>
+    <text x="728" y="121" class="lbl" text-anchor="middle" fill="#C0392B">ar_track_alvar</text>
+
+    <line x1="728" y1="138" x2="728" y2="168" stroke="#C0392B" stroke-width="1.6" marker-end="url(#arR)" stroke-dasharray="4 3"/>
+
+    <rect x="620" y="170" width="216" height="44" rx="7" fill="#FCEEEC" stroke="#EFC9C3"/>
+    <text x="728" y="190" class="lbl" text-anchor="middle" fill="#C0392B">TF tree</text>
+    <text x="728" y="205" class="lbl-s" text-anchor="middle" fill="#B25147">camera → base_link never resolved</text>
+
+    <line x1="728" y1="214" x2="728" y2="244" stroke="#C0392B" stroke-width="1.6" marker-end="url(#arR)" stroke-dasharray="4 3"/>
+
+    <rect x="620" y="246" width="216" height="44" rx="7" fill="#FCEEEC" stroke="#EFC9C3"/>
+    <text x="728" y="266" class="lbl" text-anchor="middle" fill="#C0392B">findPiece.py / artag_listener</text>
+    <text x="728" y="281" class="lbl-s" text-anchor="middle" fill="#B25147">threading.Lock, shared mutable dict</text>
+
+    <!-- coupling arrow into robotControl -->
+    <path d="M 620 268 C 470 268, 420 140, 341 122" fill="none" stroke="#C0392B"
+          stroke-width="1.6" marker-end="url(#arR)" stroke-dasharray="4 3"/>
+    <text x="432" y="205" class="lbl-m" fill="#C0392B">instantiated inside</text>
+    <text x="432" y="219" class="lbl-m" fill="#C0392B">robotControl, not a node</text>
+
+    <!-- X over vision -->
+    <g stroke="#C0392B" stroke-width="3.4" stroke-linecap="round">
+      <line x1="862" y1="150" x2="906" y2="238"/>
+      <line x1="906" y1="150" x2="862" y2="238"/>
+    </g>
+    <text x="884" y="266" class="lbl" fill="#C0392B" text-anchor="middle">Never worked</text>
+    <text x="884" y="282" class="lbl-s" text-anchor="middle">in production</text>
+
+    <!-- right notes -->
+    <text x="980" y="30" class="lbl" fill="#16202F">Consequences</text>
+    <text x="980" y="58"  class="lbl-s">No failure signal reaches</text>
+    <text x="980" y="73"  class="lbl-s">the caller — plans that fail</text>
+    <text x="980" y="88"  class="lbl-s">return False and are dropped.</text>
+    <text x="980" y="120" class="lbl-s">No node can be restarted</text>
+    <text x="980" y="135" class="lbl-s">independently of any other.</text>
+    <text x="980" y="167" class="lbl-s">Vision state is shared memory</text>
+    <text x="980" y="182" class="lbl-s">across threads, not a message.</text>
+    <text x="980" y="214" class="lbl-s">Swapping the planner or the</text>
+    <text x="980" y="229" class="lbl-s">camera means editing the</text>
+    <text x="980" y="244" class="lbl-s">monolith itself.</text>
+  </svg>
+
+  <div class="footmark">ROS 1 architecture</div><div class="pagenum">03</div>
+</section>
+
+<!-- ============ 4. ROS 2 ARCHITECTURE ============ -->
+<section class="slide">
+  <h2>After</h2>
+  <h1>ROS 2: a graph of independent nodes</h1>
+  <div class="hrule"></div>
+
+  <svg width="1152" height="440" viewBox="0 0 1152 440">
+    <defs>
+      <marker id="ag" markerWidth="9" markerHeight="9" refX="7.5" refY="3.2" orient="auto">
+        <path d="M0,0 L7.5,3.2 L0,6.4 z" fill="#0E7C63"/>
+      </marker>
+      <marker id="an" markerWidth="9" markerHeight="9" refX="7.5" refY="3.2" orient="auto">
+        <path d="M0,0 L7.5,3.2 L0,6.4 z" fill="#8798AE"/>
+      </marker>
+    </defs>
+
+    <!-- UWAPI -->
+    <rect x="40" y="10" width="186" height="40" rx="7" fill="#EAEFF5" stroke="#C6D2E0"/>
+    <text x="133" y="35" class="lbl" text-anchor="middle">UWAPI (HTTP REST)</text>
+    <line x1="133" y1="50" x2="133" y2="82" stroke="#8798AE" stroke-width="1.5" marker-end="url(#an)"/>
+    <text x="142" y="70" class="lbl-m">solved values</text>
+
+    <!-- game_manager -->
+    <rect x="40" y="84" width="186" height="56" rx="7" fill="#FFFFFF" stroke="#003262" stroke-width="1.8"/>
+    <text x="133" y="106" class="lbl" text-anchor="middle" fill="#003262">game_manager</text>
+    <text x="133" y="122" class="lbl-s" text-anchor="middle">LifecycleNode</text>
+    <text x="133" y="135" class="lbl-s" text-anchor="middle">configure → activate</text>
+
+    <!-- arrow to robot_control -->
+    <line x1="226" y1="112" x2="330" y2="112" stroke="#0E7C63" stroke-width="2" marker-end="url(#ag)"/>
+    <text x="278" y="103" class="lbl-m" fill="#0E7C63" text-anchor="middle">ExecuteMove</text>
+    <text x="278" y="128" class="lbl-s" fill="#0E7C63" text-anchor="middle">action</text>
+
+    <!-- robot_control -->
+    <rect x="332" y="78" width="200" height="68" rx="7" fill="#E9F5F2" stroke="#0E7C63" stroke-width="1.8"/>
+    <text x="432" y="102" class="lbl" text-anchor="middle" fill="#0E7C63">robot_control</text>
+    <text x="432" y="118" class="lbl-s" text-anchor="middle">Type class taxonomy</text>
+    <text x="432" y="133" class="lbl-s" text-anchor="middle">async MotionSequencer</text>
+
+    <!-- branches -->
+    <path d="M 532 100 C 596 100, 606 66, 668 66" fill="none" stroke="#0E7C63" stroke-width="2" marker-end="url(#ag)"/>
+    <text x="600" y="58" class="lbl-m" fill="#0E7C63" text-anchor="middle">MoveArm</text>
+
+    <path d="M 532 126 C 596 126, 606 176, 668 176" fill="none" stroke="#0E7C63" stroke-width="2" marker-end="url(#ag)"/>
+    <text x="600" y="192" class="lbl-m" fill="#0E7C63" text-anchor="middle">MoveGripper</text>
+
+    <!-- arm_controller -->
+    <rect x="670" y="40" width="196" height="54" rx="7" fill="#FFFFFF" stroke="#C6D2E0"/>
+    <text x="768" y="62" class="lbl" text-anchor="middle">arm_controller</text>
+    <text x="768" y="80" class="lbl-s" text-anchor="middle">MoveIt 2 · OMPL / RRTConnect</text>
+
+    <!-- gripper_controller -->
+    <rect x="670" y="150" width="196" height="54" rx="7" fill="#FFFFFF" stroke="#C6D2E0"/>
+    <text x="768" y="172" class="lbl" text-anchor="middle">gripper_controller</text>
+    <text x="768" y="190" class="lbl-s" text-anchor="middle">RELIABLE QoS · single publish</text>
+
+    <!-- to hardware -->
+    <line x1="866" y1="67" x2="948" y2="67" stroke="#8798AE" stroke-width="1.5" marker-end="url(#an)"/>
+    <line x1="866" y1="177" x2="948" y2="177" stroke="#8798AE" stroke-width="1.5" marker-end="url(#an)"/>
+
+    <rect x="950" y="44" width="170" height="48" rx="7" fill="#EAEFF5" stroke="#C6D2E0"/>
+    <text x="1035" y="64" class="lbl" text-anchor="middle">joint_trajectory</text>
+    <text x="1035" y="80" class="lbl" text-anchor="middle">_controller</text>
+
+    <rect x="950" y="154" width="170" height="48" rx="7" fill="#EAEFF5" stroke="#C6D2E0"/>
+    <text x="1035" y="174" class="lbl" text-anchor="middle">/mycobot/</text>
+    <text x="1035" y="190" class="lbl" text-anchor="middle">gripper_status</text>
+
+    <!-- joint_state_bridge -->
+    <rect x="950" y="256" width="170" height="52" rx="7" fill="#FFFFFF" stroke="#C6D2E0"/>
+    <text x="1035" y="278" class="lbl" text-anchor="middle">joint_state_bridge</text>
+    <text x="1035" y="295" class="lbl-s" text-anchor="middle">degrees → radians</text>
+
+    <path d="M 1120 282 L 1142 282 L 1142 16 L 768 16 L 768 37" fill="none" stroke="#8798AE"
+          stroke-width="1.5" marker-end="url(#an)" stroke-dasharray="5 3"/>
+    <text x="950" y="11" class="lbl-m" text-anchor="middle">/joint_states — feeds MoveIt 2 the current configuration</text>
+
+    <!-- MyCobot driver -->
+    <rect x="950" y="336" width="170" height="40" rx="7" fill="#EAEFF5" stroke="#C6D2E0"/>
+    <text x="1035" y="361" class="lbl" text-anchor="middle">MyCobot 280 Pi</text>
+    <line x1="1035" y1="336" x2="1035" y2="310" stroke="#8798AE" stroke-width="1.5" marker-end="url(#an)"/>
+
+    <!-- vision -->
+    <rect x="332" y="300" width="200" height="60" rx="7" fill="#FFFFFF" stroke="#C6D2E0"/>
+    <text x="432" y="323" class="lbl" text-anchor="middle">vision_node</text>
+    <text x="432" y="339" class="lbl-s" text-anchor="middle">ArUco → homography → HSV</text>
+    <text x="432" y="353" class="lbl-s" text-anchor="middle">10 Hz</text>
+
+    <path d="M 432 300 L 432 160" fill="none" stroke="#8798AE" stroke-width="1.5"
+          marker-end="url(#an)" stroke-dasharray="5 3"/>
+    <text x="441" y="240" class="lbl-m">/vision/board_state</text>
+    <text x="441" y="254" class="lbl-s">std_msgs/String</text>
+
+    <rect x="106" y="310" width="180" height="40" rx="7" fill="#EAEFF5" stroke="#C6D2E0"/>
+    <text x="196" y="335" class="lbl" text-anchor="middle">USB camera</text>
+    <line x1="286" y1="330" x2="330" y2="330" stroke="#8798AE" stroke-width="1.5" marker-end="url(#an)"/>
+
+    <!-- legend -->
+    <line x1="40" y1="398" x2="76" y2="398" stroke="#0E7C63" stroke-width="2" marker-end="url(#ag)"/>
+    <text x="86" y="402" class="lbl-s">ROS 2 action (goal → feedback → result)</text>
+    <line x1="352" y1="398" x2="388" y2="398" stroke="#8798AE" stroke-width="1.5"
+          marker-end="url(#an)" stroke-dasharray="5 3"/>
+    <text x="398" y="402" class="lbl-s">topic (pub/sub)</text>
+    <rect x="560" y="390" width="15" height="15" rx="3" fill="#FFFFFF" stroke="#003262" stroke-width="1.8"/>
+    <text x="583" y="402" class="lbl-s">lifecycle-managed node</text>
+
+    <text x="40" y="428" class="lbl" fill="#16202F">Every node restarts independently &#183; every hop is typed, non-blocking, and reports failure back to its caller</text>
+  </svg>
+
+  <div class="footmark">ROS 2 architecture</div><div class="pagenum">04</div>
+</section>
+
+<!-- ============ 5. FIX 1 — PLANNING ============ -->
+<section class="slide">
+  <h2>Fix 01 &middot; Motion planning</h2>
+  <h1>Cartesian straight lines &rarr; joint-space search</h1>
+  <div class="hrule"></div>
+
+  <div class="cols" style="align-items: flex-start;">
+    <div class="col" style="flex: 1.35;">
+      <svg width="660" height="396" viewBox="0 0 660 396">
+        <!-- LEFT: LIN -->
+        <rect x="6" y="6" width="310" height="340" rx="9" fill="#FCEEEC" stroke="#EFC9C3"/>
+        <text x="161" y="34" class="lbl" fill="#C0392B" text-anchor="middle">PILZ LIN — Cartesian space</text>
+
+        <!-- infeasible region -->
+        <ellipse cx="155" cy="175" rx="62" ry="42" fill="#F3C9C2" stroke="#D98B7E" stroke-dasharray="4 3"/>
+        <line x1="232" y1="178" x2="219" y2="176" stroke="#B25147" stroke-width="1.2"/>
+        <text x="268" y="172" class="lbl-s" fill="#98291B" text-anchor="middle">IK infeasible</text>
+        <text x="268" y="187" class="lbl-s" fill="#98291B" text-anchor="middle">region</text>
+
+        <!-- straight path -->
+        <line x1="58" y1="258" x2="264" y2="82" stroke="#C0392B" stroke-width="2.6"/>
+        <circle cx="58" cy="258" r="6.5" fill="#16202F"/>
+        <circle cx="264" cy="82" r="6.5" fill="#FFFFFF" stroke="#16202F" stroke-width="2"/>
+        <text x="58" y="280" class="lbl-s" text-anchor="middle">start</text>
+        <text x="264" y="70" class="lbl-s" text-anchor="middle">goal</text>
+
+        <g stroke="#98291B" stroke-width="3.4" stroke-linecap="round">
+          <line x1="141" y1="161" x2="169" y2="189"/>
+          <line x1="169" y1="161" x2="141" y2="189"/>
+        </g>
+
+        <text x="161" y="316" class="lbl" fill="#C0392B" text-anchor="middle">Planning fails → move dropped</text>
+
+        <!-- RIGHT: OMPL -->
+        <rect x="344" y="6" width="310" height="340" rx="9" fill="#E9F5F2" stroke="#B8DDD3"/>
+        <text x="499" y="34" class="lbl" fill="#0E7C63" text-anchor="middle">OMPL RRTConnect — joint space</text>
+
+        <ellipse cx="493" cy="175" rx="62" ry="42" fill="#D3E8E1" stroke="#9CC9BC" stroke-dasharray="4 3"/>
+        <line x1="570" y1="178" x2="557" y2="176" stroke="#5E9C8A" stroke-width="1.2"/>
+        <text x="606" y="172" class="lbl-s" fill="#0A5D4A" text-anchor="middle">IK infeasible</text>
+        <text x="606" y="187" class="lbl-s" fill="#0A5D4A" text-anchor="middle">region</text>
+
+        <path d="M 396 258 C 404 188, 424 106, 493 102 C 556 98, 582 92, 602 86"
+              fill="none" stroke="#0E7C63" stroke-width="2.6"/>
+        <circle cx="396" cy="258" r="6.5" fill="#16202F"/>
+        <circle cx="602" cy="86" r="6.5" fill="#FFFFFF" stroke="#16202F" stroke-width="2"/>
+        <text x="396" y="280" class="lbl-s" text-anchor="middle">start</text>
+        <text x="602" y="74" class="lbl-s" text-anchor="middle">goal</text>
+
+        <text x="499" y="316" class="lbl" fill="#0E7C63" text-anchor="middle">Path routes around it → succeeds</text>
+
+        <text x="330" y="378" class="lbl-s" text-anchor="middle">IK is solved only at the two endpoints, never at interpolated waypoints in between</text>
+      </svg>
+    </div>
+
+    <div class="col stack" style="flex: 1;">
+      <div class="card card-bad" style="padding: 15px 17px;">
+        <h3 style="font-size:15px">Why LIN failed</h3>
+        <p style="font-size:13.5px">LIN interpolates the end-effector linearly through 3D
+        space. MoveIt must solve IK at <em>every intermediate waypoint</em>. One infeasible
+        point anywhere along the line kills the whole plan.</p>
+      </div>
+      <div class="card card-good" style="padding: 15px 17px;">
+        <h3 style="font-size:15px">Why OMPL works</h3>
+        <p style="font-size:13.5px">RRTConnect searches the 6-DOF joint configuration space
+        directly, growing trees from both start and goal. The Cartesian path is unconstrained,
+        so it can route around singularities and joint limits.</p>
+      </div>
+      <div class="card" style="padding: 15px 17px;">
+        <h3 style="font-size:15px">The trade-off we accepted</h3>
+        <p style="font-size:13.5px">Motion no longer looks like a clean straight line to a
+        human observer. For pick-and-place on a game board, reliability beats aesthetics.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="note" style="margin-top: 26px; max-width: 1180px;">
+    This is a one-line change in <code>arm_controller.py</code> &mdash; but it is the change
+    the whole rewrite was for. Every other fix exists to make sure that when a plan does fail,
+    the system finds out about it.
+  </p>
+
+  <div class="footmark">Fix 01 — planning</div><div class="pagenum">05</div>
+</section>
+
+<!-- ============ 6. FIX 2 & 3 ============ -->
+<section class="slide">
+  <h2>Fix 02 &amp; 03</h2>
+  <h1>Guaranteed delivery, and a system that can recover</h1>
+  <div class="hrule"></div>
+
+  <div class="cols">
+    <!-- gripper -->
+    <div class="col">
+      <div style="font-size:13px; font-weight:650; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-3); margin-bottom:12px;">
+        Gripper reliability
+      </div>
+      <svg width="540" height="184" viewBox="0 0 540 184">
+        <rect x="4" y="4" width="252" height="168" rx="9" fill="#FCEEEC" stroke="#EFC9C3"/>
+        <text x="130" y="28" class="lbl" fill="#C0392B" text-anchor="middle">ROS 1 — hope-based</text>
+        <g>
+          <rect x="26" y="44" width="22" height="13" rx="2.5" fill="#D98B7E"/>
+          <rect x="54" y="44" width="22" height="13" rx="2.5" fill="#D98B7E"/>
+          <rect x="82" y="44" width="22" height="13" rx="2.5" fill="#D98B7E"/>
+          <rect x="110" y="44" width="22" height="13" rx="2.5" fill="#D98B7E"/>
+          <rect x="138" y="44" width="22" height="13" rx="2.5" fill="#D98B7E"/>
+          <rect x="166" y="44" width="22" height="13" rx="2.5" fill="#D98B7E"/>
+          <rect x="194" y="44" width="22" height="13" rx="2.5" fill="#D98B7E"/>
+        </g>
+        <text x="130" y="76" class="lbl-m" fill="#98291B" text-anchor="middle">7+ publishes · sleep() between each</text>
+        <text x="130" y="104" class="lbl-s" text-anchor="middle">BEST_EFFORT — no delivery guarantee</text>
+        <text x="130" y="122" class="lbl-s" text-anchor="middle">no confirmation of actuation</text>
+        <text x="130" y="152" class="lbl" fill="#C0392B" text-anchor="middle">≈ 3 s per grip</text>
+
+        <rect x="284" y="4" width="252" height="168" rx="9" fill="#E9F5F2" stroke="#B8DDD3"/>
+        <text x="410" y="28" class="lbl" fill="#0E7C63" text-anchor="middle">ROS 2 — guaranteed</text>
+        <rect x="399" y="44" width="22" height="13" rx="2.5" fill="#5FAF9A"/>
+        <text x="410" y="76" class="lbl-m" fill="#0A5D4A" text-anchor="middle">one publish · RELIABLE QoS</text>
+        <text x="410" y="104" class="lbl-s" text-anchor="middle">DDS retransmits until acknowledged</text>
+        <text x="410" y="122" class="lbl-s" text-anchor="middle">action result confirms completion</text>
+        <text x="410" y="152" class="lbl" fill="#0E7C63" text-anchor="middle">1.5 s, deterministic</text>
+      </svg>
+      <p style="font-size:13.5px; margin-top:12px;">
+        The caller <code>await</code>s the action result, so the arm physically cannot begin
+        the next motion before the gripper has finished actuating.
+      </p>
+    </div>
+
+    <!-- lifecycle -->
+    <div class="col">
+      <div style="font-size:13px; font-weight:650; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-3); margin-bottom:12px;">
+        Lifecycle &amp; recovery
+      </div>
+      <svg width="540" height="184" viewBox="0 0 540 184">
+        <defs>
+          <marker id="al" markerWidth="8" markerHeight="8" refX="6.8" refY="2.9" orient="auto">
+            <path d="M0,0 L6.8,2.9 L0,5.8 z" fill="#003262"/>
+          </marker>
+        </defs>
+        <rect x="6" y="44" width="124" height="50" rx="7" fill="#F4F7FB" stroke="#C6D2E0"/>
+        <text x="68" y="68" class="lbl" text-anchor="middle">unconfigured</text>
+        <text x="68" y="84" class="lbl-s" text-anchor="middle">process started</text>
+
+        <line x1="132" y1="69" x2="202" y2="69" stroke="#003262" stroke-width="1.7" marker-end="url(#al)"/>
+        <text x="165" y="61" class="lbl-m" fill="#003262" text-anchor="middle">configure</text>
+
+        <rect x="206" y="44" width="124" height="50" rx="7" fill="#F4F7FB" stroke="#C6D2E0"/>
+        <text x="268" y="68" class="lbl" text-anchor="middle">inactive</text>
+        <text x="268" y="84" class="lbl-s" text-anchor="middle">game selected</text>
+
+        <line x1="332" y1="69" x2="402" y2="69" stroke="#003262" stroke-width="1.7" marker-end="url(#al)"/>
+        <text x="366" y="61" class="lbl-m" fill="#003262" text-anchor="middle">activate</text>
+
+        <rect x="406" y="44" width="124" height="50" rx="7" fill="#E9F5F2" stroke="#0E7C63" stroke-width="1.7"/>
+        <text x="468" y="68" class="lbl" text-anchor="middle" fill="#0E7C63">active</text>
+        <text x="468" y="84" class="lbl-s" text-anchor="middle">loop running</text>
+
+        <path d="M 468 94 C 468 134, 268 134, 268 100" fill="none" stroke="#003262"
+              stroke-width="1.7" marker-end="url(#al)" stroke-dasharray="4 3"/>
+        <text x="368" y="152" class="lbl-m" fill="#003262" text-anchor="middle">deactivate — stop cleanly, reconfigure, replay</text>
+
+        <text x="68" y="26" class="lbl-s" text-anchor="middle">setup failure leaves</text>
+        <text x="68" y="38" class="lbl-s" text-anchor="middle">a retryable state</text>
+      </svg>
+      <p style="font-size:13.5px; margin-top:12px;">
+        In ROS 1 a mid-game failure meant killing the process. Here <code>game_manager</code>
+        can be deactivated, reconfigured with a new game, and reactivated without the motion
+        stack ever restarting.
+      </p>
+    </div>
+  </div>
+
+  <p class="note" style="margin-top: 30px; max-width: 1180px;">
+    Both fixes share a shape: the original code guessed that something had happened and moved on.
+    The rewrite makes the system wait for confirmation &mdash; from DDS for delivery, from the action
+    result for completion, and from the lifecycle manager for readiness.
+  </p>
+
+  <div class="footmark">Fixes 02 &amp; 03</div><div class="pagenum">06</div>
+</section>
+
+<!-- ============ 7. PERCEPTION ============ -->
+<section class="slide">
+  <h2>Perception rewrite</h2>
+  <h1>Dropping the TF chain for a homography</h1>
+  <div class="hrule"></div>
+
+  <svg width="1152" height="186" viewBox="0 0 1152 186">
+    <defs>
+      <marker id="ap" markerWidth="9" markerHeight="9" refX="7.5" refY="3.2" orient="auto">
+        <path d="M0,0 L7.5,3.2 L0,6.4 z" fill="#8798AE"/>
+      </marker>
+    </defs>
+
+    <!-- 1 raw frame -->
+    <rect x="10" y="30" width="186" height="140" rx="8" fill="#F4F7FB" stroke="#C6D2E0"/>
+    <text x="103" y="22" class="lbl" text-anchor="middle">1 · Raw camera frame</text>
+    <polygon points="44,74 168,56 180,132 54,150" fill="#E4EBF3" stroke="#A9B9CC"/>
+    <circle cx="52" cy="76"  r="5.5" fill="#16202F"/>
+    <circle cx="160" cy="60" r="5.5" fill="#16202F"/>
+    <circle cx="172" cy="128" r="5.5" fill="#16202F"/>
+    <circle cx="62" cy="145" r="5.5" fill="#16202F"/>
+    <text x="103" y="108" class="lbl-s" text-anchor="middle">tilted · perspective-distorted</text>
+
+    <line x1="200" y1="100" x2="236" y2="100" stroke="#8798AE" stroke-width="1.6" marker-end="url(#ap)"/>
+
+    <!-- 2 aruco -->
+    <rect x="240" y="30" width="186" height="140" rx="8" fill="#F4F7FB" stroke="#C6D2E0"/>
+    <text x="333" y="22" class="lbl" text-anchor="middle">2 · Detect ArUco IDs 0–3</text>
+    <g fill="#16202F">
+      <rect x="264" y="54" width="26" height="26" rx="2"/>
+      <rect x="378" y="54" width="26" height="26" rx="2"/>
+      <rect x="378" y="118" width="26" height="26" rx="2"/>
+      <rect x="264" y="118" width="26" height="26" rx="2"/>
+    </g>
+    <g fill="#FFFFFF">
+      <rect x="270" y="60" width="7" height="7"/><rect x="281" y="71" width="7" height="7"/>
+      <rect x="384" y="60" width="7" height="7"/><rect x="395" y="71" width="7" height="7"/>
+      <rect x="384" y="124" width="7" height="7"/><rect x="395" y="135" width="7" height="7"/>
+      <rect x="270" y="124" width="7" height="7"/><rect x="281" y="135" width="7" height="7"/>
+    </g>
+    <text x="277" y="50" class="lbl-s" text-anchor="middle">0</text>
+    <text x="391" y="50" class="lbl-s" text-anchor="middle">1</text>
+    <text x="391" y="158" class="lbl-s" text-anchor="middle">2</text>
+    <text x="277" y="158" class="lbl-s" text-anchor="middle">3</text>
+    <text x="333" y="104" class="lbl-s" text-anchor="middle">4 corner markers</text>
+
+    <line x1="430" y1="100" x2="466" y2="100" stroke="#8798AE" stroke-width="1.6" marker-end="url(#ap)"/>
+
+    <!-- 3 warp -->
+    <rect x="470" y="30" width="186" height="140" rx="8" fill="#F4F7FB" stroke="#C6D2E0"/>
+    <text x="563" y="22" class="lbl" text-anchor="middle">3 · Perspective warp</text>
+    <rect x="505" y="54" width="116" height="92" fill="#E4EBF3" stroke="#0E7C63" stroke-width="1.8"/>
+    <text x="563" y="96" class="lbl-m" fill="#0E7C63" text-anchor="middle">600 × 600</text>
+    <text x="563" y="112" class="lbl-s" text-anchor="middle">flat, axis-aligned</text>
+    <text x="563" y="161" class="lbl-s" text-anchor="middle">getPerspectiveTransform</text>
+
+    <line x1="660" y1="100" x2="696" y2="100" stroke="#8798AE" stroke-width="1.6" marker-end="url(#ap)"/>
+
+    <!-- 4 hsv -->
+    <rect x="700" y="30" width="186" height="140" rx="8" fill="#F4F7FB" stroke="#C6D2E0"/>
+    <text x="793" y="22" class="lbl" text-anchor="middle">4 · HSV threshold per cell</text>
+    <g stroke="#A9B9CC" fill="none">
+      <rect x="735" y="54" width="116" height="92"/>
+      <line x1="764" y1="54" x2="764" y2="146"/><line x1="793" y1="54" x2="793" y2="146"/>
+      <line x1="822" y1="54" x2="822" y2="146"/>
+      <line x1="735" y1="77" x2="851" y2="77"/><line x1="735" y1="100" x2="851" y2="100"/>
+      <line x1="735" y1="123" x2="851" y2="123"/>
+    </g>
+    <circle cx="749" cy="65"  r="8" fill="#C0392B"/>
+    <circle cx="807" cy="88"  r="8" fill="#2B6CB0"/>
+    <circle cx="836" cy="111" r="8" fill="#C0392B"/>
+    <circle cx="778" cy="134" r="8" fill="#2B6CB0"/>
+    <text x="793" y="161" class="lbl-s" text-anchor="middle">&gt;15% match → occupied</text>
+
+    <line x1="890" y1="100" x2="926" y2="100" stroke="#8798AE" stroke-width="1.6" marker-end="url(#ap)"/>
+
+    <!-- 5 publish -->
+    <rect x="930" y="30" width="212" height="140" rx="8" fill="#E9F5F2" stroke="#B8DDD3"/>
+    <text x="1036" y="22" class="lbl" text-anchor="middle">5 · Publish</text>
+    <text x="1036" y="76" class="lbl-m" fill="#0A5D4A" text-anchor="middle" style="font-size:13px">"1--2-1--2-1--2--"</text>
+    <text x="1036" y="102" class="lbl-s" text-anchor="middle">/vision/board_state</text>
+    <text x="1036" y="118" class="lbl-s" text-anchor="middle">std_msgs/String · 10 Hz</text>
+    <text x="1036" y="146" class="lbl-s" text-anchor="middle">consumed by robot_control</text>
+  </svg>
+
+  <div class="cols" style="margin-top: 40px;">
+    <div class="col card card-bad" style="padding:17px 19px;">
+      <h3 style="font-size:15px">What broke in ROS 1</h3>
+      <p style="font-size:13.5px"><code>ar_track_alvar</code> needed accurate camera
+      intrinsics, published poses in the camera frame, and depended on a
+      camera&nbsp;&rarr;&nbsp;<code>base_link</code> TF transform that was never reliably
+      established. Three stacked dependencies, each a failure point.</p>
+    </div>
+    <div class="col card card-good" style="padding:17px 19px;">
+      <h3 style="font-size:15px">Why homography removes all three</h3>
+      <p style="font-size:13.5px">Four markers at known board corners fully determine the
+      projective transform. Camera tilt, height and angle are absorbed by the warp &mdash;
+      no intrinsics file, no TF tree, no extrinsic calibration step.</p>
+    </div>
+    <div class="col card" style="padding:17px 19px;">
+      <h3 style="font-size:15px">Why HSV, not a learned model</h3>
+      <p style="font-size:13.5px">Pieces are two solid colors on a flat board. Hue is
+      lighting-invariant, detection is deterministic, it runs at frame rate on a Pi, and
+      there is no training set to collect or domain shift to manage.</p>
+    </div>
+  </div>
+
+  <p class="note" style="margin-top: 26px; max-width: 1180px;">
+    Status: the pipeline is implemented but the HSV bounds are still placeholders. Calibrating
+    them against the real pieces under real lighting is the next perception task &mdash; they are
+    exposed as ROS parameters specifically so that can be done without touching code.
+  </p>
+
+  <div class="footmark">Perception</div><div class="pagenum">07</div>
+</section>
+
+<!-- ============ 8. INTERFACES ============ -->
+<section class="slide">
+  <h2>What makes the graph work</h2>
+  <h1>Typed interfaces replace shared memory</h1>
+  <div class="hrule"></div>
+
+  <div class="cols" style="align-items:flex-start;">
+    <div class="col" style="flex:1.15;">
+      <p style="margin-bottom:16px; font-size:15px;">
+        In ROS 1, <code>robotControl</code> reached directly into an <code>ARTagListener</code>
+        object and shared a mutable dict behind a lock. In ROS 2 every boundary is a compiled
+        message contract &mdash; which means each node can be tested, replaced or restarted
+        on its own.
+      </p>
+
+      <table>
+        <tr><th style="width:190px">Interface</th><th>Carries</th><th style="width:150px">Direction</th></tr>
+        <tr>
+          <td class="file">ExecuteMove.action</td>
+          <td><span class="mono">game_id</span>, <span class="mono">move_string</span>,
+              <span class="mono">current_position</span>, <span class="mono">new_position</span></td>
+          <td>game_manager&nbsp;→&nbsp;robot_control</td>
+        </tr>
+        <tr>
+          <td class="file">MoveArm.action</td>
+          <td><span class="mono">x</span>, <span class="mono">y</span>, <span class="mono">z</span>
+              in metres, base frame</td>
+          <td>robot_control&nbsp;→&nbsp;arm_controller</td>
+        </tr>
+        <tr>
+          <td class="file">MoveGripper.action</td>
+          <td><span class="mono">open</span> (bool)</td>
+          <td>robot_control&nbsp;→&nbsp;gripper_controller</td>
+        </tr>
+        <tr>
+          <td class="file">GameState.msg</td>
+          <td><span class="mono">position</span>, <span class="mono">available_moves</span>,
+              <span class="mono">is_robot_turn</span>, <span class="mono">game_over</span></td>
+          <td>game_manager&nbsp;→&nbsp;any subscriber</td>
+        </tr>
+        <tr>
+          <td class="file">/vision/board_state</td>
+          <td>occupancy string, one char per cell</td>
+          <td>vision_node&nbsp;→&nbsp;robot_control</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col stack" style="flex:0.85;">
+      <div class="card">
+        <h3 style="font-size:15px">Why actions, not services or topics</h3>
+        <p style="font-size:13.5px">Motion is long-running and can fail. Actions give the
+        caller three things a topic cannot: a goal acknowledgement, streaming feedback, and
+        a terminal result. A failed plan now propagates all the way back to the game loop
+        instead of vanishing.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">The async requirement</h3>
+        <p style="font-size:13.5px">Calling <code>spin_until_future_complete</code> inside an
+        action callback deadlocks under a <code>MultiThreadedExecutor</code> &mdash; the node
+        is already being spun. The motion sequencer is therefore <code>async</code> throughout
+        and <code>await</code>s each goal, yielding the executor while it waits.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">Game-agnostic by construction</h3>
+        <p style="font-size:13.5px">The ROS 1 AR tracker was hardcoded for a single game.
+        Adding a game here means one entry in <code>centers.py</code> and one in the
+        <code>_GAME_TYPES</code> map &mdash; no node code changes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footmark">Interfaces</div><div class="pagenum">08</div>
+</section>
+
+<!-- ============ 9. FILE MAP ============ -->
+<section class="slide">
+  <h2>What exists today</h2>
+  <h1>Seven nodes, ~1,170 lines</h1>
+  <div class="hrule"></div>
+
+  <table>
+    <tr>
+      <th style="width:210px">File</th>
+      <th style="width:74px">Lines</th>
+      <th style="width:300px">Responsibility</th>
+      <th>Replaces / notes</th>
+    </tr>
+    <tr>
+      <td class="file">game_manager.py</td><td>246</td>
+      <td class="em">Lifecycle node · UWAPI game loop</td>
+      <td><span class="mono">main.py</span> — adds configure/activate states and greedy move selection in a daemon thread</td>
+    </tr>
+    <tr>
+      <td class="file">robot_control.py</td><td>289</td>
+      <td class="em">ExecuteMove server · Type taxonomy</td>
+      <td><span class="mono">robotControl.py</span> — same Type1–Type11 model, now async and driven by action clients</td>
+    </tr>
+    <tr>
+      <td class="file">arm_controller.py</td><td>112</td>
+      <td class="em">MoveIt 2 planning · OMPL</td>
+      <td><span class="mono">low_level_controller.py</span> — the LIN&nbsp;→&nbsp;OMPL fix lives here</td>
+    </tr>
+    <tr>
+      <td class="file">gripper_controller.py</td><td>74</td>
+      <td class="em">Gripper action server</td>
+      <td>Replaces the 7&times;-publish loop with one RELIABLE-QoS publish</td>
+    </tr>
+    <tr>
+      <td class="file">vision_node.py</td><td>170</td>
+      <td class="em">ArUco → homography → HSV</td>
+      <td><span class="mono">ar_track_alvar</span>, <span class="mono">findPiece.py</span>, <span class="mono">artag_listener.py</span>, <span class="mono">transformBroadcast.py</span></td>
+    </tr>
+    <tr>
+      <td class="file">centers.py</td><td>89</td>
+      <td class="em">Board coordinate tables</td>
+      <td>Ported and made game-agnostic; no ROS dependency</td>
+    </tr>
+    <tr>
+      <td class="file">joint_state_bridge.py</td><td>55</td>
+      <td class="em">degrees → radians for MoveIt 2</td>
+      <td>Direct port of <span class="mono">joint_states.py</span></td>
+    </tr>
+    <tr>
+      <td class="file">gamesmanros.launch.py</td><td>103</td>
+      <td class="em">Bringup, params, vision toggle</td>
+      <td>New — <span class="mono">vision:=true</span>, <span class="mono">game_id:=…</span>, HSV bounds as parameters</td>
+    </tr>
+  </table>
+
+  <p class="note" style="margin-top:20px; max-width:1040px;">
+    Comparable in size to the ROS 1 system (~940 lines) &mdash; the gain is not less code,
+    it is that no file can block, corrupt or crash another.
+  </p>
+
+  <div class="footmark">Implementation</div><div class="pagenum">09</div>
+</section>
+
+<!-- ============ 10. STATUS ============ -->
+<section class="slide">
+  <h2>Honest status</h2>
+  <h1>Written and reviewed &mdash; not yet validated on hardware</h1>
+  <div class="hrule"></div>
+
+  <div class="cols">
+    <div class="col">
+      <div class="card card-good" style="height:100%">
+        <span class="tag tag-good">Complete</span>
+        <ul style="margin-top:4px">
+          <li>All seven nodes implemented end to end</li>
+          <li>Four custom interfaces defined and wired</li>
+          <li>LIN&nbsp;→&nbsp;OMPL planner migration</li>
+          <li>Gripper action server with RELIABLE QoS</li>
+          <li>Lifecycle state machine on <code>game_manager</code></li>
+          <li>Full OpenCV perception pipeline</li>
+          <li>Async refactor &mdash; deadlock path removed</li>
+          <li><code>game_id</code> moved onto the goal message</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="height:100%; border-color:#E8D9A8; background:#FDF8EA;">
+        <span class="tag" style="background:#F2E4BC; color:#7A5E10;">Blocking hardware test</span>
+        <ul style="margin-top:4px">
+          <li>MoveIt 2 config for the MyCobot 280 &mdash; URDF, SRDF, <code>arm_group</code>, <code>joint6_flange</code></li>
+          <li>Raspberry Pi reflash: Ubuntu 20.04 &rarr; 22.04 arm64 for Humble</li>
+          <li>Launch ordering &mdash; <code>arm_controller</code> can currently start before <code>/joint_states</code> exists</li>
+          <li>HSV bounds are untuned placeholders</li>
+          <li><code>_pickup</code> table is empty, so Type1 games have no source stack</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" style="height:100%">
+        <span class="tag" style="background:#DCE5F0; color:#003262;">Next</span>
+        <ul style="margin-top:4px">
+          <li>Stand up MoveIt 2 config and drive <code>MoveArm</code> goals directly from the CLI</li>
+          <li>Calibrate HSV against the real pieces under real lighting</li>
+          <li>Close the perception loop &mdash; detect a human's move from <code>/vision/board_state</code></li>
+          <li>Mock UWAPI responses so the motion stack can be tested while the solver API is down</li>
+        </ul>
+        <p class="note" style="margin-top:14px; font-size:12.5px;">
+          UWAPI is currently unavailable, but only <code>game_manager</code> depends on it &mdash;
+          the entire motion and perception stack can be exercised without it.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footmark">Status</div><div class="pagenum">10</div>
+</section>
+
+<!-- ============ 11. SUMMARY ============ -->
+<section class="slide">
+  <h2>The argument in one slide</h2>
+  <h1>What actually changed</h1>
+  <div class="hrule"></div>
+
+  <table style="font-size:14.5px;">
+    <tr>
+      <th style="width:210px">Dimension</th>
+      <th style="width:400px">ROS 1 (original)</th>
+      <th>ROS 2 (rewrite)</th>
+    </tr>
+    <tr>
+      <td class="em">Control flow</td>
+      <td>One synchronous Python call stack</td>
+      <td>Seven independent nodes over typed interfaces</td>
+    </tr>
+    <tr>
+      <td class="em">Motion planning</td>
+      <td>PILZ LIN — Cartesian, fails without a straight IK-feasible path</td>
+      <td>OMPL RRTConnect — joint-space, IK required only at endpoints</td>
+    </tr>
+    <tr>
+      <td class="em">Failure signalling</td>
+      <td><span class="mono">plan()</span> returns <span class="mono">False</span>; caller ignores it</td>
+      <td>Action aborts propagate to the game loop and are logged</td>
+    </tr>
+    <tr>
+      <td class="em">Gripper</td>
+      <td>7+ publishes with <span class="mono">sleep()</span>, no confirmation</td>
+      <td>One RELIABLE publish, action result confirms actuation</td>
+    </tr>
+    <tr>
+      <td class="em">Recovery</td>
+      <td>Kill and restart the whole process</td>
+      <td>Lifecycle transitions; per-node restart</td>
+    </tr>
+    <tr>
+      <td class="em">Perception</td>
+      <td>ar_track_alvar → TF tree → shared dict behind a lock</td>
+      <td>ArUco homography → HSV → published board-state topic</td>
+    </tr>
+    <tr>
+      <td class="em">Camera setup</td>
+      <td>Intrinsics file + extrinsic TF calibration</td>
+      <td>None — four corner markers fully determine the warp</td>
+    </tr>
+    <tr>
+      <td class="em">Adding a game</td>
+      <td>AR tracking hardcoded for one game</td>
+      <td>Two table entries, no node changes</td>
+    </tr>
+    <tr>
+      <td class="em">Concurrency</td>
+      <td><span class="mono">threading.Thread(target=rospy.spin)</span></td>
+      <td><span class="mono">MultiThreadedExecutor</span> with async callbacks</td>
+    </tr>
+  </table>
+
+  <p style="margin-top:24px; font-size:16px; color:var(--ink); max-width:1030px; line-height:1.55;">
+    <strong>The through-line:</strong> every failure in the original system traced back to
+    the same decision &mdash; treating a distributed robotics problem as a single-threaded
+    script. The rewrite does not patch those failures individually; it removes the structure
+    that produced them.
+  </p>
+
+  <div class="footmark">Summary</div><div class="pagenum">11</div>
+</section>
+
+</body>
+</html>

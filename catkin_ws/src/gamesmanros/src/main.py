@@ -3,6 +3,7 @@
 import requests
 import rospy
 from robotControl import getType
+from centers import get_dim
 
 URL = "https://nyc.cs.berkeley.edu/universal/v1/"
 vision = False
@@ -19,7 +20,7 @@ print("Game Chosen: ", games_data[user_game]["id"])
 URL = URL + games_data[user_game]["id"] + '/'
 #############################################################################
 
-############## Get Variant and Starting Positon #############################
+############## Get Variant and Starting Position #############################
 variants_data = requests.get(url=URL).json()['variants']
 for j in range(len(variants_data)):
     print(j, " : ", variants_data[j]["id"])
@@ -35,6 +36,7 @@ print("Human or Robot (Enter 'h' or 'r')")
 humanA = input("Player 1: ") == "h"
 humanB = input("Player 2: ") == "h"
 
+move_value = False
 if humanA or humanB:
     move_value = input("Move Value [y or n]: ") == 'y'
 ##############################################################################
@@ -73,7 +75,7 @@ def pick_best_position(moves):
     elif 'lose' in position_values and len(position_values['lose']) > 0:
         return position_values['lose'][0]
     else:
-        print('error: in pick_best_postion')
+        print('error: in pick_best_position')
         exit()
 
 def process_human_player_keyboard(moves):
@@ -82,13 +84,12 @@ def process_human_player_keyboard(moves):
         before, after = (moves[i]['autoguiMove'].split('_')[1], moves[i]['autoguiMove'].split('_')[2])
         print(str(i) + " : ", before, after, moves[i]['moveValue'] if move_value else '')
     index = int(input("Choose an available move: "))
-    
     return (moves_data[index]['autoguiMove'], moves_data[index]['position'])
 ################################################################################
 
-############################# Meta Data  #####################################
+############################# Meta Data  ######################################
 Static_URL = URL + "/positions/?p="
-##############################################################################
+###############################################################################
 
 Dynamic_URL = Static_URL + current_position
 
@@ -98,7 +99,23 @@ moves_data = requests.get(url=Dynamic_URL).json()['moves']
 game = games_data[user_game]["id"]
 gameType = getType(game)
 
-robotControl = gameType(game, vision)
+if gameType is None:
+    print("Error: Game type not supported for", game)
+    exit()
+
+# Prefer svg_space from the API if available, otherwise fall back to get_dim
+try:
+    svg_space = variants_data["imageAutoGUIData"]["themes"]["regular"]["space"]
+    print("svg_space from API: ", svg_space)
+except (KeyError, TypeError):
+    dim = get_dim(game)
+    if dim is None:
+        print("Error: No dimension defined for game", game)
+        exit()
+    svg_space = [dim, dim]
+    print("svg_space from get_dim: ", svg_space)
+
+robotControl = gameType(game=game, svg_space=svg_space, vision=vision)
 
 A_turn = True
 while (len(moves_data) > 0):
@@ -109,9 +126,8 @@ while (len(moves_data) > 0):
             move = pick_best_move(moves_data)
             new_position = pick_best_position(moves_data)
             move_coords = robotControl.processMove(move, [current_position, new_position])
-
-        print("A : ", move)
-        print("A : ", move_coords)
+            print("A : ", move)
+            print("A : ", move_coords)
 
         Dynamic_URL = Static_URL + new_position
         moves_data = requests.get(url=Dynamic_URL).json()['moves']
@@ -124,10 +140,9 @@ while (len(moves_data) > 0):
             move = pick_best_move(moves_data)
             new_position = pick_best_position(moves_data)
             move_coords = robotControl.processMove(move, [current_position, new_position])
+            print("B : ", move)
+            print("B : ", move_coords)
 
-        print("B : ", move)
-        print("B : ", move_coords)
-        
         Dynamic_URL = Static_URL + new_position
         moves_data = requests.get(url=Dynamic_URL).json()['moves']
         current_position = new_position
