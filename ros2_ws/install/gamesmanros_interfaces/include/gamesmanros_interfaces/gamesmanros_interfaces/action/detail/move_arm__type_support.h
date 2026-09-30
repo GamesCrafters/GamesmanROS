@@ -1,0 +1,1 @@
+/ws/build/gamesmanros_interfaces/rosidl_generator_c/gamesmanros_interfaces/action/detail/move_arm__type_support.h

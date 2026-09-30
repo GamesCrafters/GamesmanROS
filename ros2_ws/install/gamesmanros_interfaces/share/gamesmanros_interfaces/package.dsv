@@ -1,0 +1,11 @@
+source;share/gamesmanros_interfaces/hook/cmake_prefix_path.ps1
+source;share/gamesmanros_interfaces/hook/cmake_prefix_path.dsv
+source;share/gamesmanros_interfaces/hook/cmake_prefix_path.sh
+source;share/gamesmanros_interfaces/hook/ld_library_path_lib.ps1
+source;share/gamesmanros_interfaces/hook/ld_library_path_lib.dsv
+source;share/gamesmanros_interfaces/hook/ld_library_path_lib.sh
+source;share/gamesmanros_interfaces/local_setup.bash
+source;share/gamesmanros_interfaces/local_setup.dsv
+source;share/gamesmanros_interfaces/local_setup.ps1
+source;share/gamesmanros_interfaces/local_setup.sh
+source;share/gamesmanros_interfaces/local_setup.zsh

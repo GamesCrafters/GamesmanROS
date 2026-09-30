@@ -1,0 +1,29 @@
+running develop
+running egg_info
+creating gamesmanros.egg-info
+writing gamesmanros.egg-info/PKG-INFO
+writing dependency_links to gamesmanros.egg-info/dependency_links.txt
+writing entry points to gamesmanros.egg-info/entry_points.txt
+writing requirements to gamesmanros.egg-info/requires.txt
+writing top-level names to gamesmanros.egg-info/top_level.txt
+writing manifest file 'gamesmanros.egg-info/SOURCES.txt'
+reading manifest file 'gamesmanros.egg-info/SOURCES.txt'
+writing manifest file 'gamesmanros.egg-info/SOURCES.txt'
+running build_ext
+Creating /ws/install/gamesmanros/lib/python3.10/site-packages/gamesmanros.egg-link (link to .)
+Installing arm_controller script to /ws/install/gamesmanros/lib/gamesmanros
+Installing game_manager script to /ws/install/gamesmanros/lib/gamesmanros
+Installing gripper_controller script to /ws/install/gamesmanros/lib/gamesmanros
+Installing joint_state_bridge script to /ws/install/gamesmanros/lib/gamesmanros
+Installing robot_control script to /ws/install/gamesmanros/lib/gamesmanros
+Installing vision_node script to /ws/install/gamesmanros/lib/gamesmanros
+
+Installed /ws/build/gamesmanros
+running symlink_data
+creating /ws/install/gamesmanros/share/ament_index
+creating /ws/install/gamesmanros/share/ament_index/resource_index
+creating /ws/install/gamesmanros/share/ament_index/resource_index/packages
+symbolically linking /ws/build/gamesmanros/resource/gamesmanros -> /ws/install/gamesmanros/share/ament_index/resource_index/packages
+symbolically linking /ws/build/gamesmanros/package.xml -> /ws/install/gamesmanros/share/gamesmanros
+creating /ws/install/gamesmanros/share/gamesmanros/launch
+symbolically linking /ws/build/gamesmanros/launch/gamesmanros.launch.py -> /ws/install/gamesmanros/share/gamesmanros/launch

@@ -1,0 +1,1 @@
+/ws/build/gamesmanros_interfaces/rosidl_generator_py/gamesmanros_interfaces/_gamesmanros_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c

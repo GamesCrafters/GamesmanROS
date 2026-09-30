@@ -1,0 +1,1 @@
+/ws/build/gamesmanros_interfaces/ament_cmake_core/gamesmanros_interfacesConfig.cmake

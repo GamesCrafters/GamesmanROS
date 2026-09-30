@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GamesmanROS 2 Onboarding</title>
+<style>
+  @page { size: 13.333in 7.5in; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink:#16202F; --ink-2:#45566E; --ink-3:#7B8DA6; --rule:#D8E0EA;
+    --bg:#FFFFFF; --bg-soft:#F4F7FB; --cal:#003262; --gold:#C89A1E;
+    --bad:#C0392B; --bad-soft:#FCEEEC; --good:#0E7C63; --good-soft:#E9F5F2;
+    --warn:#7A5E10; --warn-soft:#FDF8EA; --warn-bd:#E8D9A8;
+  }
+  html,body{background:#555}
+  body{font-family:-apple-system,'SF Pro Display','Helvetica Neue',Arial,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .slide{width:1280px;height:720px;background:var(--bg);position:relative;overflow:hidden;page-break-after:always;padding:52px 64px 46px}
+  .slide:last-child{page-break-after:auto}
+  h1{font-size:33px;font-weight:700;letter-spacing:-0.5px;color:var(--cal)}
+  h2{font-size:14px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:9px}
+  p{font-size:15px;line-height:1.55;color:var(--ink-2)}
+  code,.mono{font-family:'SF Mono',Menlo,Consolas,monospace;font-size:0.9em}
+  code{background:var(--bg-soft);padding:1px 5px;border-radius:3px;color:var(--cal)}
+  .hrule{height:3px;width:52px;background:var(--gold);margin:13px 0 22px;border-radius:2px}
+  .pagenum{position:absolute;right:64px;bottom:24px;font-size:12px;color:var(--ink-3)}
+  .footmark{position:absolute;left:64px;bottom:24px;font-size:12px;color:var(--ink-3)}
+  .title-slide{padding:0;display:flex;flex-direction:column;justify-content:center}
+  .title-band{position:absolute;left:0;top:0;width:14px;height:100%;background:var(--cal)}
+  .title-inner{padding:0 90px}
+  .title-slide h1{font-size:54px;line-height:1.1;letter-spacing:-1.3px}
+  .kicker{font-size:14px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+  .lede{font-size:19px;color:var(--ink-2);margin-top:20px;line-height:1.5;max-width:800px}
+  .title-meta{margin-top:40px;padding-top:20px;border-top:1px solid var(--rule);font-size:14px;color:var(--ink-3);max-width:800px}
+  .cols{display:flex;gap:24px}
+  .col{flex:1}
+  .stack{display:flex;flex-direction:column;gap:12px}
+  .card{border:1px solid var(--rule);border-radius:9px;padding:17px 19px;background:var(--bg)}
+  .card h3{font-size:16px;font-weight:650;margin-bottom:6px;color:var(--ink)}
+  .card p{font-size:13.5px;line-height:1.5}
+  .card-bad{border-color:#EFC9C3;background:var(--bad-soft)}
+  .card-good{border-color:#B8DDD3;background:var(--good-soft)}
+  .card-warn{border-color:var(--warn-bd);background:var(--warn-soft)}
+  .card-bad h3{color:var(--bad)} .card-good h3{color:var(--good)} .card-warn h3{color:var(--warn)}
+  .tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;padding:3px 9px;border-radius:4px;margin-bottom:8px}
+  .tag-a{background:#DCE5F0;color:#003262}
+  .tag-b{background:#CBEADF;color:#0A5D4A}
+  .tag-c{background:#F2E4BC;color:#7A5E10}
+  .tag-bad{background:#F6D7D1;color:#98291B}
+  ul{list-style:none}
+  li{font-size:14px;line-height:1.5;color:var(--ink-2);padding-left:16px;position:relative;margin-bottom:6px}
+  li::before{content:'';position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th{text-align:left;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3);font-weight:650;padding:0 11px 8px 0;border-bottom:1.5px solid var(--rule)}
+  td{padding:8px 11px 8px 0;border-bottom:1px solid #EDF1F6;color:var(--ink-2);vertical-align:top;line-height:1.4}
+  td.file{font-family:'SF Mono',Menlo,monospace;font-size:12px;color:var(--cal);font-weight:500;white-space:nowrap}
+  td.em{color:var(--ink);font-weight:550}
+  .note{font-size:13px;color:var(--ink-3);font-style:italic;border-left:2.5px solid var(--rule);padding-left:12px;line-height:1.5}
+  .codeblock{background:#0F1B2A;border-radius:8px;padding:16px 18px;font-family:'SF Mono',Menlo,monospace;font-size:12.5px;line-height:1.72;color:#D5E0EC;overflow:hidden;white-space:pre}
+  .codeblock .c{color:#6F8398}
+  .codeblock .k{color:#7FD1B9}
+  .codeblock .s{color:#E3B76C}
+  .codeblock .f{color:#89B8E8}
+  svg text{font-family:-apple-system,'SF Pro Text','Helvetica Neue',Arial,sans-serif}
+  .lbl{font-size:12.5px;fill:#16202F;font-weight:550}
+  .lbl-s{font-size:10.5px;fill:#7B8DA6}
+  .lbl-m{font-family:'SF Mono',Menlo,monospace;font-size:10px;fill:#45566E}
+</style>
+</head>
+<body>
+
+<!-- 1 TITLE -->
+<section class="slide title-slide">
+  <div class="title-band"></div>
+  <div class="title-inner">
+    <div class="kicker">GamesmanROS 2 &middot; Onboarding</div>
+    <h1>How it works,<br>and where to start</h1>
+    <div class="lede">
+      A mechanical walkthrough of the ROS 2 system &mdash; how a move actually becomes
+      robot motion, how each subsystem is built, and the specific places three people
+      can start contributing this week.
+    </div>
+    <div class="title-meta">
+      Companion to the architecture deck. That one covered <em>why</em> we rewrote the
+      system &mdash; this one covers <em>how</em> it works and where the open work is.
+    </div>
+  </div>
+</section>
+
+<!-- 2 FIRST 20 MIN -->
+<section class="slide">
+  <h2>Orientation</h2>
+  <h1>Your first twenty minutes in the repo</h1>
+  <div class="hrule"></div>
+
+  <p style="margin-bottom:18px;max-width:1090px">
+    Do not read the codebase front to back. There are seven nodes but only one path
+    through them that matters. Open these four files in this order &mdash; it is about
+    600 lines total and it is the whole system.
+  </p>
+
+  <table>
+    <tr><th style="width:56px">Order</th><th style="width:250px">File</th><th style="width:300px">What to take from it</th><th>Skip on the first pass</th></tr>
+    <tr><td class="em">1</td><td class="file">game_manager.py</td>
+      <td class="em">The loop. Where moves come from and how they get sent.</td>
+      <td>The lifecycle callbacks &mdash; come back to those</td></tr>
+    <tr><td class="em">2</td><td class="file">robot_control.py</td>
+      <td class="em">The translator. Move string &rarr; board coordinates &rarr; motion goals.</td>
+      <td>Type2 / Type6 / Type7 &mdash; read Type4 only</td></tr>
+    <tr><td class="em">3</td><td class="file">arm_controller.py</td>
+      <td class="em">The planner. Where MoveIt 2 and OMPL are actually called.</td>
+      <td>The quaternion composition at the top</td></tr>
+    <tr><td class="em">4</td><td class="file">centers.py</td>
+      <td class="em">The data. Pure tables, no ROS &mdash; the easiest file to read.</td>
+      <td>Nothing, it is 89 lines</td></tr>
+  </table>
+
+  <div class="cols" style="margin-top:24px">
+    <div class="col card">
+      <h3 style="font-size:15px">The mental model</h3>
+      <p>Seven processes that only talk through typed messages. No shared memory, no
+      imports across node boundaries. If you change one node's internals, nothing else
+      can notice.</p>
+    </div>
+    <div class="col card">
+      <h3 style="font-size:15px">The one rule</h3>
+      <p>The <code>.action</code> and <code>.msg</code> files are the contracts between
+      tracks. Changing one affects everybody, so those changes go through Ethan.
+      Everything else is yours to refactor.</p>
+    </div>
+    <div class="col card">
+      <h3 style="font-size:15px">Before you debug anything</h3>
+      <p>Check the broken-list slide near the end. Several things are known-broken
+      right now. Do not spend an afternoon discovering one of them and assuming you
+      caused it.</p>
+    </div>
+  </div>
+
+  <div class="footmark">Orientation</div><div class="pagenum">02</div>
+</section>
+
+<!-- 3 ACTIONS MECHANISM -->
+<section class="slide">
+  <h2>Mechanism</h2>
+  <h1>How a ROS 2 action actually works</h1>
+  <div class="hrule"></div>
+
+  <div class="cols" style="align-items:flex-start">
+    <div class="col" style="flex:1.1">
+      <svg width="600" height="330" viewBox="0 0 600 330">
+        <defs>
+          <marker id="a1" markerWidth="9" markerHeight="9" refX="7.5" refY="3.2" orient="auto">
+            <path d="M0,0 L7.5,3.2 L0,6.4 z" fill="#0E7C63"/></marker>
+          <marker id="a2" markerWidth="9" markerHeight="9" refX="7.5" refY="3.2" orient="auto">
+            <path d="M0,0 L7.5,3.2 L0,6.4 z" fill="#8798AE"/></marker>
+        </defs>
+
+        <rect x="8" y="14" width="150" height="40" rx="7" fill="#E9F5F2" stroke="#0E7C63" stroke-width="1.6"/>
+        <text x="83" y="39" class="lbl" text-anchor="middle" fill="#0E7C63">ActionClient</text>
+        <text x="83" y="70" class="lbl-s" text-anchor="middle">robot_control</text>
+
+        <rect x="442" y="14" width="150" height="40" rx="7" fill="#F4F7FB" stroke="#C6D2E0"/>
+        <text x="517" y="39" class="lbl" text-anchor="middle">ActionServer</text>
+        <text x="517" y="70" class="lbl-s" text-anchor="middle">arm_controller</text>
+
+        <line x1="83" y1="88" x2="83" y2="312" stroke="#C6D2E0" stroke-width="1.4" stroke-dasharray="3 3"/>
+        <line x1="517" y1="88" x2="517" y2="312" stroke="#C6D2E0" stroke-width="1.4" stroke-dasharray="3 3"/>
+
+        <line x1="83" y1="108" x2="512" y2="108" stroke="#0E7C63" stroke-width="1.8" marker-end="url(#a1)"/>
+        <text x="298" y="100" class="lbl-m" fill="#0E7C63" text-anchor="middle">1 &middot; send_goal_async(x, y, z)</text>
+
+        <line x1="517" y1="140" x2="88" y2="140" stroke="#8798AE" stroke-width="1.6" marker-end="url(#a2)"/>
+        <text x="302" y="132" class="lbl-m" text-anchor="middle">2 &middot; goal accepted (or rejected)</text>
+
+        <line x1="517" y1="178" x2="88" y2="178" stroke="#8798AE" stroke-width="1.6" marker-end="url(#a2)" stroke-dasharray="4 3"/>
+        <text x="302" y="170" class="lbl-m" text-anchor="middle">3 &middot; feedback: "Planning to (x,y,z)"</text>
+
+        <line x1="517" y1="212" x2="88" y2="212" stroke="#8798AE" stroke-width="1.6" marker-end="url(#a2)" stroke-dasharray="4 3"/>
+        <text x="302" y="204" class="lbl-m" text-anchor="middle">4 &middot; feedback: "Executing trajectory"</text>
+
+        <line x1="517" y1="252" x2="88" y2="252" stroke="#0E7C63" stroke-width="2.2" marker-end="url(#a2)"/>
+        <text x="302" y="244" class="lbl-m" fill="#0E7C63" text-anchor="middle">5 &middot; result: success = True / False</text>
+
+        <rect x="150" y="272" width="300" height="42" rx="7" fill="#FCEEEC" stroke="#EFC9C3"/>
+        <text x="300" y="290" class="lbl" fill="#C0392B" text-anchor="middle">A topic gives you only step 1.</text>
+        <text x="300" y="306" class="lbl-s" fill="#B25147" text-anchor="middle">No acceptance, no progress, no outcome.</text>
+      </svg>
+    </div>
+
+    <div class="col stack" style="flex:0.9">
+      <div class="card">
+        <h3 style="font-size:15px">Why this matters here</h3>
+        <p>Motion takes seconds and can fail. The old system published a command and
+        assumed it worked. With an action, <code>robot_control</code> learns whether the
+        arm actually reached the target &mdash; and a failed plan propagates all the way
+        back to the game loop.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">Topic vs service vs action</h3>
+        <p><strong>Topic</strong> &mdash; fire and forget, many listeners, no reply.<br>
+        <strong>Service</strong> &mdash; request/reply, but blocks and cannot report progress.<br>
+        <strong>Action</strong> &mdash; request, progress, cancel, and a final result. The
+        right tool for anything slow.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">Seeing it live</h3>
+        <p><code>ros2 action list</code> shows all three of ours. <code>ros2 action
+        send_goal /move_arm ...</code> lets you drive the arm by hand with no game
+        running &mdash; the fastest way to test anything.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footmark">Actions</div><div class="pagenum">03</div>
+</section>
+
+<!-- 4 TRACE -->
+<section class="slide">
+  <h2>End to end</h2>
+  <h1>One move, traced through real code</h1>
+  <div class="hrule"></div>
+
+  <div class="cols">
+    <div class="col" style="flex:1.25">
+      <div class="codeblock" style="font-size:11.5px;line-height:1.62">
+<span class="c"># game_manager.py — pick and send</span>
+move_str = <span class="f">_pick_best_move</span>(moves)      <span class="c"># "A_3_7"</span>
+goal.game_id     = <span class="s">"dodgem"</span>
+goal.move_string = <span class="s">"A_3_7"</span>
+
+<span class="c"># robot_control.py — decode and dispatch</span>
+<span class="k">async def</span> <span class="f">_execute</span>(goal_handle):
+    inst = <span class="f">_get_game_instance</span>(req.game_id)
+    <span class="k">await</span> inst.<span class="f">process_move</span>(<span class="s">"A_3_7"</span>, positions)
+
+<span class="c"># Type6.process_move — split the string</span>
+parts = move.<span class="f">split</span>(<span class="s">'_'</span>)     <span class="c"># ['A','3','7']</span>
+<span class="k">await</span> seq.<span class="f">pick_and_place</span>(conv, centers[<span class="s">3</span>], centers[<span class="s">7</span>])
+
+<span class="c"># MotionSequencer — 9 sequential goals</span>
+bx,by,bz = conv.<span class="f">svg_to_meters</span>(before, <span class="s">135.0</span>)
+<span class="k">await</span> <span class="f">_send_gripper</span>(open_=<span class="k">True</span>)
+<span class="k">await</span> <span class="f">_send_arm</span>(bx, by, lz)   <span class="c"># hover</span>
+<span class="k">await</span> <span class="f">_send_arm</span>(bx, by, bz)   <span class="c"># descend</span>
+<span class="k">await</span> <span class="f">_send_gripper</span>(open_=<span class="k">False</span>)  <span class="c"># grip</span>
+      </div>
+    </div>
+
+    <div class="col stack" style="flex:1">
+      <div class="card">
+        <h3 style="font-size:15px">Where the string is decoded</h3>
+        <p>UWAPI move strings are <code>type_from_to</code>. Everything downstream is
+        just <code>split('_')</code> and two integer indices into the
+        <code>centers</code> table. There is no parser and no game logic in the robot
+        code &mdash; the solver already decided.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">Where it becomes motion</h3>
+        <p>One game move expands into <strong>nine action goals</strong> &mdash; two
+        gripper, seven arm. Each one is awaited, so a failure at step 3 stops steps
+        4 through 9 via the <code>ok = ok and await ...</code> chain.</p>
+      </div>
+      <div class="card card-good">
+        <h3 style="font-size:15px">The trick worth understanding</h3>
+        <p><code>await</code> on an rclpy Future hands control back to the executor
+        instead of blocking the thread. That is what lets one node run an action server
+        and two action clients at the same time without deadlocking.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footmark">Trace</div><div class="pagenum">04</div>
+</section>
+
+<!-- 5 COORDINATES -->
+<section class="slide">
+  <h2>The maths</h2>
+  <h1>Board square &rarr; point in space</h1>
+  <div class="hrule"></div>
+
+  <div class="cols" style="align-items:flex-start">
+    <div class="col" style="flex:1.05">
+      <svg width="590" height="250" viewBox="0 0 590 250">
+        <defs><marker id="c1" markerWidth="9" markerHeight="9" refX="7.5" refY="3.2" orient="auto">
+          <path d="M0,0 L7.5,3.2 L0,6.4 z" fill="#8798AE"/></marker></defs>
+
+        <rect x="4" y="30" width="118" height="70" rx="7" fill="#F4F7FB" stroke="#C6D2E0"/>
+        <text x="63" y="20" class="lbl" text-anchor="middle">SVG cell</text>
+        <text x="63" y="60" class="lbl-m" text-anchor="middle" style="font-size:12px">[0.5, 0.5]</text>
+        <text x="63" y="80" class="lbl-s" text-anchor="middle">col, row</text>
+
+        <line x1="126" y1="65" x2="156" y2="65" stroke="#8798AE" stroke-width="1.5" marker-end="url(#c1)"/>
+
+        <rect x="160" y="30" width="130" height="70" rx="7" fill="#F4F7FB" stroke="#C6D2E0"/>
+        <text x="225" y="20" class="lbl" text-anchor="middle">Flip Y</text>
+        <text x="225" y="58" class="lbl-m" text-anchor="middle">abs(-row + dim+1)</text>
+        <text x="225" y="80" class="lbl-s" text-anchor="middle">SVG top-down &rarr; robot bottom-up</text>
+
+        <line x1="294" y1="65" x2="324" y2="65" stroke="#8798AE" stroke-width="1.5" marker-end="url(#c1)"/>
+
+        <rect x="328" y="30" width="130" height="70" rx="7" fill="#F4F7FB" stroke="#C6D2E0"/>
+        <text x="393" y="20" class="lbl" text-anchor="middle">Scale + offset</text>
+        <text x="393" y="56" class="lbl-m" text-anchor="middle">&times; 150/dim</text>
+        <text x="393" y="74" class="lbl-m" text-anchor="middle">&minus; 125 mm, + 100 mm</text>
+
+        <line x1="462" y1="65" x2="492" y2="65" stroke="#8798AE" stroke-width="1.5" marker-end="url(#c1)"/>
+
+        <rect x="496" y="30" width="90" height="70" rx="7" fill="#E9F5F2" stroke="#0E7C63" stroke-width="1.5"/>
+        <text x="541" y="20" class="lbl" text-anchor="middle" fill="#0E7C63">metres</text>
+        <text x="541" y="60" class="lbl-m" text-anchor="middle" fill="#0A5D4A">x, y, z</text>
+        <text x="541" y="80" class="lbl-s" text-anchor="middle">base frame</text>
+
+        <text x="4" y="140" class="lbl">Worked examples, from the real tables</text>
+        <line x1="4" y1="150" x2="586" y2="150" stroke="#D8E0EA" stroke-width="1"/>
+
+        <text x="4"   y="172" class="lbl-m">dodgem   cell 0   [0.5, 0.5]</text>
+        <text x="300" y="172" class="lbl-m">&rarr;  x=-0.100  y= 0.275  z= 0.135</text>
+        <text x="4"   y="196" class="lbl-m">dodgem   cell 8   [0.5, 2.5]</text>
+        <text x="300" y="196" class="lbl-m">&rarr;  x=-0.100  y= 0.175  z= 0.135</text>
+        <text x="4"   y="220" class="lbl-m">1dchess  cell 4   [4.5, 0.5]</text>
+        <text x="300" y="220" class="lbl-m">&rarr;  x=-0.041  y= 0.259  z= 0.135</text>
+
+        <text x="4" y="244" class="lbl-s">Two z values exist: 135 mm to grip, 185 mm to travel. Never travel at grip height.</text>
+      </svg>
+    </div>
+
+    <div class="col stack" style="flex:0.95">
+      <div class="card">
+        <h3 style="font-size:15px">Why a Y flip</h3>
+        <p>SVG counts rows downward from the top-left. The robot's Y axis increases
+        away from its base. Without the flip, every board would be mirrored front
+        to back.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">Where the constants live</h3>
+        <p><code>BOARD_SIZE_MM = 150</code>, <code>Y_OFFSET_MM = 100</code>,
+        <code>PICKUP_Z_MM = 135</code>, <code>LIFT_Z_MM = 185</code> &mdash; all at the
+        top of <code>robot_control.py</code>. These are physical measurements of the
+        board's position on the table and will need re-measuring once the robot is
+        mounted.</p>
+      </div>
+      <div class="card card-bad">
+        <h3 style="font-size:15px">This is where the bugs are</h3>
+        <p>The conversion code is correct. The <em>data it reads</em> is not &mdash;
+        six of nine games have inconsistent coordinate tables. That is Track C's first
+        job, and it is covered three slides on.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footmark">Coordinates</div><div class="pagenum">05</div>
+</section>
+
+<!-- 6 PLANNING INTERNALS -->
+<section class="slide">
+  <h2>Inside arm_controller</h2>
+  <h1>What happens when you ask for a pose</h1>
+  <div class="hrule"></div>
+
+  <div class="cols" style="align-items:flex-start">
+    <div class="col" style="flex:1">
+      <div class="codeblock" style="font-size:12px">
+<span class="c"># 1. Build the target pose</span>
+pose.position    = (x, y, z)
+pose.orientation = _EEF_ORIENTATION   <span class="c"># fixed</span>
+
+<span class="c"># 2. Hand it to MoveIt</span>
+_arm.<span class="f">set_start_state_to_current_state</span>()
+_arm.<span class="f">set_goal_state</span>(
+    pose_stamped_msg = pose,
+    pose_link = <span class="s">'joint6_flange'</span>)
+
+<span class="c"># 3. Plan  — IK, then OMPL search</span>
+plan_result = _arm.<span class="f">plan</span>()
+<span class="k">if not</span> plan_result:
+    goal_handle.<span class="f">abort</span>()      <span class="c"># caller finds out</span>
+
+<span class="c"># 4. Execute the timed trajectory</span>
+_moveit.<span class="f">execute</span>(plan_result.trajectory,
+                blocking=<span class="k">True</span>)
+      </div>
+      <p class="note" style="margin-top:16px">
+        Four steps, and step 3 is the one the whole rewrite was about.
+      </p>
+    </div>
+
+    <div class="col stack" style="flex:1.15">
+      <div class="card">
+        <h3 style="font-size:15px">Step 3a &mdash; inverse kinematics</h3>
+        <p>MoveIt first has to find six joint angles that put the flange at your
+        <code>(x,y,z)</code> with the required orientation. That is IK, solved by KDL.
+        Not every reachable-looking point has a solution at a fixed orientation
+        &mdash; near the workspace edge, many do not.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">Step 3b &mdash; OMPL path search</h3>
+        <p>With a valid goal configuration, RRTConnect grows two trees &mdash; one from
+        the current joint angles, one from the goal &mdash; until they meet. It searches
+        the six-dimensional joint space, not 3D space, and checks collisions against
+        the URDF along the way.</p>
+      </div>
+      <div class="card card-warn">
+        <h3 style="font-size:15px">Why the orientation is frozen</h3>
+        <p>The gripper always points down, rotated 45&deg; about Z with an 11.25&deg;
+        wrist correction. Fixing it removes wrist-flip solutions and makes planning
+        repeatable &mdash; but it also shrinks the reachable set. If a board square
+        turns out to be unreachable, this constraint is the first suspect.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footmark">Planning</div><div class="pagenum">06</div>
+</section>
+
+<!-- 7 VISION INTERNALS -->
+<section class="slide">
+  <h2>Inside vision_node</h2>
+  <h1>Four markers, one matrix, no calibration</h1>
+  <div class="hrule"></div>
+
+  <div class="cols" style="align-items:flex-start">
+    <div class="col" style="flex:1.1">
+      <div class="codeblock" style="font-size:12px">
+<span class="c"># Find the four board-corner markers</span>
+corners, ids, _ = detector.<span class="f">detectMarkers</span>(frame)
+id_map[i] = corners[i][<span class="s">0</span>].<span class="f">mean</span>(axis=<span class="s">0</span>)
+
+<span class="c"># Map them onto a flat square</span>
+src = [id_map[<span class="s">0</span>], id_map[<span class="s">1</span>],
+       id_map[<span class="s">2</span>], id_map[<span class="s">3</span>]]     <span class="c"># TL TR BR BL</span>
+dst = [[<span class="s">0</span>,<span class="s">0</span>], [<span class="s">600</span>,<span class="s">0</span>],
+       [<span class="s">600</span>,<span class="s">600</span>], [<span class="s">0</span>,<span class="s">600</span>]]
+
+H      = cv2.<span class="f">getPerspectiveTransform</span>(src, dst)
+warped = cv2.<span class="f">warpPerspective</span>(frame, H, (<span class="s">600</span>,<span class="s">600</span>))
+
+<span class="c"># Classify each cell by hue</span>
+n1 = cv2.<span class="f">countNonZero</span>(cv2.<span class="f">inRange</span>(cell, p1_lo, p1_hi))
+<span class="k">if</span> n1 / cell_px &gt; <span class="s">0.15</span>: occupancy.<span class="f">append</span>(<span class="s">'1'</span>)
+      </div>
+    </div>
+
+    <div class="col stack" style="flex:1">
+      <div class="card">
+        <h3 style="font-size:15px">Why no camera calibration</h3>
+        <p>Four points with known destinations fully determine a projective transform.
+        Camera angle, height and tilt all get absorbed into <code>H</code>. Move the
+        camera mid-game and the next frame still rectifies correctly &mdash; the markers
+        are re-detected every frame.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">Why HSV and not RGB</h3>
+        <p>Hue stays roughly constant as lighting changes; RGB values do not. Thresholding
+        on hue means a red piece reads as red in a bright room and a dim one. The
+        saturation and value floors exist to reject grey shadows.</p>
+      </div>
+      <div class="card card-warn">
+        <h3 style="font-size:15px">Two real limits</h3>
+        <p>The grid is assumed uniform <code>rows &times; cols</code>, so irregular
+        boards like <code>dinododgem</code> are not handled. And a homography models a
+        plane, not lens distortion &mdash; cells near the frame edge drift slightly.
+        Both are open work.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footmark">Vision</div><div class="pagenum">07</div>
+</section>
+
+<!-- 8 TRACK A -->
+<section class="slide">
+  <h2>Where to plug in</h2>
+  <h1>Track A &mdash; MoveIt 2 bring-up</h1>
+  <div class="hrule"></div>
+
+  <div class="cols" style="align-items:flex-start">
+    <div class="col" style="flex:1.15">
+      <p style="margin-bottom:16px">
+        The critical path. <strong>There is no ROS 2 MoveIt configuration in the repo at
+        all</strong> &mdash; only ROS 1 URDFs under <code>catkin_ws/</code>. Until one
+        exists, <code>arm_controller</code> cannot start, so nothing can be validated on
+        hardware.
+      </p>
+
+      <div class="stack">
+        <div class="card card-good">
+          <h3 style="font-size:15px">You do not need the robot</h3>
+          <p>MoveIt runs against mock hardware. You can build the config, launch RViz and
+          confirm OMPL plans a valid trajectory with nothing plugged in. That is the whole
+          first milestone.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size:15px">First task</h3>
+          <p>Port the MyCobot 280 URDF into a ROS 2 <code>moveit_config</code> package and
+          get RViz to display the arm. No motion yet.</p>
+          <p style="margin-top:8px"><strong>Done when:</strong>
+          <code>ros2 launch &lt;your_config&gt; demo.launch.py</code> shows the arm and you
+          can drag the interactive marker.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col stack" style="flex:0.95">
+      <div class="card">
+        <h3 style="font-size:15px">What the config must define</h3>
+        <ul style="margin-top:4px">
+          <li>Planning group named <code>arm_group</code></li>
+          <li>Tip link <code>joint6_flange</code></li>
+          <li>Self-collision matrix (SRDF)</li>
+          <li>OMPL as the default planning pipeline</li>
+          <li>A <code>joint_trajectory_controller</code></li>
+        </ul>
+        <p class="note" style="margin-top:10px;font-size:12.5px">Those two names are
+        hardcoded in <code>arm_controller.py</code>. Match them or change both.</p>
+      </div>
+      <div class="card card-warn">
+        <h3 style="font-size:15px">Blocked on, and blocking</h3>
+        <p><strong>You are blocked by:</strong> nothing. Start today.</p>
+        <p style="margin-top:6px"><strong>You block:</strong> all hardware validation for
+        the whole team. Flag slips early.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">Owns</h3>
+        <p class="mono" style="font-size:12.5px">new moveit_config package<br>arm_controller.py</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footmark">Track A</div><div class="pagenum">08</div>
+</section>
+
+<!-- 9 TRACK B -->
+<section class="slide">
+  <h2>Where to plug in</h2>
+  <h1>Track B &mdash; Perception</h1>
+  <div class="hrule"></div>
+
+  <div class="cols" style="align-items:flex-start">
+    <div class="col" style="flex:1.15">
+      <p style="margin-bottom:16px">
+        Fully independent of the robot and of Track A. The pipeline is written but has
+        never seen a real camera frame &mdash; the HSV bounds in the launch file are
+        generic red/blue placeholders.
+      </p>
+
+      <div class="stack">
+        <div class="card card-good">
+          <h3 style="font-size:15px">Most of this is not even ROS</h3>
+          <p>The calibration work is plain OpenCV on a laptop webcam. Write and tune it as
+          a normal Python script, then move the finished numbers into the node. Docker on
+          macOS cannot see USB cameras, so do this part natively.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size:15px">First task</h3>
+          <p>Print the four ArUco markers (<code>DICT_4X4_50</code>, IDs 0&ndash;3), point a
+          webcam at a mock board, and get <code>vision_node</code> publishing any board
+          state at all.</p>
+          <p style="margin-top:8px"><strong>Done when:</strong>
+          <code>ros2 topic echo /vision/board_state</code> prints a string that changes when
+          you move a piece.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col stack" style="flex:0.95">
+      <div class="card">
+        <h3 style="font-size:15px">The work after that</h3>
+        <ul style="margin-top:4px">
+          <li>An HSV calibration tool, so bounds can be tuned without editing code</li>
+          <li>Non-uniform grid support &mdash; <code>1dchess</code> is 8&times;1, <code>dinododgem</code> is irregular</li>
+          <li>Detecting a human's move from board-state changes</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">Already exposed as parameters</h3>
+        <p class="mono" style="font-size:12px">p1_hsv_lower / p1_hsv_upper<br>p2_hsv_lower / p2_hsv_upper<br>grid_rows / grid_cols<br>camera_index / debug_view</p>
+        <p style="margin-top:8px">Set <code>debug_view:=true</code> for a live annotated
+        window showing the rectified board and per-cell classification.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">Owns</h3>
+        <p class="mono" style="font-size:12.5px">vision_node.py<br>new calibration tooling</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footmark">Track B</div><div class="pagenum">09</div>
+</section>
+
+<!-- 10 TRACK C -->
+<section class="slide">
+  <h2>Where to plug in</h2>
+  <h1>Track C &mdash; Game data and test harness</h1>
+  <div class="hrule"></div>
+
+  <p style="margin-bottom:14px;max-width:1120px">
+    No hardware, no ROS knowledge needed to start. <code>centers.py</code> is pure Python
+    data &mdash; and an audit of it turned up a systematic bug affecting
+    <strong>six of nine games</strong>.
+  </p>
+
+  <table style="font-size:12.5px">
+    <tr><th style="width:150px">Game</th><th style="width:60px">dim</th><th style="width:150px">Coord convention</th><th style="width:120px">Implied grid</th><th>Problem</th></tr>
+    <tr><td class="file">1dchess</td><td>8</td><td>raw cell units</td><td>8</td><td style="color:#0E7C63">consistent</td></tr>
+    <tr><td class="file">dinododgem</td><td>6</td><td>raw cell units</td><td>6</td><td style="color:#0E7C63">consistent</td></tr>
+    <tr><td class="file">joust</td><td>4</td><td>raw cell units</td><td>4</td><td style="color:#0E7C63">consistent</td></tr>
+    <tr><td class="file">dao</td><td>4</td><td class="em">normalised 0&ndash;1</td><td>&mdash;</td><td style="color:#C0392B">board comes out 4&times; too small</td></tr>
+    <tr><td class="file">allqueenschess</td><td>5</td><td class="em">normalised 0&ndash;1</td><td>&mdash;</td><td style="color:#C0392B">board comes out 5&times; too small</td></tr>
+    <tr><td class="file">dragonsandswans</td><td class="em">missing</td><td class="em">normalised 0&ndash;1</td><td>&mdash;</td><td style="color:#C0392B">no dim &rarr; TypeError, and unregistered</td></tr>
+    <tr><td class="file">dodgem</td><td>3</td><td>raw cell units</td><td class="em">4</td><td style="color:#C0392B">dim disagrees with grid &rarr; wrong spacing</td></tr>
+    <tr><td class="file">jan</td><td>3</td><td>raw cell units</td><td class="em">4</td><td style="color:#C0392B">dim disagrees with grid &rarr; wrong spacing</td></tr>
+    <tr><td class="file">dawsonschess</td><td>5</td><td>raw cell units</td><td class="em">6</td><td style="color:#C0392B">dim disagrees, and needs <code>_pickup</code></td></tr>
+  </table>
+
+  <div class="cols" style="margin-top:20px">
+    <div class="col card">
+      <h3 style="font-size:15px">First task</h3>
+      <p>Fix the empty <code>_pickup</code> table so <code>dawsonschess</code> stops
+      raising <code>TypeError</code> on its first move. Smallest, most concrete item on
+      the board.</p>
+    </div>
+    <div class="col card">
+      <h3 style="font-size:15px">Then</h3>
+      <p>Pick one convention for all nine games and convert the rest. Add the seven
+      registered games that have no coordinates at all. Decide whether
+      <code>dragonsandswans</code> is registered or dropped.</p>
+    </div>
+    <div class="col card">
+      <h3 style="font-size:15px">Then</h3>
+      <p>A UWAPI mock so the stack runs while the solver API is down, and a CLI harness
+      that fires <code>ExecuteMove</code> goals directly. The whole team will use both.</p>
+    </div>
+  </div>
+
+  <div class="footmark">Track C</div><div class="pagenum">10</div>
+</section>
+
+<!-- 11 BROKEN -->
+<section class="slide">
+  <h2>Before you debug</h2>
+  <h1>What is already broken</h1>
+  <div class="hrule"></div>
+
+  <p style="margin-bottom:18px;max-width:1120px">
+    Verified by building and running the workspace in the dev container. If you hit one of
+    these, you did not cause it.
+  </p>
+
+  <div class="cols">
+    <div class="col stack">
+      <div class="card card-bad">
+        <span class="tag tag-bad">Blocks hardware</span>
+        <h3 style="font-size:15px"><code>mycobot_interfaces</code> is missing</h3>
+        <p><code>joint_state_bridge.py</code> and <code>gripper_controller.py</code> both
+        import <code>MycobotAngles</code> / <code>MycobotGripperStatus</code> from a package
+        that is not in this repo and is not a stock ROS 2 package. <strong>Two of seven
+        nodes cannot start.</strong> We need to vendor Elephant Robotics'
+        <code>mycobot_ros2</code> or define equivalent messages ourselves.</p>
+        <p style="margin-top:8px"><strong>Currently unassigned.</strong></p>
+      </div>
+      <div class="card card-bad">
+        <h3 style="font-size:15px">Six of nine games have bad coordinates</h3>
+        <p>Mixed normalised and raw conventions, plus <code>dim</code> values that
+        disagree with the actual grid. See the Track C slide.</p>
+      </div>
+    </div>
+
+    <div class="col stack">
+      <div class="card card-warn">
+        <h3 style="font-size:15px">No MoveIt 2 configuration exists</h3>
+        <p><code>arm_controller</code> imports fine but cannot run without it. Track A's
+        first deliverable.</p>
+      </div>
+      <div class="card card-warn">
+        <h3 style="font-size:15px">Launch ordering is unenforced</h3>
+        <p>Every node starts simultaneously, so <code>arm_controller</code> can come up
+        before <code>/joint_states</code> is being published.</p>
+      </div>
+      <div class="card card-warn">
+        <h3 style="font-size:15px">Zero tests in the repository</h3>
+        <p>Nothing to regress against. Whoever builds the first harness sets the pattern
+        for everyone.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">Already fixed &mdash; do not re-break</h3>
+        <p>NumPy is pinned below 2.0 in the Dockerfile because
+        <code>tf_transformations</code> calls a function NumPy 2 removed. OpenCV comes
+        from pip, not apt, because Ubuntu's 4.5.4 lacks
+        <code>cv2.aruco.ArucoDetector</code>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footmark">Known issues</div><div class="pagenum">11</div>
+</section>
+
+<!-- 12 COMMANDS -->
+<section class="slide">
+  <h2>Working in the repo</h2>
+  <h1>The commands you will actually use</h1>
+  <div class="hrule"></div>
+
+  <div class="cols">
+    <div class="col">
+      <h3 style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px">Build and run</h3>
+      <div class="codeblock" style="font-size:11.5px;line-height:1.6">
+<span class="c"># open a dev shell (from repo root)</span>
+docker compose -f docker/docker-compose.yml \
+  run --rm dev
+
+<span class="c"># inside the container</span>
+colcon build --symlink-install
+<span class="k">source</span> install/setup.bash
+
+<span class="c"># run one node</span>
+ros2 run gamesmanros robot_control
+
+<span class="c"># run the system</span>
+ros2 launch gamesmanros gamesmanros.launch.py \
+  vision:=true
+      </div>
+      <p class="note" style="margin-top:14px">
+        <code>--symlink-install</code> means Python edits apply without rebuilding.
+        Editing <code>.action</code> or <code>.msg</code> files still needs a real rebuild.
+      </p>
+    </div>
+
+    <div class="col">
+      <h3 style="font-size:13px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px">Inspect and debug</h3>
+      <div class="codeblock" style="font-size:11.5px;line-height:1.6">
+<span class="c"># what is running</span>
+ros2 node list
+ros2 action list
+ros2 topic list
+
+<span class="c"># watch the board state</span>
+ros2 topic echo /vision/board_state
+
+<span class="c"># drive the arm by hand — no game needed</span>
+ros2 action send_goal /move_arm \
+  gamesmanros_interfaces/action/MoveArm \
+  <span class="s">"{x: -0.10, y: 0.275, z: 0.185}"</span>
+
+<span class="c"># open and close the gripper</span>
+ros2 action send_goal /move_gripper \
+  gamesmanros_interfaces/action/MoveGripper \
+  <span class="s">"{open: true}"</span>
+      </div>
+      <p class="note" style="margin-top:14px">
+        <code>send_goal</code> is the fastest way to test anything. It bypasses the game
+        loop entirely, so you can exercise motion with UWAPI down.
+      </p>
+    </div>
+  </div>
+
+  <p class="note" style="margin-top:14px;max-width:1150px;font-size:12.5px">
+    Full setup instructions, per-track environment notes and troubleshooting are in
+    <code>docs/SETUP.md</code>. Verify your environment with the four checks in that file
+    before the next meeting.
+  </p>
+
+  <div class="footmark">Commands</div><div class="pagenum">12</div>
+</section>
+
+</body>
+</html>

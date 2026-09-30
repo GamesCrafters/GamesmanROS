@@ -1,0 +1,25 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/action/detail/dds_fastrtps/execute_move__type_support.cpp.o"
+  "CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/action/detail/dds_fastrtps/execute_move__type_support.cpp.o.d"
+  "CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/action/detail/dds_fastrtps/move_arm__type_support.cpp.o"
+  "CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/action/detail/dds_fastrtps/move_arm__type_support.cpp.o.d"
+  "CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/action/detail/dds_fastrtps/move_gripper__type_support.cpp.o"
+  "CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/action/detail/dds_fastrtps/move_gripper__type_support.cpp.o.d"
+  "CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/msg/detail/dds_fastrtps/game_state__type_support.cpp.o"
+  "CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/msg/detail/dds_fastrtps/game_state__type_support.cpp.o.d"
+  "libgamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.pdb"
+  "libgamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.so"
+  "rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/action/detail/dds_fastrtps/execute_move__type_support.cpp"
+  "rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/action/detail/dds_fastrtps/move_arm__type_support.cpp"
+  "rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/action/detail/dds_fastrtps/move_gripper__type_support.cpp"
+  "rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/action/detail/execute_move__rosidl_typesupport_fastrtps_cpp.hpp"
+  "rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/action/detail/move_arm__rosidl_typesupport_fastrtps_cpp.hpp"
+  "rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/action/detail/move_gripper__rosidl_typesupport_fastrtps_cpp.hpp"
+  "rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/msg/detail/dds_fastrtps/game_state__type_support.cpp"
+  "rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/msg/detail/game_state__rosidl_typesupport_fastrtps_cpp.hpp"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

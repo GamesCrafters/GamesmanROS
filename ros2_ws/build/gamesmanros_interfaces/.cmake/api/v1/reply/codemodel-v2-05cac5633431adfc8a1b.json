@@ -1,0 +1,258 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-b82f649504874f97702f.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						17,
+						18
+					]
+				},
+				{
+					"build" : "gamesmanros_interfaces__py",
+					"jsonFile" : "directory-gamesmanros_interfaces__py-0c90fea8e0af4e1cb992.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/ws/build/gamesmanros_interfaces/gamesmanros_interfaces__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "gamesmanros_interfaces__rs",
+					"jsonFile" : "directory-gamesmanros_interfaces__rs-a1b418d7c9313ae1209b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/ws/build/gamesmanros_interfaces/gamesmanros_interfaces__rs",
+					"targetIndexes" : 
+					[
+						16
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2
+					],
+					"name" : "gamesmanros_interfaces",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_gamesmanros_interfaces_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_gamesmanros_interfaces_egg-c9eb4de711de45c19506.json",
+					"name" : "ament_cmake_python_build_gamesmanros_interfaces_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_symlink_gamesmanros_interfaces::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_symlink_gamesmanros_interfaces-d9a863f3f64113f4e8cb.json",
+					"name" : "ament_cmake_python_symlink_gamesmanros_interfaces",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "gamesmanros_interfaces::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gamesmanros_interfaces-93c0354e5cc9a6c1b188.json",
+					"name" : "gamesmanros_interfaces",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "gamesmanros_interfaces__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gamesmanros_interfaces__cpp-13cf18ba82e560fa1930.json",
+					"name" : "gamesmanros_interfaces__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "gamesmanros_interfaces__py::@aa2eb615b748a4b2df74",
+					"jsonFile" : "target-gamesmanros_interfaces__py-a02917fe87a57e10e3c6.json",
+					"name" : "gamesmanros_interfaces__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "gamesmanros_interfaces__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gamesmanros_interfaces__rosidl_generator_c-6a4c3ad08ded9ed27518.json",
+					"name" : "gamesmanros_interfaces__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "gamesmanros_interfaces__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gamesmanros_interfaces__rosidl_generator_py-063236bfb82e641272ac.json",
+					"name" : "gamesmanros_interfaces__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "gamesmanros_interfaces__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gamesmanros_interfaces__rosidl_typesupport_c-3319475e6d7e48230fcc.json",
+					"name" : "gamesmanros_interfaces__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "gamesmanros_interfaces__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gamesmanros_interfaces__rosidl_typesupport_c__pyext-2491fa29f3fde5e53628.json",
+					"name" : "gamesmanros_interfaces__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "gamesmanros_interfaces__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gamesmanros_interfaces__rosidl_typesupport_cpp-4b636f673e7a27845e08.json",
+					"name" : "gamesmanros_interfaces__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "gamesmanros_interfaces__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gamesmanros_interfaces__rosidl_typesupport_fastrtps_c-a46c9390a5f4ea5127c2.json",
+					"name" : "gamesmanros_interfaces__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "gamesmanros_interfaces__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gamesmanros_interfaces__rosidl_typesupport_fastrtps_c__pyext-a6c5e5d08333d85afd30.json",
+					"name" : "gamesmanros_interfaces__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp-ea2304fd5b675a4f9ff5.json",
+					"name" : "gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "gamesmanros_interfaces__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gamesmanros_interfaces__rosidl_typesupport_introspection_c-02845de849b842268aa6.json",
+					"name" : "gamesmanros_interfaces__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "gamesmanros_interfaces__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gamesmanros_interfaces__rosidl_typesupport_introspection_c__pyext-dddf2f694546aade38c0.json",
+					"name" : "gamesmanros_interfaces__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "gamesmanros_interfaces__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gamesmanros_interfaces__rosidl_typesupport_introspection_cpp-b519f2d681f3e9157ef6.json",
+					"name" : "gamesmanros_interfaces__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "gamesmanros_interfaces__rs::@f6b15460fa2ffc6339a3",
+					"jsonFile" : "target-gamesmanros_interfaces__rs-d475609a60c7d7f5be6c.json",
+					"name" : "gamesmanros_interfaces__rs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "gamesmanros_interfaces_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-gamesmanros_interfaces_uninstall-b53d02cb1e3ab16463bf.json",
+					"name" : "gamesmanros_interfaces_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-47da1064230a9a6ddfe3.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/ws/build/gamesmanros_interfaces",
+		"source" : "/ws/src/gamesmanros_interfaces"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

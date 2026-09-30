@@ -1,0 +1,31 @@
+[0.625s] Invoking command in '/ws/build/gamesmanros': AMENT_PREFIX_PATH=/ws/install/gamesmanros_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/ws/install/gamesmanros_interfaces LD_LIBRARY_PATH=/ws/install/gamesmanros_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/ws/build/gamesmanros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/ws/install/gamesmanros/lib/python3.10/site-packages:/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /ws/build/gamesmanros/build --no-deps symlink_data
+[0.783s] running develop
+[0.851s] running egg_info
+[0.851s] creating gamesmanros.egg-info
+[0.852s] writing gamesmanros.egg-info/PKG-INFO
+[0.853s] writing dependency_links to gamesmanros.egg-info/dependency_links.txt
+[0.853s] writing entry points to gamesmanros.egg-info/entry_points.txt
+[0.854s] writing requirements to gamesmanros.egg-info/requires.txt
+[0.859s] writing top-level names to gamesmanros.egg-info/top_level.txt
+[0.859s] writing manifest file 'gamesmanros.egg-info/SOURCES.txt'
+[0.862s] reading manifest file 'gamesmanros.egg-info/SOURCES.txt'
+[0.864s] writing manifest file 'gamesmanros.egg-info/SOURCES.txt'
+[0.866s] running build_ext
+[0.866s] Creating /ws/install/gamesmanros/lib/python3.10/site-packages/gamesmanros.egg-link (link to .)
+[0.867s] Installing arm_controller script to /ws/install/gamesmanros/lib/gamesmanros
+[0.868s] Installing game_manager script to /ws/install/gamesmanros/lib/gamesmanros
+[0.869s] Installing gripper_controller script to /ws/install/gamesmanros/lib/gamesmanros
+[0.869s] Installing joint_state_bridge script to /ws/install/gamesmanros/lib/gamesmanros
+[0.870s] Installing robot_control script to /ws/install/gamesmanros/lib/gamesmanros
+[0.871s] Installing vision_node script to /ws/install/gamesmanros/lib/gamesmanros
+[0.872s] 
+[0.873s] Installed /ws/build/gamesmanros
+[0.873s] running symlink_data
+[0.874s] creating /ws/install/gamesmanros/share/ament_index
+[0.874s] creating /ws/install/gamesmanros/share/ament_index/resource_index
+[0.875s] creating /ws/install/gamesmanros/share/ament_index/resource_index/packages
+[0.878s] symbolically linking /ws/build/gamesmanros/resource/gamesmanros -> /ws/install/gamesmanros/share/ament_index/resource_index/packages
+[0.879s] symbolically linking /ws/build/gamesmanros/package.xml -> /ws/install/gamesmanros/share/gamesmanros
+[0.882s] creating /ws/install/gamesmanros/share/gamesmanros/launch
+[0.882s] symbolically linking /ws/build/gamesmanros/launch/gamesmanros.launch.py -> /ws/install/gamesmanros/share/gamesmanros/launch
+[0.897s] Invoked command in '/ws/build/gamesmanros' returned '0': AMENT_PREFIX_PATH=/ws/install/gamesmanros_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/ws/install/gamesmanros_interfaces LD_LIBRARY_PATH=/ws/install/gamesmanros_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/ws/build/gamesmanros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/ws/install/gamesmanros/lib/python3.10/site-packages:/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /ws/build/gamesmanros/build --no-deps symlink_data

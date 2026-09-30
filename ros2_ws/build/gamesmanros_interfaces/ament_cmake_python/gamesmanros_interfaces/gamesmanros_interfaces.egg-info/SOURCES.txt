@@ -1,0 +1,12 @@
+setup.py
+gamesmanros_interfaces/__init__.py
+gamesmanros_interfaces.egg-info/PKG-INFO
+gamesmanros_interfaces.egg-info/SOURCES.txt
+gamesmanros_interfaces.egg-info/dependency_links.txt
+gamesmanros_interfaces.egg-info/top_level.txt
+gamesmanros_interfaces/action/__init__.py
+gamesmanros_interfaces/action/_execute_move.py
+gamesmanros_interfaces/action/_move_arm.py
+gamesmanros_interfaces/action/_move_gripper.py
+gamesmanros_interfaces/msg/__init__.py
+gamesmanros_interfaces/msg/_game_state.py

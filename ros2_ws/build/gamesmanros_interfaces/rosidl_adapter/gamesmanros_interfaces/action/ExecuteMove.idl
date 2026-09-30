@@ -1,0 +1,30 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from gamesmanros_interfaces/action/ExecuteMove.action
+// generated code does not contain a copyright notice
+
+
+module gamesmanros_interfaces {
+  module action {
+    @verbatim (language="comment", text=
+      "Goal: decoded UWAPI move for the robot to execute")
+    struct ExecuteMove_Goal {
+      string game_id;
+
+      string move_string;
+
+      string current_position;
+
+      string new_position;
+    };
+    @verbatim (language="comment", text=
+      "Result")
+    struct ExecuteMove_Result {
+      boolean success;
+    };
+    @verbatim (language="comment", text=
+      "Feedback")
+    struct ExecuteMove_Feedback {
+      string status;
+    };
+  };
+};
