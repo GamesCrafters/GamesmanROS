@@ -1,0 +1,11 @@
+# Goal: target Cartesian position in robot base frame (meters)
+float64 x
+float64 y
+float64 z
+---
+# Result
+bool success
+string message
+---
+# Feedback
+string status

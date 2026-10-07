@@ -1,0 +1,4 @@
+/ws/build/gamesmanros_interfaces/rosidl_adapter/gamesmanros_interfaces:msg/GameState.idl
+/ws/build/gamesmanros_interfaces/rosidl_adapter/gamesmanros_interfaces:action/MoveArm.idl
+/ws/build/gamesmanros_interfaces/rosidl_adapter/gamesmanros_interfaces:action/MoveGripper.idl
+/ws/build/gamesmanros_interfaces/rosidl_adapter/gamesmanros_interfaces:action/ExecuteMove.idl

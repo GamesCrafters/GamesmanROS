@@ -1,0 +1,1 @@
+/ws/build/gamesmanros_interfaces/rosidl_generator_rs/gamesmanros_interfaces/rust/src/msg/rmw.rs

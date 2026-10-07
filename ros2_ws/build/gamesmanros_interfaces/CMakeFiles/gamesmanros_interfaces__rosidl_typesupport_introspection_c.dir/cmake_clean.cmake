@@ -1,0 +1,25 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/gamesmanros_interfaces/action/detail/execute_move__type_support.c.o"
+  "CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/gamesmanros_interfaces/action/detail/execute_move__type_support.c.o.d"
+  "CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/gamesmanros_interfaces/action/detail/move_arm__type_support.c.o"
+  "CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/gamesmanros_interfaces/action/detail/move_arm__type_support.c.o.d"
+  "CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/gamesmanros_interfaces/action/detail/move_gripper__type_support.c.o"
+  "CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/gamesmanros_interfaces/action/detail/move_gripper__type_support.c.o.d"
+  "CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/gamesmanros_interfaces/msg/detail/game_state__type_support.c.o"
+  "CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/gamesmanros_interfaces/msg/detail/game_state__type_support.c.o.d"
+  "libgamesmanros_interfaces__rosidl_typesupport_introspection_c.pdb"
+  "libgamesmanros_interfaces__rosidl_typesupport_introspection_c.so"
+  "rosidl_typesupport_introspection_c/gamesmanros_interfaces/action/detail/execute_move__rosidl_typesupport_introspection_c.h"
+  "rosidl_typesupport_introspection_c/gamesmanros_interfaces/action/detail/execute_move__type_support.c"
+  "rosidl_typesupport_introspection_c/gamesmanros_interfaces/action/detail/move_arm__rosidl_typesupport_introspection_c.h"
+  "rosidl_typesupport_introspection_c/gamesmanros_interfaces/action/detail/move_arm__type_support.c"
+  "rosidl_typesupport_introspection_c/gamesmanros_interfaces/action/detail/move_gripper__rosidl_typesupport_introspection_c.h"
+  "rosidl_typesupport_introspection_c/gamesmanros_interfaces/action/detail/move_gripper__type_support.c"
+  "rosidl_typesupport_introspection_c/gamesmanros_interfaces/msg/detail/game_state__rosidl_typesupport_introspection_c.h"
+  "rosidl_typesupport_introspection_c/gamesmanros_interfaces/msg/detail/game_state__type_support.c"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang C)
+  include(CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_c.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

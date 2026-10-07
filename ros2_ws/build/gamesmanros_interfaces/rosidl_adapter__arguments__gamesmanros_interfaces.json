@@ -1,0 +1,9 @@
+{
+  "package_name": "gamesmanros_interfaces",
+  "non_idl_tuples": [
+    "/ws/src/gamesmanros_interfaces:msg/GameState.msg",
+    "/ws/src/gamesmanros_interfaces:action/MoveArm.action",
+    "/ws/src/gamesmanros_interfaces:action/MoveGripper.action",
+    "/ws/src/gamesmanros_interfaces:action/ExecuteMove.action"
+  ]
+}

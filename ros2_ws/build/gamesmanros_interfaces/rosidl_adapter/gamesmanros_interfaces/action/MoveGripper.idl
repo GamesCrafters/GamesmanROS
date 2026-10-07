@@ -1,0 +1,24 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from gamesmanros_interfaces/action/MoveGripper.action
+// generated code does not contain a copyright notice
+
+
+module gamesmanros_interfaces {
+  module action {
+    @verbatim (language="comment", text=
+      "Goal: true = open, false = close")
+    struct MoveGripper_Goal {
+      boolean open;
+    };
+    @verbatim (language="comment", text=
+      "Result")
+    struct MoveGripper_Result {
+      boolean success;
+    };
+    @verbatim (language="comment", text=
+      "Feedback")
+    struct MoveGripper_Feedback {
+      string status;
+    };
+  };
+};

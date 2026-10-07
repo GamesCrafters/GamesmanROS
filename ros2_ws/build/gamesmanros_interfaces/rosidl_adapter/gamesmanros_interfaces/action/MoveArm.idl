@@ -1,0 +1,30 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from gamesmanros_interfaces/action/MoveArm.action
+// generated code does not contain a copyright notice
+
+
+module gamesmanros_interfaces {
+  module action {
+    @verbatim (language="comment", text=
+      "Goal: target Cartesian position in robot base frame (meters)")
+    struct MoveArm_Goal {
+      double x;
+
+      double y;
+
+      double z;
+    };
+    @verbatim (language="comment", text=
+      "Result")
+    struct MoveArm_Result {
+      boolean success;
+
+      string message;
+    };
+    @verbatim (language="comment", text=
+      "Feedback")
+    struct MoveArm_Feedback {
+      string status;
+    };
+  };
+};

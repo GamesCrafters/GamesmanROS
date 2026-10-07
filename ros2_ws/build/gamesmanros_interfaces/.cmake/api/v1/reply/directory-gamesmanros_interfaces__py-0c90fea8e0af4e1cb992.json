@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "gamesmanros_interfaces__py",
+		"source" : "/ws/build/gamesmanros_interfaces/gamesmanros_interfaces__py"
+	}
+}

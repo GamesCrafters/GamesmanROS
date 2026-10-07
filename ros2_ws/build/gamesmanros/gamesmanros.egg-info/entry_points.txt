@@ -1,0 +1,8 @@
+[console_scripts]
+arm_controller = gamesmanros.arm_controller:main
+game_manager = gamesmanros.game_manager:main
+gripper_controller = gamesmanros.gripper_controller:main
+joint_state_bridge = gamesmanros.joint_state_bridge:main
+robot_control = gamesmanros.robot_control:main
+vision_node = gamesmanros.vision_node:main
+

@@ -1,0 +1,1 @@
+/ws/build/gamesmanros_interfaces/rosidl_typesupport_fastrtps_c/gamesmanros_interfaces/action/detail/move_gripper__rosidl_typesupport_fastrtps_c.h

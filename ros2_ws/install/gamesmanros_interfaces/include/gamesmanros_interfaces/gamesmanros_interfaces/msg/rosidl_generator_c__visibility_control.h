@@ -1,0 +1,1 @@
+/ws/build/gamesmanros_interfaces/rosidl_generator_c/gamesmanros_interfaces/msg/rosidl_generator_c__visibility_control.h

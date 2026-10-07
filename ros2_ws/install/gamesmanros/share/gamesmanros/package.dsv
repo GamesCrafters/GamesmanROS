@@ -1,0 +1,9 @@
+source;share/gamesmanros/hook/pythonpath.ps1
+source;share/gamesmanros/hook/pythonpath.dsv
+source;share/gamesmanros/hook/pythonpath.sh
+source;share/gamesmanros/hook/ament_prefix_path.ps1
+source;share/gamesmanros/hook/ament_prefix_path.dsv
+source;share/gamesmanros/hook/ament_prefix_path.sh
+source;../../build/gamesmanros/share/gamesmanros/hook/pythonpath_develop.ps1
+source;../../build/gamesmanros/share/gamesmanros/hook/pythonpath_develop.dsv
+source;../../build/gamesmanros/share/gamesmanros/hook/pythonpath_develop.sh
