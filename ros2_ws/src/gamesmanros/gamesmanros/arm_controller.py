@@ -22,7 +22,7 @@ from moveit.planning import MoveItPy
 
 from gamesmanros_interfaces.action import MoveArm
 
-BASE_FRAME = 'base_link'
+BASE_FRAME = 'g_base'  # root link of mycobot_280_moveit_config's URDF
 PLANNING_GROUP = 'arm_group'
 EEF_LINK = 'joint6_flange'
 

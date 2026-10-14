@@ -1,0 +1,207 @@
+[0.761s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install']
+[0.763s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=True, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=22, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7fcc5815ed70>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7fcc5815e800>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7fcc5815e800>>, mixin_verb=('build',))
+[1.229s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[1.234s] INFO:colcon.colcon_metadata.package_discovery.colcon_meta:Using configuration from '/root/.colcon/metadata/default/Gazebo.meta'
+[1.236s] INFO:colcon.colcon_metadata.package_discovery.colcon_meta:Using configuration from '/root/.colcon/metadata/default/fastdds.meta'
+[1.238s] INFO:colcon.colcon_metadata.package_discovery.colcon_meta:Using configuration from '/root/.colcon/metadata/default/fastrtps.meta'
+[1.241s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[1.243s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[1.245s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[1.247s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[1.248s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[1.249s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/ws'
+[1.257s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[1.258s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[1.262s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[1.266s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[1.267s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[1.270s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[1.271s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[1.271s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[1.272s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[1.304s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[1.304s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[1.307s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[1.309s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[1.312s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[1.320s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[1.322s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[1.322s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[1.330s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[1.331s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[1.332s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[1.351s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[1.351s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[1.352s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[1.359s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[1.360s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[1.364s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[1.367s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[1.368s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[1.370s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[1.371s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[1.371s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[1.373s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[1.380s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[1.381s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[1.383s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[1.385s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[1.386s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[1.398s] Level 1:colcon.colcon_core.package_identification:_identify(src/gamesmanros) by extensions ['ignore', 'ignore_ament_install']
+[1.399s] Level 1:colcon.colcon_core.package_identification:_identify(src/gamesmanros) by extension 'ignore'
+[1.401s] Level 1:colcon.colcon_core.package_identification:_identify(src/gamesmanros) by extension 'ignore_ament_install'
+[1.404s] Level 1:colcon.colcon_core.package_identification:_identify(src/gamesmanros) by extensions ['colcon_pkg']
+[1.405s] Level 1:colcon.colcon_core.package_identification:_identify(src/gamesmanros) by extension 'colcon_pkg'
+[1.406s] Level 1:colcon.colcon_core.package_identification:_identify(src/gamesmanros) by extensions ['colcon_meta']
+[1.407s] Level 1:colcon.colcon_core.package_identification:_identify(src/gamesmanros) by extension 'colcon_meta'
+[1.407s] Level 1:colcon.colcon_core.package_identification:_identify(src/gamesmanros) by extensions ['ros']
+[1.409s] Level 1:colcon.colcon_core.package_identification:_identify(src/gamesmanros) by extension 'ros'
+[1.435s] DEBUG:colcon.colcon_core.package_identification:Package 'src/gamesmanros' with type 'ros.ament_python' and name 'gamesmanros'
+[1.442s] Level 1:colcon.colcon_core.package_identification:_identify(src/gamesmanros_interfaces) by extensions ['ignore', 'ignore_ament_install']
+[1.443s] Level 1:colcon.colcon_core.package_identification:_identify(src/gamesmanros_interfaces) by extension 'ignore'
+[1.447s] Level 1:colcon.colcon_core.package_identification:_identify(src/gamesmanros_interfaces) by extension 'ignore_ament_install'
+[1.451s] Level 1:colcon.colcon_core.package_identification:_identify(src/gamesmanros_interfaces) by extensions ['colcon_pkg']
+[1.451s] Level 1:colcon.colcon_core.package_identification:_identify(src/gamesmanros_interfaces) by extension 'colcon_pkg'
+[1.454s] Level 1:colcon.colcon_core.package_identification:_identify(src/gamesmanros_interfaces) by extensions ['colcon_meta']
+[1.456s] Level 1:colcon.colcon_core.package_identification:_identify(src/gamesmanros_interfaces) by extension 'colcon_meta'
+[1.457s] Level 1:colcon.colcon_core.package_identification:_identify(src/gamesmanros_interfaces) by extensions ['ros']
+[1.457s] Level 1:colcon.colcon_core.package_identification:_identify(src/gamesmanros_interfaces) by extension 'ros'
+[1.467s] DEBUG:colcon.colcon_core.package_identification:Package 'src/gamesmanros_interfaces' with type 'ros.ament_cmake' and name 'gamesmanros_interfaces'
+[1.468s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[1.469s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[1.469s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[1.471s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[1.472s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[1.555s] Level 5:colcon.colcon_core.verb:set package 'gamesmanros_interfaces' build argument 'cmake_args' from command line to 'None'
+[1.557s] Level 5:colcon.colcon_core.verb:set package 'gamesmanros_interfaces' build argument 'cmake_target' from command line to 'None'
+[1.558s] Level 5:colcon.colcon_core.verb:set package 'gamesmanros_interfaces' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.559s] Level 5:colcon.colcon_core.verb:set package 'gamesmanros_interfaces' build argument 'cmake_clean_cache' from command line to 'False'
+[1.560s] Level 5:colcon.colcon_core.verb:set package 'gamesmanros_interfaces' build argument 'cmake_clean_first' from command line to 'False'
+[1.562s] Level 5:colcon.colcon_core.verb:set package 'gamesmanros_interfaces' build argument 'cmake_force_configure' from command line to 'False'
+[1.563s] Level 5:colcon.colcon_core.verb:set package 'gamesmanros_interfaces' build argument 'ament_cmake_args' from command line to 'None'
+[1.564s] Level 5:colcon.colcon_core.verb:set package 'gamesmanros_interfaces' build argument 'catkin_cmake_args' from command line to 'None'
+[1.565s] Level 5:colcon.colcon_core.verb:set package 'gamesmanros_interfaces' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.566s] DEBUG:colcon.colcon_core.verb:Building package 'gamesmanros_interfaces' with the following arguments: {'ament_cmake_args': None, 'build_base': '/ws/build/gamesmanros_interfaces', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/ws/install/gamesmanros_interfaces', 'merge_install': False, 'path': '/ws/src/gamesmanros_interfaces', 'symlink_install': True, 'test_result_base': None}
+[1.567s] Level 5:colcon.colcon_core.verb:set package 'gamesmanros' build argument 'cmake_args' from command line to 'None'
+[1.568s] Level 5:colcon.colcon_core.verb:set package 'gamesmanros' build argument 'cmake_target' from command line to 'None'
+[1.568s] Level 5:colcon.colcon_core.verb:set package 'gamesmanros' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[1.569s] Level 5:colcon.colcon_core.verb:set package 'gamesmanros' build argument 'cmake_clean_cache' from command line to 'False'
+[1.570s] Level 5:colcon.colcon_core.verb:set package 'gamesmanros' build argument 'cmake_clean_first' from command line to 'False'
+[1.571s] Level 5:colcon.colcon_core.verb:set package 'gamesmanros' build argument 'cmake_force_configure' from command line to 'False'
+[1.572s] Level 5:colcon.colcon_core.verb:set package 'gamesmanros' build argument 'ament_cmake_args' from command line to 'None'
+[1.572s] Level 5:colcon.colcon_core.verb:set package 'gamesmanros' build argument 'catkin_cmake_args' from command line to 'None'
+[1.573s] Level 5:colcon.colcon_core.verb:set package 'gamesmanros' build argument 'catkin_skip_building_tests' from command line to 'False'
+[1.574s] DEBUG:colcon.colcon_core.verb:Building package 'gamesmanros' with the following arguments: {'ament_cmake_args': None, 'build_base': '/ws/build/gamesmanros', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/ws/install/gamesmanros', 'merge_install': False, 'path': '/ws/src/gamesmanros', 'symlink_install': True, 'test_result_base': None}
+[1.575s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[1.577s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[1.579s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/ws/src/gamesmanros_interfaces' with build type 'ament_cmake'
+[1.580s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/ws/src/gamesmanros_interfaces'
+[1.594s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[1.597s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.598s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.907s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/ws/build/gamesmanros_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /ws/src/gamesmanros_interfaces -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ws/install/gamesmanros_interfaces
+[69.518s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/ws/build/gamesmanros_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /ws/src/gamesmanros_interfaces -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ws/install/gamesmanros_interfaces
+[69.531s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/ws/build/gamesmanros_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ws/build/gamesmanros_interfaces -- -j22 -l22
+[87.823s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/ws/build/gamesmanros_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ws/build/gamesmanros_interfaces -- -j22 -l22
+[87.902s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/ws/build/gamesmanros_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /ws/build/gamesmanros_interfaces
+[104.550s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(gamesmanros_interfaces)
+[104.554s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/ws/build/gamesmanros_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /ws/build/gamesmanros_interfaces
+[104.570s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros_interfaces' for CMake module files
+[104.931s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros_interfaces' for CMake config files
+[105.778s] Level 1:colcon.colcon_core.shell:create_environment_hook('gamesmanros_interfaces', 'cmake_prefix_path')
+[105.780s] INFO:colcon.colcon_core.shell:Creating environment hook '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/hook/cmake_prefix_path.ps1'
+[105.821s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/hook/cmake_prefix_path.dsv'
+[105.868s] INFO:colcon.colcon_core.shell:Creating environment hook '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/hook/cmake_prefix_path.sh'
+[105.903s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros_interfaces/lib'
+[105.905s] Level 1:colcon.colcon_core.shell:create_environment_hook('gamesmanros_interfaces', 'ld_library_path_lib')
+[105.906s] INFO:colcon.colcon_core.shell:Creating environment hook '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/hook/ld_library_path_lib.ps1'
+[105.932s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/hook/ld_library_path_lib.dsv'
+[105.973s] INFO:colcon.colcon_core.shell:Creating environment hook '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/hook/ld_library_path_lib.sh'
+[105.994s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros_interfaces/bin'
+[105.997s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros_interfaces/lib/pkgconfig/gamesmanros_interfaces.pc'
+[106.014s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros_interfaces/lib/python3.10/site-packages'
+[106.022s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros_interfaces/bin'
+[106.025s] INFO:colcon.colcon_core.shell:Creating package script '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/package.ps1'
+[106.048s] INFO:colcon.colcon_core.shell:Creating package descriptor '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/package.dsv'
+[106.073s] INFO:colcon.colcon_core.shell:Creating package script '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/package.sh'
+[106.095s] INFO:colcon.colcon_core.shell:Creating package script '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/package.bash'
+[106.143s] INFO:colcon.colcon_core.shell:Creating package script '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/package.zsh'
+[106.170s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/ws/install/gamesmanros_interfaces/share/colcon-core/packages/gamesmanros_interfaces)
+[106.225s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(gamesmanros_interfaces)
+[106.226s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros_interfaces' for CMake module files
+[106.433s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros_interfaces' for CMake config files
+[106.791s] Level 1:colcon.colcon_core.shell:create_environment_hook('gamesmanros_interfaces', 'cmake_prefix_path')
+[106.793s] INFO:colcon.colcon_core.shell:Creating environment hook '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/hook/cmake_prefix_path.ps1'
+[106.812s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/hook/cmake_prefix_path.dsv'
+[106.832s] INFO:colcon.colcon_core.shell:Creating environment hook '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/hook/cmake_prefix_path.sh'
+[106.859s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros_interfaces/lib'
+[106.861s] Level 1:colcon.colcon_core.shell:create_environment_hook('gamesmanros_interfaces', 'ld_library_path_lib')
+[106.863s] INFO:colcon.colcon_core.shell:Creating environment hook '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/hook/ld_library_path_lib.ps1'
+[106.880s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/hook/ld_library_path_lib.dsv'
+[106.907s] INFO:colcon.colcon_core.shell:Creating environment hook '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/hook/ld_library_path_lib.sh'
+[106.941s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros_interfaces/bin'
+[106.946s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros_interfaces/lib/pkgconfig/gamesmanros_interfaces.pc'
+[106.951s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros_interfaces/lib/python3.10/site-packages'
+[106.956s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros_interfaces/bin'
+[106.961s] INFO:colcon.colcon_core.shell:Creating package script '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/package.ps1'
+[106.976s] INFO:colcon.colcon_core.shell:Creating package descriptor '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/package.dsv'
+[106.990s] INFO:colcon.colcon_core.shell:Creating package script '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/package.sh'
+[107.005s] INFO:colcon.colcon_core.shell:Creating package script '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/package.bash'
+[107.021s] INFO:colcon.colcon_core.shell:Creating package script '/ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/package.zsh'
+[107.037s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/ws/install/gamesmanros_interfaces/share/colcon-core/packages/gamesmanros_interfaces)
+[107.050s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/ws/src/gamesmanros' with build type 'ament_python'
+[107.052s] Level 1:colcon.colcon_core.shell:create_environment_hook('gamesmanros', 'ament_prefix_path')
+[107.055s] INFO:colcon.colcon_core.shell:Creating environment hook '/ws/install/gamesmanros/share/gamesmanros/hook/ament_prefix_path.ps1'
+[107.139s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/ws/install/gamesmanros/share/gamesmanros/hook/ament_prefix_path.dsv'
+[107.162s] INFO:colcon.colcon_core.shell:Creating environment hook '/ws/install/gamesmanros/share/gamesmanros/hook/ament_prefix_path.sh'
+[107.184s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[107.186s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[108.309s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/ws/src/gamesmanros'
+[108.312s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[108.313s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[109.672s] DEBUG:colcon.colcon_core.task.python.build:Available setuptools commands: install_scripts, saveopts, register, build_ext, install_data, install_egg_info, install_headers, bdist, egg_info, install, bdist_wheel, alias, upload_docs, clean, bdist_rpm, check, build_clib, setopt, build_scripts, symlink_data, init_catalog, install_lib, rotate, extract_messages, compile_catalog, build_py, dist_info, develop, upload, bdist_dumb, easy_install, update_catalog, test, bdist_egg, sdist, build
+[110.169s] DEBUG:colcon.colcon_core.task.python.build:Available setuptools 'develop' options: --no-find-links, --zip-ok, --user, --build-directory, --egg-path, --record, --optimize, --install-layout, --exclude-scripts, --dry-run, --verbose, --upgrade, --no-user-cfg, --editable, --uninstall, --index-url, --site-dirs, --no-deps, --multi-version, --always-unzip, --allow-hosts, --quiet, --version, --prefix, --install-dir, --script-dir, --help, --find-links, --local-snapshots-ok, --force-installation-into-system-dir, --always-copy
+[110.632s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/ws/build/gamesmanros': AMENT_PREFIX_PATH=/ws/install/gamesmanros_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/ws/install/gamesmanros_interfaces LD_LIBRARY_PATH=/ws/install/gamesmanros_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/ws/build/gamesmanros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/ws/install/gamesmanros/lib/python3.10/site-packages:/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /ws/build/gamesmanros/build --no-deps symlink_data
+[112.561s] Level 1:colcon.colcon_core.shell:create_environment_hook('gamesmanros', 'pythonpath_develop')
+[112.564s] INFO:colcon.colcon_core.shell:Creating environment hook '/ws/build/gamesmanros/share/gamesmanros/hook/pythonpath_develop.ps1'
+[112.584s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/ws/build/gamesmanros' returned '0': AMENT_PREFIX_PATH=/ws/install/gamesmanros_interfaces:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/ws/install/gamesmanros_interfaces LD_LIBRARY_PATH=/ws/install/gamesmanros_interfaces/lib:${LD_LIBRARY_PATH} PYTHONPATH=/ws/build/gamesmanros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/ws/install/gamesmanros/lib/python3.10/site-packages:/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /ws/build/gamesmanros/build --no-deps symlink_data
+[112.638s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/ws/build/gamesmanros/share/gamesmanros/hook/pythonpath_develop.dsv'
+[112.659s] INFO:colcon.colcon_core.shell:Creating environment hook '/ws/build/gamesmanros/share/gamesmanros/hook/pythonpath_develop.sh'
+[112.684s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros' for CMake module files
+[112.774s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros' for CMake config files
+[112.872s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros/lib'
+[112.874s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros/bin'
+[112.877s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros/lib/pkgconfig/gamesmanros.pc'
+[112.881s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros/lib/python3.10/site-packages'
+[112.883s] Level 1:colcon.colcon_core.shell:create_environment_hook('gamesmanros', 'pythonpath')
+[112.884s] INFO:colcon.colcon_core.shell:Creating environment hook '/ws/install/gamesmanros/share/gamesmanros/hook/pythonpath.ps1'
+[112.903s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/ws/install/gamesmanros/share/gamesmanros/hook/pythonpath.dsv'
+[112.923s] INFO:colcon.colcon_core.shell:Creating environment hook '/ws/install/gamesmanros/share/gamesmanros/hook/pythonpath.sh'
+[112.960s] Level 1:colcon.colcon_core.environment:checking '/ws/install/gamesmanros/bin'
+[112.964s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(gamesmanros)
+[112.966s] INFO:colcon.colcon_core.shell:Creating package script '/ws/install/gamesmanros/share/gamesmanros/package.ps1'
+[112.982s] INFO:colcon.colcon_core.shell:Creating package descriptor '/ws/install/gamesmanros/share/gamesmanros/package.dsv'
+[113.001s] INFO:colcon.colcon_core.shell:Creating package script '/ws/install/gamesmanros/share/gamesmanros/package.sh'
+[113.032s] INFO:colcon.colcon_core.shell:Creating package script '/ws/install/gamesmanros/share/gamesmanros/package.bash'
+[113.052s] INFO:colcon.colcon_core.shell:Creating package script '/ws/install/gamesmanros/share/gamesmanros/package.zsh'
+[113.077s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/ws/install/gamesmanros/share/colcon-core/packages/gamesmanros)
+[113.110s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[113.111s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[113.113s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[113.114s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[113.173s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.notify_send': Could not find 'notify-send'
+[113.175s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[113.176s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[113.176s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[113.188s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.InvalidFileContent: D-Bus library appears to be incorrectly set up: see the manual page for dbus-uuidgen to correct this issue. (Failed to open "/var/lib/dbus/machine-id": No such file or directory; UUID file '/etc/machine-id' should contain a hex string of length 32, not length 0, with no other text)
+[113.190s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[113.192s] INFO:colcon.colcon_core.shell:Creating prefix script '/ws/install/local_setup.ps1'
+[113.220s] INFO:colcon.colcon_core.shell:Creating prefix util module '/ws/install/_local_setup_util_ps1.py'
+[113.260s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/ws/install/setup.ps1'
+[113.296s] INFO:colcon.colcon_core.shell:Creating prefix script '/ws/install/local_setup.sh'
+[113.338s] INFO:colcon.colcon_core.shell:Creating prefix util module '/ws/install/_local_setup_util_sh.py'
+[113.363s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/ws/install/setup.sh'
+[113.405s] INFO:colcon.colcon_core.shell:Creating prefix script '/ws/install/local_setup.bash'
+[113.429s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/ws/install/setup.bash'
+[113.451s] INFO:colcon.colcon_core.shell:Creating prefix script '/ws/install/local_setup.zsh'
+[113.474s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/ws/install/setup.zsh'

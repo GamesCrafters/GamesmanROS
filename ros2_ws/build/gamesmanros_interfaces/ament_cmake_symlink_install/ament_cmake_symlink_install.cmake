@@ -363,9 +363,6 @@ include("/ws/build/gamesmanros_interfaces/ament_cmake_symlink_install_targets_1_
 # install("TARGETS" "gamesmanros_interfaces__rosidl_typesupport_c__pyext" "DESTINATION" "local/lib/python3.10/dist-packages/gamesmanros_interfaces")
 include("/ws/build/gamesmanros_interfaces/ament_cmake_symlink_install_targets_2_${CMAKE_INSTALL_CONFIG_NAME}.cmake")
 
-# install(FILES "/ws/build/gamesmanros_interfaces/ament_cmake_index/share/ament_index/resource_index/rust_packages/gamesmanros_interfaces" "DESTINATION" "share/ament_index/resource_index/rust_packages")
-ament_cmake_symlink_install_files("/ws/src/gamesmanros_interfaces" FILES "/ws/build/gamesmanros_interfaces/ament_cmake_index/share/ament_index/resource_index/rust_packages/gamesmanros_interfaces" "DESTINATION" "share/ament_index/resource_index/rust_packages")
-
 # install(DIRECTORY "/ws/build/gamesmanros_interfaces/rosidl_generator_rs/gamesmanros_interfaces/rust" "DESTINATION" "share/gamesmanros_interfaces")
 ament_cmake_symlink_install_directory("/ws/src/gamesmanros_interfaces" DIRECTORY "/ws/build/gamesmanros_interfaces/rosidl_generator_rs/gamesmanros_interfaces/rust" "DESTINATION" "share/gamesmanros_interfaces")
 

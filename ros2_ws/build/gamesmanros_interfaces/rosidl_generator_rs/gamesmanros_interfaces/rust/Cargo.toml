@@ -9,13 +9,13 @@ serde = { version = "1", optional = true, features = ["derive"] }
 serde-big-array = { version = "0.5.1", optional = true }
 
 # ROS Dependencies
-unique_identifier_msgs = "*"
 action_msgs = "*"
-std_msgs = "*"
 builtin_interfaces = "*"
+std_msgs = "*"
+unique_identifier_msgs = "*"
 
 [features]
-serde = ['dep:serde', 'dep:serde-big-array', 'rosidl_runtime_rs/serde', 'unique_identifier_msgs/serde', 'action_msgs/serde', 'std_msgs/serde', 'builtin_interfaces/serde']
+serde = ['dep:serde', 'dep:serde-big-array', 'rosidl_runtime_rs/serde', 'action_msgs/serde', 'builtin_interfaces/serde', 'std_msgs/serde', 'unique_identifier_msgs/serde']
 
 [package.metadata.ros-env]
 include = true

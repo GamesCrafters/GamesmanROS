@@ -1,0 +1,22 @@
+[2.811s] Invoking command in '/ws/build/gamesmanros': PYTHONPATH=/ws/build/gamesmanros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/ws/install/gamesmanros/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /ws/build/gamesmanros/build --no-deps symlink_data
+[3.246s] running develop
+[3.625s] running egg_info
+[3.630s] writing gamesmanros.egg-info/PKG-INFO
+[3.642s] writing dependency_links to gamesmanros.egg-info/dependency_links.txt
+[3.657s] writing entry points to gamesmanros.egg-info/entry_points.txt
+[3.664s] writing requirements to gamesmanros.egg-info/requires.txt
+[3.678s] writing top-level names to gamesmanros.egg-info/top_level.txt
+[3.824s] reading manifest file 'gamesmanros.egg-info/SOURCES.txt'
+[3.965s] writing manifest file 'gamesmanros.egg-info/SOURCES.txt'
+[3.975s] running build_ext
+[3.978s] Creating /ws/install/gamesmanros/lib/python3.10/site-packages/gamesmanros.egg-link (link to .)
+[4.014s] Installing arm_controller script to /ws/install/gamesmanros/lib/gamesmanros
+[4.053s] Installing game_manager script to /ws/install/gamesmanros/lib/gamesmanros
+[4.110s] Installing gripper_controller script to /ws/install/gamesmanros/lib/gamesmanros
+[4.146s] Installing joint_state_bridge script to /ws/install/gamesmanros/lib/gamesmanros
+[4.195s] Installing robot_control script to /ws/install/gamesmanros/lib/gamesmanros
+[4.245s] Installing vision_node script to /ws/install/gamesmanros/lib/gamesmanros
+[4.284s] 
+[4.289s] Installed /ws/build/gamesmanros
+[4.294s] running symlink_data
+[4.434s] Invoked command in '/ws/build/gamesmanros' returned '0': PYTHONPATH=/ws/build/gamesmanros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/ws/install/gamesmanros/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /ws/build/gamesmanros/build --no-deps symlink_data

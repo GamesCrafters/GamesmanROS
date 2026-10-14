@@ -1,0 +1,65 @@
+[0.338s] Invoking command in '/ws/build/mycobot_280_moveit_config': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/ws/install/gamesmanros:/opt/ros/humble /usr/bin/cmake /ws/src/mycobot_280_moveit_config -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ws/install/mycobot_280_moveit_config
+[1.948s] -- The C compiler identification is GNU 11.4.0
+[2.898s] -- The CXX compiler identification is GNU 11.4.0
+[3.167s] -- Detecting C compiler ABI info
+[5.776s] -- Detecting C compiler ABI info - done
+[5.822s] -- Check for working C compiler: /usr/bin/cc - skipped
+[5.834s] -- Detecting C compile features
+[5.841s] -- Detecting C compile features - done
+[5.953s] -- Detecting CXX compiler ABI info
+[8.434s] -- Detecting CXX compiler ABI info - done
+[8.486s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[8.490s] -- Detecting CXX compile features
+[8.496s] -- Detecting CXX compile features - done
+[8.728s] -- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+[9.407s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[9.845s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[13.114s] -- Configuring done
+[14.328s] -- Generating done
+[14.885s] -- Build files have been written to: /ws/build/mycobot_280_moveit_config
+[14.891s] Invoked command in '/ws/build/mycobot_280_moveit_config' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/ws/install/gamesmanros:/opt/ros/humble /usr/bin/cmake /ws/src/mycobot_280_moveit_config -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ws/install/mycobot_280_moveit_config
+[14.900s] Invoking command in '/ws/build/mycobot_280_moveit_config': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/ws/install/gamesmanros:/opt/ros/humble /usr/bin/cmake --build /ws/build/mycobot_280_moveit_config -- -j22 -l22
+[15.779s] Invoked command in '/ws/build/mycobot_280_moveit_config' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/ws/install/gamesmanros:/opt/ros/humble /usr/bin/cmake --build /ws/build/mycobot_280_moveit_config -- -j22 -l22
+[15.797s] Invoking command in '/ws/build/mycobot_280_moveit_config': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/ws/install/gamesmanros:/opt/ros/humble /usr/bin/cmake --install /ws/build/mycobot_280_moveit_config
+[16.016s] -- Install configuration: ""
+[16.042s] -- Execute custom install script
+[16.172s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/config/joint_limits.yaml
+[16.394s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/config/kinematics.yaml
+[16.600s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/config/moveit.rviz
+[16.814s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/config/moveit_controllers.yaml
+[17.008s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/config/mycobot.srdf
+[17.226s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/config/mycobot.urdf.xacro
+[17.465s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/config/ompl_planning.yaml
+[17.736s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/config/ros2_controllers.yaml
+[17.947s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/launch/demo.launch.py
+[18.378s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/G_base.dae
+[18.598s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint1.dae
+[18.784s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint1.png
+[19.013s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint2.dae
+[19.254s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint2.png
+[19.478s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint3.dae
+[19.685s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint3.png
+[19.928s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint4.dae
+[20.142s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint4.png
+[20.348s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint5.dae
+[20.546s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint5.png
+[20.744s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint6.dae
+[20.992s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint6.png
+[21.198s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint7.dae
+[21.424s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint7.png
+[21.700s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/ament_index/resource_index/package_run_dependencies/mycobot_280_moveit_config
+[22.011s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/ament_index/resource_index/parent_prefix_path/mycobot_280_moveit_config
+[22.282s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/environment/ament_prefix_path.sh
+[22.501s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/environment/ament_prefix_path.dsv
+[22.728s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/environment/path.sh
+[22.939s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/environment/path.dsv
+[23.169s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/local_setup.bash
+[23.411s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/local_setup.sh
+[23.632s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/local_setup.zsh
+[23.839s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/local_setup.dsv
+[24.080s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/package.dsv
+[24.375s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/ament_index/resource_index/packages/mycobot_280_moveit_config
+[24.626s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/cmake/mycobot_280_moveit_configConfig.cmake
+[24.894s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/cmake/mycobot_280_moveit_configConfig-version.cmake
+[25.128s] -- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/package.xml
+[25.349s] Invoked command in '/ws/build/mycobot_280_moveit_config' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/ws/install/gamesmanros:/opt/ros/humble /usr/bin/cmake --install /ws/build/mycobot_280_moveit_config

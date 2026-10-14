@@ -1,0 +1,291 @@
+[0.314s] Invoking command in '/ws/build/gamesmanros_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /ws/src/gamesmanros_interfaces -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ws/install/gamesmanros_interfaces
+[1.352s] -- The C compiler identification is GNU 11.4.0
+[1.984s] -- The CXX compiler identification is GNU 11.4.0
+[2.147s] -- Detecting C compiler ABI info
+[4.047s] -- Detecting C compiler ABI info - done
+[4.121s] -- Check for working C compiler: /usr/bin/cc - skipped
+[4.133s] -- Detecting C compile features
+[4.168s] -- Detecting C compile features - done
+[4.256s] -- Detecting CXX compiler ABI info
+[6.006s] -- Detecting CXX compiler ABI info - done
+[6.070s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[6.089s] -- Detecting CXX compile features
+[6.095s] -- Detecting CXX compile features - done
+[6.225s] -- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+[6.459s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[6.933s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[7.542s] -- Found rosidl_default_generators: 1.2.1 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[7.580s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[7.612s] -- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[7.723s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[7.822s] -- Found builtin_interfaces: 1.2.3 (/opt/ros/humble/share/builtin_interfaces/cmake)
+[7.870s] -- Found std_msgs: 4.9.2 (/opt/ros/humble/share/std_msgs/cmake)
+[14.077s] -- Found ament_cmake_ros: 0.10.1 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[25.060s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[39.928s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[39.983s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[39.987s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[40.029s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[40.033s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[40.039s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[40.052s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[40.098s] -- Found PythonExtra: .so  
+[53.236s] -- Configuring done
+[65.220s] -- Generating done
+[67.909s] -- Build files have been written to: /ws/build/gamesmanros_interfaces
+[67.925s] Invoked command in '/ws/build/gamesmanros_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /ws/src/gamesmanros_interfaces -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/ws/install/gamesmanros_interfaces
+[67.939s] Invoking command in '/ws/build/gamesmanros_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ws/build/gamesmanros_interfaces -- -j22 -l22
+[68.253s] [  1%] [34m[1mGenerating C code for ROS interfaces[0m
+[68.265s] [  3%] [34m[1mGenerating Rust code for ROS interfaces[0m
+[68.308s] [  5%] Built target ament_cmake_python_symlink_gamesmanros_interfaces
+[68.313s] [  5%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[68.855s] running egg_info
+[68.860s] creating gamesmanros_interfaces.egg-info
+[68.882s] writing gamesmanros_interfaces.egg-info/PKG-INFO
+[68.898s] writing dependency_links to gamesmanros_interfaces.egg-info/dependency_links.txt
+[68.919s] writing top-level names to gamesmanros_interfaces.egg-info/top_level.txt
+[68.936s] writing manifest file 'gamesmanros_interfaces.egg-info/SOURCES.txt'
+[69.003s] reading manifest file 'gamesmanros_interfaces.egg-info/SOURCES.txt'
+[69.037s] writing manifest file 'gamesmanros_interfaces.egg-info/SOURCES.txt'
+[69.095s] [  5%] Built target ament_cmake_python_build_gamesmanros_interfaces_egg
+[69.153s] [  5%] Built target gamesmanros_interfaces__rs
+[70.149s] [  5%] Built target gamesmanros_interfaces__cpp
+[70.253s] [ 10%] [32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_generator_c.dir/rosidl_generator_c/gamesmanros_interfaces/msg/detail/game_state__functions.c.o[0m
+[70.261s] [ 10%] [32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_generator_c.dir/rosidl_generator_c/gamesmanros_interfaces/action/detail/move_arm__functions.c.o[0m
+[70.287s] [ 12%] [32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_generator_c.dir/rosidl_generator_c/gamesmanros_interfaces/action/detail/move_gripper__functions.c.o[0m
+[70.394s] [ 17%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[70.398s] [ 17%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[70.403s] [ 17%] [32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_generator_c.dir/rosidl_generator_c/gamesmanros_interfaces/action/detail/execute_move__functions.c.o[0m
+[70.419s] [ 17%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[71.146s] [ 19%] [32m[1mLinking C shared library libgamesmanros_interfaces__rosidl_generator_c.so[0m
+[71.397s] [ 26%] [32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/gamesmanros_interfaces/action/move_gripper__type_support.cpp.o[0m
+[71.401s] [ 26%] [32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/gamesmanros_interfaces/action/move_arm__type_support.cpp.o[0m
+[71.406s] [ 26%] [32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/gamesmanros_interfaces/msg/game_state__type_support.cpp.o[0m
+[71.421s] [ 26%] [32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/gamesmanros_interfaces/action/execute_move__type_support.cpp.o[0m
+[71.551s] [ 26%] Built target gamesmanros_interfaces__rosidl_generator_c
+[71.673s] [ 32%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[71.709s] [ 32%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[71.738s] [ 32%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[71.789s] [ 39%] [32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/gamesmanros_interfaces/msg/detail/game_state__type_support.cpp.o[0m
+[71.793s] [ 39%] [32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/gamesmanros_interfaces/action/detail/move_gripper__type_support.cpp.o[0m
+[71.797s] [ 39%] [32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/gamesmanros_interfaces/action/detail/move_arm__type_support.cpp.o[0m
+[71.828s] [ 39%] [32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/gamesmanros_interfaces/action/detail/execute_move__type_support.cpp.o[0m
+[71.910s] [ 46%] [32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/action/detail/dds_fastrtps/move_gripper__type_support.cpp.o[0m
+[71.914s] [ 46%] [32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/action/detail/dds_fastrtps/move_arm__type_support.cpp.o[0m
+[71.918s] [ 46%] [32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/msg/detail/dds_fastrtps/game_state__type_support.cpp.o[0m
+[71.922s] [ 46%] [32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/action/detail/dds_fastrtps/execute_move__type_support.cpp.o[0m
+[72.727s] [ 53%] [32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/gamesmanros_interfaces/msg/game_state__type_support.cpp.o[0m
+[72.730s] [ 53%] [32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/gamesmanros_interfaces/action/move_arm__type_support.cpp.o[0m
+[72.734s] [ 53%] [32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/gamesmanros_interfaces/action/move_gripper__type_support.cpp.o[0m
+[72.771s] [ 53%] [32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/gamesmanros_interfaces/action/execute_move__type_support.cpp.o[0m
+[73.122s] [ 60%] [32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/gamesmanros_interfaces/action/detail/execute_move__type_support.c.o[0m
+[73.129s] [ 60%] [32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/gamesmanros_interfaces/msg/detail/game_state__type_support.c.o[0m
+[73.135s] [ 60%] [32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/gamesmanros_interfaces/action/detail/move_arm__type_support.c.o[0m
+[73.140s] [ 60%] [32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/gamesmanros_interfaces/action/detail/move_gripper__type_support.c.o[0m
+[73.297s] [ 66%] [32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/gamesmanros_interfaces/msg/detail/game_state__type_support_c.cpp.o[0m
+[73.301s] [ 66%] [32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/gamesmanros_interfaces/action/detail/move_gripper__type_support_c.cpp.o[0m
+[73.392s] [ 66%] [32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/gamesmanros_interfaces/action/detail/move_arm__type_support_c.cpp.o[0m
+[73.457s] [ 69%] [32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/gamesmanros_interfaces/action/detail/execute_move__type_support_c.cpp.o[0m
+[73.461s] [ 69%] [32m[1mLinking CXX shared library libgamesmanros_interfaces__rosidl_typesupport_c.so[0m
+[73.880s] [ 69%] Built target gamesmanros_interfaces__rosidl_typesupport_c
+[74.057s] [ 71%] [32m[1mLinking C shared library libgamesmanros_interfaces__rosidl_typesupport_introspection_c.so[0m
+[74.461s] [ 71%] Built target gamesmanros_interfaces__rosidl_typesupport_introspection_c
+[75.255s] [ 73%] [32m[1mLinking CXX shared library libgamesmanros_interfaces__rosidl_typesupport_cpp.so[0m
+[75.894s] [ 73%] Built target gamesmanros_interfaces__rosidl_typesupport_cpp
+[76.007s] [ 75%] [32m[1mLinking CXX shared library libgamesmanros_interfaces__rosidl_typesupport_fastrtps_c.so[0m
+[76.572s] [ 76%] [32m[1mLinking CXX shared library libgamesmanros_interfaces__rosidl_typesupport_introspection_cpp.so[0m
+[76.621s] [ 76%] Built target gamesmanros_interfaces__rosidl_typesupport_fastrtps_c
+[76.847s] [ 78%] [32m[1mLinking CXX shared library libgamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.so[0m
+[77.367s] [ 78%] Built target gamesmanros_interfaces__rosidl_typesupport_introspection_cpp
+[77.596s] [ 78%] Built target gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp
+[77.723s] [ 78%] Built target gamesmanros_interfaces
+[78.072s] [ 80%] [34m[1mGenerating Python code for ROS interfaces[0m
+[81.011s] [ 80%] Built target gamesmanros_interfaces__py
+[81.295s] [ 82%] [32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_generator_py.dir/rosidl_generator_py/gamesmanros_interfaces/msg/_game_state_s.c.o[0m
+[81.434s] [ 87%] [32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_generator_py.dir/rosidl_generator_py/gamesmanros_interfaces/action/_move_gripper_s.c.o[0m
+[81.439s] [ 87%] [32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_generator_py.dir/rosidl_generator_py/gamesmanros_interfaces/action/_move_arm_s.c.o[0m
+[81.545s] [ 87%] [32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_generator_py.dir/rosidl_generator_py/gamesmanros_interfaces/action/_execute_move_s.c.o[0m
+[82.736s] [ 89%] [32m[1mLinking C shared library rosidl_generator_py/gamesmanros_interfaces/libgamesmanros_interfaces__rosidl_generator_py.so[0m
+[83.271s] [ 89%] Built target gamesmanros_interfaces__rosidl_generator_py
+[83.701s] [ 94%] [32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/gamesmanros_interfaces/_gamesmanros_interfaces_s.ep.rosidl_typesupport_c.c.o[0m
+[83.708s] [ 94%] [32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/gamesmanros_interfaces/_gamesmanros_interfaces_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[83.715s] [ 94%] [32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/gamesmanros_interfaces/_gamesmanros_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[85.094s] [ 96%] [32m[1mLinking C shared library rosidl_generator_py/gamesmanros_interfaces/gamesmanros_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[85.337s] [100%] [32m[1mLinking C shared library rosidl_generator_py/gamesmanros_interfaces/gamesmanros_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[85.440s] [100%] [32m[1mLinking C shared library rosidl_generator_py/gamesmanros_interfaces/gamesmanros_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[85.549s] [100%] Built target gamesmanros_interfaces__rosidl_typesupport_c__pyext
+[85.760s] [100%] Built target gamesmanros_interfaces__rosidl_typesupport_introspection_c__pyext
+[85.859s] [100%] Built target gamesmanros_interfaces__rosidl_typesupport_fastrtps_c__pyext
+[86.231s] Invoked command in '/ws/build/gamesmanros_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ws/build/gamesmanros_interfaces -- -j22 -l22
+[86.310s] Invoking command in '/ws/build/gamesmanros_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /ws/build/gamesmanros_interfaces
+[86.338s] -- Install configuration: ""
+[86.357s] -- Execute custom install script
+[86.472s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/ament_index/resource_index/rosidl_interfaces/gamesmanros_interfaces
+[86.764s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__functions.h
+[86.854s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__struct.h
+[86.936s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__type_support.h
+[87.030s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__functions.h
+[87.108s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__struct.h
+[87.192s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__type_support.h
+[87.272s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__functions.h
+[87.351s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__struct.h
+[87.429s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__type_support.h
+[87.509s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/execute_move.h
+[87.582s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/move_arm.h
+[87.658s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/move_gripper.h
+[87.773s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__functions.h
+[87.853s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__struct.h
+[87.930s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__type_support.h
+[88.020s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/game_state.h
+[88.093s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/rosidl_generator_c__visibility_control.h
+[88.198s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/environment/library_path.sh
+[88.277s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/environment/library_path.dsv
+[88.467s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__rosidl_typesupport_fastrtps_c.h
+[88.551s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__rosidl_typesupport_fastrtps_c.h
+[88.631s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__rosidl_typesupport_fastrtps_c.h
+[88.718s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__rosidl_typesupport_fastrtps_c.h
+[88.796s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[88.968s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__rosidl_typesupport_introspection_c.h
+[89.041s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__rosidl_typesupport_introspection_c.h
+[89.132s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__rosidl_typesupport_introspection_c.h
+[89.206s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__rosidl_typesupport_introspection_c.h
+[89.284s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[89.527s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__builder.hpp
+[89.618s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__struct.hpp
+[89.692s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__traits.hpp
+[89.778s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__type_support.hpp
+[89.877s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__builder.hpp
+[89.960s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__struct.hpp
+[90.040s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__traits.hpp
+[90.133s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__type_support.hpp
+[90.203s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__builder.hpp
+[90.277s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__struct.hpp
+[90.353s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__traits.hpp
+[90.433s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__type_support.hpp
+[90.504s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/execute_move.hpp
+[90.585s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/move_arm.hpp
+[90.658s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/move_gripper.hpp
+[90.748s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__builder.hpp
+[90.831s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__struct.hpp
+[90.949s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__traits.hpp
+[91.029s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__type_support.hpp
+[91.126s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/game_state.hpp
+[91.208s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp
+[91.437s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__rosidl_typesupport_fastrtps_cpp.hpp
+[91.543s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__rosidl_typesupport_fastrtps_cpp.hpp
+[91.637s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__rosidl_typesupport_fastrtps_cpp.hpp
+[91.724s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__rosidl_typesupport_fastrtps_cpp.hpp
+[91.802s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[91.963s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__rosidl_typesupport_introspection_cpp.hpp
+[92.044s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__rosidl_typesupport_introspection_cpp.hpp
+[92.163s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__rosidl_typesupport_introspection_cpp.hpp
+[92.256s] -- Symlinking: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__rosidl_typesupport_introspection_cpp.hpp
+[92.345s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/environment/pythonpath.sh
+[92.449s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/environment/pythonpath.dsv
+[92.651s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces-0.1.0-py3.10.egg-info/PKG-INFO
+[92.745s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces-0.1.0-py3.10.egg-info/SOURCES.txt
+[92.836s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces-0.1.0-py3.10.egg-info/dependency_links.txt
+[92.909s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces-0.1.0-py3.10.egg-info/top_level.txt
+[93.141s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/__init__.py
+[93.234s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/_gamesmanros_interfaces_s.ep.rosidl_typesupport_c.c
+[93.323s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/_gamesmanros_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+[93.420s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/_gamesmanros_interfaces_s.ep.rosidl_typesupport_introspection_c.c
+[93.564s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/__init__.py
+[93.644s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/_execute_move.py
+[93.719s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/_execute_move_s.c
+[93.795s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/_move_arm.py
+[93.888s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/_move_arm_s.c
+[93.970s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/_move_gripper.py
+[94.056s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/_move_gripper_s.c
+[94.130s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/gamesmanros_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[94.212s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/gamesmanros_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[94.305s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/gamesmanros_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[94.403s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/libgamesmanros_interfaces__rosidl_generator_py.so
+[94.528s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/msg/__init__.py
+[94.610s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/msg/_game_state.py
+[94.699s] -- Symlinking: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/msg/_game_state_s.c
+[94.779s] -- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/gamesmanros_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[94.813s] -- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/gamesmanros_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[94.840s] -- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/gamesmanros_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[94.959s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/rust/Cargo.toml
+[95.038s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/rust/build.rs
+[95.162s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/rust/src/action.rs
+[95.290s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/rust/src/action/rmw.rs
+[95.375s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/rust/src/lib.rs
+[95.454s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/rust/src/msg.rs
+[95.567s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/rust/src/msg/rmw.rs
+[95.669s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/msg/GameState.idl
+[95.786s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/action/MoveArm.idl
+[95.880s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/action/MoveGripper.idl
+[95.975s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/action/ExecuteMove.idl
+[96.059s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/msg/GameState.msg
+[96.152s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/action/MoveArm.action
+[96.242s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/action/MoveGripper.action
+[96.334s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/action/ExecuteMove.action
+[96.443s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/ament_index/resource_index/package_run_dependencies/gamesmanros_interfaces
+[96.588s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/ament_index/resource_index/parent_prefix_path/gamesmanros_interfaces
+[96.697s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/environment/ament_prefix_path.sh
+[96.791s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/environment/ament_prefix_path.dsv
+[96.876s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/environment/path.sh
+[96.962s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/environment/path.dsv
+[97.031s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/local_setup.bash
+[97.165s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/local_setup.sh
+[97.252s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/local_setup.zsh
+[97.341s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/local_setup.dsv
+[97.426s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/package.dsv
+[97.552s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/ament_index/resource_index/packages/gamesmanros_interfaces
+[97.684s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/rosidl_cmake-extras.cmake
+[97.775s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake
+[97.867s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake
+[97.955s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/ament_cmake_export_libraries-extras.cmake
+[98.035s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/ament_cmake_export_targets-extras.cmake
+[98.136s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[98.213s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[98.297s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/rosidl_cmake_aggregate_target-extras.cmake
+[98.398s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/gamesmanros_interfacesConfig.cmake
+[98.482s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/gamesmanros_interfacesConfig-version.cmake
+[98.563s] -- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/package.xml
+[98.675s] -- Installing: /ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_generator_c.so
+[98.826s] -- Set runtime path of "/ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_generator_c.so" to ""
+[98.879s] -- Installing: /ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_fastrtps_c.so
+[99.010s] -- Set runtime path of "/ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_fastrtps_c.so" to ""
+[99.056s] -- Installing: /ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_introspection_c.so
+[99.217s] -- Set runtime path of "/ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_introspection_c.so" to ""
+[99.261s] -- Installing: /ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_c.so
+[99.390s] -- Set runtime path of "/ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_c.so" to ""
+[99.437s] -- Installing: /ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.so
+[99.670s] -- Set runtime path of "/ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.so" to ""
+[99.719s] -- Installing: /ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_introspection_cpp.so
+[99.874s] -- Set runtime path of "/ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_introspection_cpp.so" to ""
+[99.914s] -- Installing: /ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_cpp.so
+[100.088s] -- Set runtime path of "/ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_cpp.so" to ""
+[101.163s] Listing '/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces'...
+[101.173s] Compiling '/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/__init__.py'...
+[101.178s] Listing '/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action'...
+[101.185s] Compiling '/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/__init__.py'...
+[101.188s] Compiling '/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/_execute_move.py'...
+[101.193s] Compiling '/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/_move_arm.py'...
+[101.196s] Compiling '/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/_move_gripper.py'...
+[101.204s] Listing '/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/msg'...
+[101.215s] Compiling '/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/msg/__init__.py'...
+[101.221s] Compiling '/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/msg/_game_state.py'...
+[101.224s] -- Installing: /ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_generator_py.so
+[101.347s] -- Set runtime path of "/ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_generator_py.so" to ""
+[101.419s] -- Installing: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/export_gamesmanros_interfaces__rosidl_generator_cExport.cmake
+[101.520s] -- Installing: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/export_gamesmanros_interfaces__rosidl_generator_cExport-noconfig.cmake
+[101.600s] -- Installing: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/export_gamesmanros_interfaces__rosidl_typesupport_fastrtps_cExport.cmake
+[101.690s] -- Installing: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/export_gamesmanros_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[101.790s] -- Installing: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/gamesmanros_interfaces__rosidl_typesupport_introspection_cExport.cmake
+[101.892s] -- Installing: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/gamesmanros_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[102.004s] -- Installing: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/gamesmanros_interfaces__rosidl_typesupport_cExport.cmake
+[102.127s] -- Installing: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/gamesmanros_interfaces__rosidl_typesupport_cExport-noconfig.cmake
+[102.194s] -- Installing: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/export_gamesmanros_interfaces__rosidl_generator_cppExport.cmake
+[102.246s] -- Installing: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/export_gamesmanros_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake
+[102.314s] -- Installing: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/export_gamesmanros_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[102.411s] -- Installing: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/gamesmanros_interfaces__rosidl_typesupport_introspection_cppExport.cmake
+[102.471s] -- Installing: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/gamesmanros_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[102.552s] -- Installing: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/gamesmanros_interfaces__rosidl_typesupport_cppExport.cmake
+[102.667s] -- Installing: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/gamesmanros_interfaces__rosidl_typesupport_cppExport-noconfig.cmake
+[102.766s] -- Installing: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/export_gamesmanros_interfaces__rosidl_generator_pyExport.cmake
+[102.861s] -- Installing: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/export_gamesmanros_interfaces__rosidl_generator_pyExport-noconfig.cmake
+[102.964s] Invoked command in '/ws/build/gamesmanros_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /ws/build/gamesmanros_interfaces

@@ -635,7 +635,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "ament_cmake_symlink_install_targets_0_.cmake"
   "ament_cmake_symlink_install_targets_1_.cmake"
   "ament_cmake_symlink_install_targets_2_.cmake"
-  "ament_cmake_index/share/ament_index/resource_index/rust_packages/gamesmanros_interfaces"
   "ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/gamesmanros_interfaces"
   "ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/gamesmanros_interfaces"
   "ament_cmake_index/share/ament_index/resource_index/packages/gamesmanros_interfaces"

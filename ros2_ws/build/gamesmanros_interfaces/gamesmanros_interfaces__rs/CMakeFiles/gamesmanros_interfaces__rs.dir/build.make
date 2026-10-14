@@ -69,15 +69,14 @@ include gamesmanros_interfaces__rs/CMakeFiles/gamesmanros_interfaces__rs.dir/pro
 gamesmanros_interfaces__rs/CMakeFiles/gamesmanros_interfaces__rs: rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs
 gamesmanros_interfaces__rs/CMakeFiles/gamesmanros_interfaces__rs: rosidl_generator_rs/gamesmanros_interfaces/rust/build.rs
 gamesmanros_interfaces__rs/CMakeFiles/gamesmanros_interfaces__rs: rosidl_generator_rs/gamesmanros_interfaces/rust/Cargo.toml
-gamesmanros_interfaces__rs/CMakeFiles/gamesmanros_interfaces__rs: rosidl_generator_rs/gamesmanros_interfaces/rust/src/msg.rs
-gamesmanros_interfaces__rs/CMakeFiles/gamesmanros_interfaces__rs: rosidl_generator_rs/gamesmanros_interfaces/rust/src/msg/rmw.rs
-gamesmanros_interfaces__rs/CMakeFiles/gamesmanros_interfaces__rs: rosidl_generator_rs/gamesmanros_interfaces/rust/src/action.rs
-gamesmanros_interfaces__rs/CMakeFiles/gamesmanros_interfaces__rs: rosidl_generator_rs/gamesmanros_interfaces/rust/src/action/rmw.rs
 
 rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: /opt/ros/humble/lib/rosidl_generator_rs/rosidl_generator_rs
 rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: /opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_generator_rs/__init__.py
 rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: /opt/ros/humble/share/rosidl_generator_rs/resource/action.rs.em
 rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: /opt/ros/humble/share/rosidl_generator_rs/resource/action/rmw.rs.em
+rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: /opt/ros/humble/share/rosidl_generator_rs/resource/build.rs.em
+rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: /opt/ros/humble/share/rosidl_generator_rs/resource/Cargo.toml.em
+rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: /opt/ros/humble/share/rosidl_generator_rs/resource/lib.rs.em
 rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: /opt/ros/humble/share/rosidl_generator_rs/resource/msg.rs.em
 rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: /opt/ros/humble/share/rosidl_generator_rs/resource/msg/rmw.rs.em
 rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: /opt/ros/humble/share/rosidl_generator_rs/resource/srv.rs.em
@@ -86,10 +85,6 @@ rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: /opt/ros/humble/shar
 rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: /opt/ros/humble/share/rosidl_generator_rs/resource/templates/msg_rmw.rs.em
 rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: /opt/ros/humble/share/rosidl_generator_rs/resource/templates/srv_idiomatic.rs.em
 rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: /opt/ros/humble/share/rosidl_generator_rs/resource/templates/srv_rmw.rs.em
-rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: rosidl_adapter/gamesmanros_interfaces/msg/GameState.idl
-rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: rosidl_adapter/gamesmanros_interfaces/action/MoveArm.idl
-rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: rosidl_adapter/gamesmanros_interfaces/action/MoveGripper.idl
-rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: rosidl_adapter/gamesmanros_interfaces/action/ExecuteMove.idl
 rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: rosidl_adapter/gamesmanros_interfaces/msg/GameState.idl
 rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: rosidl_adapter/gamesmanros_interfaces/action/MoveArm.idl
 rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs: rosidl_adapter/gamesmanros_interfaces/action/MoveGripper.idl
@@ -140,26 +135,10 @@ rosidl_generator_rs/gamesmanros_interfaces/rust/build.rs: rosidl_generator_rs/ga
 rosidl_generator_rs/gamesmanros_interfaces/rust/Cargo.toml: rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_rs/gamesmanros_interfaces/rust/Cargo.toml
 
-rosidl_generator_rs/gamesmanros_interfaces/rust/src/msg.rs: rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs
-	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_rs/gamesmanros_interfaces/rust/src/msg.rs
-
-rosidl_generator_rs/gamesmanros_interfaces/rust/src/msg/rmw.rs: rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs
-	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_rs/gamesmanros_interfaces/rust/src/msg/rmw.rs
-
-rosidl_generator_rs/gamesmanros_interfaces/rust/src/action.rs: rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs
-	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_rs/gamesmanros_interfaces/rust/src/action.rs
-
-rosidl_generator_rs/gamesmanros_interfaces/rust/src/action/rmw.rs: rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs
-	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_rs/gamesmanros_interfaces/rust/src/action/rmw.rs
-
 gamesmanros_interfaces__rs: gamesmanros_interfaces__rs/CMakeFiles/gamesmanros_interfaces__rs
 gamesmanros_interfaces__rs: rosidl_generator_rs/gamesmanros_interfaces/rust/Cargo.toml
 gamesmanros_interfaces__rs: rosidl_generator_rs/gamesmanros_interfaces/rust/build.rs
-gamesmanros_interfaces__rs: rosidl_generator_rs/gamesmanros_interfaces/rust/src/action.rs
-gamesmanros_interfaces__rs: rosidl_generator_rs/gamesmanros_interfaces/rust/src/action/rmw.rs
 gamesmanros_interfaces__rs: rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs
-gamesmanros_interfaces__rs: rosidl_generator_rs/gamesmanros_interfaces/rust/src/msg.rs
-gamesmanros_interfaces__rs: rosidl_generator_rs/gamesmanros_interfaces/rust/src/msg/rmw.rs
 gamesmanros_interfaces__rs: gamesmanros_interfaces__rs/CMakeFiles/gamesmanros_interfaces__rs.dir/build.make
 .PHONY : gamesmanros_interfaces__rs
 

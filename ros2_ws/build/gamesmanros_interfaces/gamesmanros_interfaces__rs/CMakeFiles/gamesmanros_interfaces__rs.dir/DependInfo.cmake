@@ -14,10 +14,6 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
 set(CMAKE_MULTIPLE_OUTPUT_PAIRS
   "/ws/build/gamesmanros_interfaces/rosidl_generator_rs/gamesmanros_interfaces/rust/Cargo.toml" "/ws/build/gamesmanros_interfaces/rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs"
   "/ws/build/gamesmanros_interfaces/rosidl_generator_rs/gamesmanros_interfaces/rust/build.rs" "/ws/build/gamesmanros_interfaces/rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs"
-  "/ws/build/gamesmanros_interfaces/rosidl_generator_rs/gamesmanros_interfaces/rust/src/action.rs" "/ws/build/gamesmanros_interfaces/rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs"
-  "/ws/build/gamesmanros_interfaces/rosidl_generator_rs/gamesmanros_interfaces/rust/src/action/rmw.rs" "/ws/build/gamesmanros_interfaces/rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs"
-  "/ws/build/gamesmanros_interfaces/rosidl_generator_rs/gamesmanros_interfaces/rust/src/msg.rs" "/ws/build/gamesmanros_interfaces/rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs"
-  "/ws/build/gamesmanros_interfaces/rosidl_generator_rs/gamesmanros_interfaces/rust/src/msg/rmw.rs" "/ws/build/gamesmanros_interfaces/rosidl_generator_rs/gamesmanros_interfaces/rust/src/lib.rs"
   )
 
 
