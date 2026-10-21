@@ -19,9 +19,8 @@ import rclpy
 from rclpy.node import Node
 from rclpy.action import ActionServer, ActionClient, GoalResponse, CancelResponse
 from rclpy.callback_groups import ReentrantCallbackGroup
-from std_msgs.msg import String
-
 from gamesmanros_interfaces.action import ExecuteMove, MoveArm, MoveGripper
+from gamesmanros_interfaces.msg import BoardState
 from .centers import get_centers, get_pickup, get_capture, get_dim
 
 BOARD_SIZE_MM = 150.0
@@ -104,20 +103,31 @@ class MotionSequencer:
 # ---------------------------------------------------------------------------
 
 class BaseType:
-    def __init__(self, game: str, seq: MotionSequencer):
+    def __init__(self, game: str, seq: MotionSequencer, observe=None):
         self.game    = game
         self.seq     = seq
+        # callable(cell_index) -> [x, y] or None. Corrects pick coordinates
+        # when vision is running; falls back to the ideal centre when not.
+        self._observe = observe
         self.centers = get_centers(game)
         self.pickup  = get_pickup(game)
         self.capture = get_capture(game)
         self.dim     = get_dim(game)
         self.conv    = CoordConverter(self.dim)
 
+    def pick_coord(self, cell_index: int):
+        """Observed position of the piece if vision has it, else the ideal centre."""
+        if self._observe is not None:
+            seen = self._observe(cell_index)
+            if seen is not None:
+                return seen
+        return self.centers[cell_index]
+
 
 class Type1(BaseType):
     """Place: pick from off-board stack, place at target cell."""
-    def __init__(self, game, seq):
-        super().__init__(game, seq)
+    def __init__(self, game, seq, observe=None):
+        super().__init__(game, seq, observe)
         self.counter = 0
 
     async def process_move(self, move: str, positions=None) -> bool:
@@ -138,11 +148,11 @@ class Type2(BaseType):
         start_pos, end_pos = positions
         if start_pos[end_index] != end_pos[end_index] and start_pos[end_index] != '-':
             ok = await self.seq.pick_and_place(
-                self.conv, self.centers[end_index], self.capture)
+                self.conv, self.pick_coord(end_index), self.capture)
             return ok and await self.seq.pick_and_place(
-                self.conv, self.centers[start_index], self.centers[end_index])
+                self.conv, self.pick_coord(start_index), self.centers[end_index])
         return await self.seq.pick_and_place(
-            self.conv, self.centers[start_index], self.centers[end_index])
+            self.conv, self.pick_coord(start_index), self.centers[end_index])
 
 
 class Type4(BaseType):
@@ -152,7 +162,7 @@ class Type4(BaseType):
         start_index = int(parts[1])
         end_index   = int(parts[2])
         return await self.seq.pick_and_place(
-            self.conv, self.centers[start_index], self.centers[end_index])
+            self.conv, self.pick_coord(start_index), self.centers[end_index])
 
 
 class Type6(BaseType):
@@ -162,7 +172,7 @@ class Type6(BaseType):
         start_index = int(parts[1])
         end_index   = int(parts[2])
         return await self.seq.pick_and_place(
-            self.conv, self.centers[start_index], self.centers[end_index])
+            self.conv, self.pick_coord(start_index), self.centers[end_index])
 
 
 class Type7(BaseType):
@@ -174,11 +184,11 @@ class Type7(BaseType):
         start_pos, end_pos = positions
         if start_pos[end_index] != end_pos[end_index] and start_pos[end_index] != '-':
             ok = await self.seq.pick_and_place(
-                self.conv, self.centers[end_index], self.capture)
+                self.conv, self.pick_coord(end_index), self.capture)
             return ok and await self.seq.pick_and_place(
-                self.conv, self.centers[start_index], self.centers[end_index])
+                self.conv, self.pick_coord(start_index), self.centers[end_index])
         return await self.seq.pick_and_place(
-            self.conv, self.centers[start_index], self.centers[end_index])
+            self.conv, self.pick_coord(start_index), self.centers[end_index])
 
 
 _GAME_TYPES = {
@@ -222,10 +232,11 @@ class RobotControl(Node):
             callback_group=cb_group,
         )
 
-        # Latest board occupancy from vision_node — logged before each move
+        # Latest observation from vision_node.
         self._board_state: str = ''
+        self._piece_cells: dict = {}   # cell_index -> PieceDetection
         self.create_subscription(
-            String, '/vision/board_state', self._on_board_state, 10,
+            BoardState, '/vision/board_state', self._on_board_state, 10,
             callback_group=cb_group)
 
         self._seq           = MotionSequencer(self._arm_client, self._gripper_client)
@@ -234,8 +245,23 @@ class RobotControl(Node):
 
         self.get_logger().info('RobotControl ready')
 
-    def _on_board_state(self, msg: String):
-        self._board_state = msg.data
+    def _on_board_state(self, msg: BoardState):
+        self._board_state = msg.occupancy
+        self._piece_cells = {d.cell_index: d for d in msg.pieces
+                             if d.cell_index >= 0}
+
+    def observed_cell(self, cell_index: int):
+        """Where vision actually sees the piece in this cell, in board units.
+
+        Returns [x, y] in the same space as centers.py, or None if vision has
+        not seen a piece there. Used to correct PICK coordinates only — placement
+        always targets the ideal cell centre, which is fixed and calibrated
+        (EECS-2025-128 section 3.4).
+        """
+        d = self._piece_cells.get(cell_index)
+        if d is None:
+            return None
+        return [d.board_x, d.board_y]
 
     def _get_game_instance(self, game_id: str):
         if self._current_game != game_id:
@@ -243,7 +269,7 @@ class RobotControl(Node):
             if cls is None:
                 self.get_logger().error(f'Unknown game: {game_id}')
                 return None
-            self._game_instance = cls(game_id, self._seq)
+            self._game_instance = cls(game_id, self._seq, self.observed_cell)
             self._current_game  = game_id
         return self._game_instance
 

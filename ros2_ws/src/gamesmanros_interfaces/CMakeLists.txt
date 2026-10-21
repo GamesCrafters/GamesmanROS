@@ -8,6 +8,8 @@ find_package(std_msgs REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/GameState.msg"
+  "msg/PieceDetection.msg"
+  "msg/BoardState.msg"
   "action/MoveArm.action"
   "action/MoveGripper.action"
   "action/ExecuteMove.action"

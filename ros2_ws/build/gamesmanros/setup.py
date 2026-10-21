@@ -1,1 +1,0 @@
-/ws/src/gamesmanros/setup.py

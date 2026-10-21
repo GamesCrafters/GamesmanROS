@@ -1,1 +1,0 @@
-/ws/src/gamesmanros_interfaces/msg/GameState.msg

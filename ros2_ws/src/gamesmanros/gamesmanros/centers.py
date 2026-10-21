@@ -1,9 +1,26 @@
 """
-Board center coordinates in SVG space for each game.
+Board cell coordinates in SVG space for each game.
 
-Coordinates are normalized so the board fits within the robot's reachable area.
-Max values are board_dim in each axis; the RobotControl class applies the
-scaling and offset to convert to real-world meters.
+Coordinates are in RAW CELL UNITS, not normalised. A cell centre sits at
+k + 0.5, so a d-cell-wide board runs from 0.5 to d - 0.5. RobotControl applies
+scaling and offset to convert these to real-world metres.
+
+  dim  is the width of the area the ARM MUST REACH ACROSS, measured in cells
+       — NOT the size of the playing grid.
+
+Those two differ for any game with off-board zones. Dodgem and dinododgem both
+have an exit row along the top and an exit column down the right side, so their
+footprint is one cell wider and one cell taller than the grid pieces play on:
+
+       dodgem      3x3 play area  + exits  ->  dim = 4
+       dinododgem  5x5 play area  + exits  ->  dim = 6
+
+Getting this wrong mis-scales every square on the board, because the conversion
+uses scaling = BOARD_SIZE_MM / dim. Declaring dodgem as 3 made the arm treat a
+200 mm table as a 150 mm one.
+
+test/test_board_dimensions.py checks this invariant for every game and lists the
+entries still known to be wrong.
 """
 
 import math
@@ -26,12 +43,14 @@ _centers = {
     "joust": [[0.5+col, 0.5+row] for row in range(4) for col in range(4)],
 }
 
+# Width in cells of the area the arm reaches across — playing grid PLUS any
+# off-board exit row/column. See the module docstring.
 _dim = {
     "1dchess":       8,
     "allqueenschess": 5,
     "dawsonschess":  5,
     "dao":           4,
-    "dodgem":        3,
+    "dodgem":        4,   # 3x3 play area + exit row/column
     "dinododgem":    6,
     "jan":           3,
     "joust":         4,

@@ -1,1 +1,0 @@
-/ws/build/gamesmanros_interfaces/rosidl_generator_py/gamesmanros_interfaces/action/_execute_move.py

@@ -1,1 +1,0 @@
-/ws/build/gamesmanros_interfaces/rosidl_generator_cpp/gamesmanros_interfaces/action/detail/move_arm__type_support.hpp

@@ -1,1 +1,0 @@
-/ws/build/gamesmanros_interfaces/rosidl_generator_py/gamesmanros_interfaces/msg/_game_state.py

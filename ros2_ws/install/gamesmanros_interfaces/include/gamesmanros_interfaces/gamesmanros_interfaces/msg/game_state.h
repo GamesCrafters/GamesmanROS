@@ -1,1 +1,0 @@
-/ws/build/gamesmanros_interfaces/rosidl_generator_c/gamesmanros_interfaces/msg/game_state.h

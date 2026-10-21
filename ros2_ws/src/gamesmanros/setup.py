@@ -27,6 +27,8 @@ setup(
             'gripper_controller = gamesmanros.gripper_controller:main',
             'joint_state_bridge = gamesmanros.joint_state_bridge:main',
             'vision_node = gamesmanros.vision_node:main',
+            'mock_hardware = gamesmanros.mock_hardware:main',
+            'reach_sweep = gamesmanros.reach_sweep:main',
         ],
     },
 )

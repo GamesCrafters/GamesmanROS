@@ -1,1 +1,0 @@
-/ws/build/gamesmanros_interfaces/rosidl_generator_c/gamesmanros_interfaces/action/detail/move_gripper__struct.h

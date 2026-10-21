@@ -1,1 +1,0 @@
-/ws/build/gamesmanros_interfaces/rosidl_typesupport_introspection_c/gamesmanros_interfaces/msg/detail/game_state__rosidl_typesupport_introspection_c.h
