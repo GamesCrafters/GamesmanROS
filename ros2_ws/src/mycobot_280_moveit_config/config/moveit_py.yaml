@@ -1,0 +1,20 @@
+# Settings for arm_controller's MoveItPy instance (loaded by demo.launch.py's
+# moveit_parameters(); the pipeline list lives there).
+planning_scene_monitor_options:
+  name: planning_scene_monitor
+  robot_description: robot_description
+  joint_state_topic: /joint_states
+  attached_collision_object_topic: /moveit_cpp/planning_scene_monitor
+  publish_planning_scene_topic: /moveit_cpp/publish_planning_scene
+  monitored_planning_scene_topic: /moveit_cpp/monitored_planning_scene
+  wait_for_initial_state_timeout: 10.0
+
+# Default request parameters. arm_controller loads these, then overrides the pipeline,
+# planner id and scaling factors per planner (LIN_* / OMPL_* constants in arm_controller.py).
+plan_request_params:
+  planning_attempts: 1
+  planning_pipeline: ompl
+  planner_id: RRTConnectkConfigDefault
+  planning_time: 1.0
+  max_velocity_scaling_factor: 0.3
+  max_acceleration_scaling_factor: 0.3

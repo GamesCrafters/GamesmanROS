@@ -36,6 +36,7 @@ LIFT_Z_MM     = 185.0
 class CoordConverter:
     def __init__(self, dim: int):
         self._dim     = dim
+        self.dim      = dim        # public; scene.py sizes the board from it
         self.scaling  = BOARD_SIZE_MM / dim
         self.x_offset = BOARD_SIZE_MM / 2 + 50.0
         self.y_offset = Y_OFFSET_MM

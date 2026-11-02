@@ -2,9 +2,16 @@
 MoveIt 2 demo for the MyCobot 280 on mock hardware (no robot needed).
 
 Starts: robot_state_publisher, ros2_control (mock_components) with
-joint_state_broadcaster + joint_trajectory_controller, move_group (OMPL), RViz.
+joint_state_broadcaster + joint_trajectory_controller, move_group, RViz.
+
+Two planning pipelines are enabled:
+  ompl                             joint-space planning (RRTConnect) — fallback
+  pilz_industrial_motion_planner   straight-line LIN planning — used first
 
   ros2 launch mycobot_280_moveit_config demo.launch.py
+
+moveit_parameters() is shared: gamesmanros.launch.py loads this file and passes
+the same parameters to arm_controller's MoveItPy instance.
 """
 
 import os
@@ -16,6 +23,9 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 
 PKG = 'mycobot_280_moveit_config'
+
+OMPL_PIPELINE = 'ompl'
+PILZ_PIPELINE = 'pilz_industrial_motion_planner'
 
 
 def _path(*parts):
@@ -32,7 +42,8 @@ def _load_text(*parts):
         return f.read()
 
 
-def generate_launch_description():
+def moveit_parameters():
+    """Every MoveIt parameter a node needs to plan and execute, as launch dicts."""
     robot_description = {
         'robot_description': xacro.process_file(
             _path('config', 'mycobot.urdf.xacro')).toxml()
@@ -43,13 +54,18 @@ def generate_launch_description():
     robot_description_kinematics = {
         'robot_description_kinematics': _load_yaml('config', 'kinematics.yaml')
     }
-    robot_description_planning = {
-        'robot_description_planning': _load_yaml('config', 'joint_limits.yaml')
-    }
 
-    # OMPL is the default (and only) planning pipeline.
-    ompl_planning_pipeline_config = {
-        'move_group': _load_yaml('config', 'ompl_planning.yaml')
+    # Joint limits + Pilz Cartesian limits share one parameter namespace.
+    planning_limits = _load_yaml('config', 'joint_limits.yaml')
+    planning_limits.update(_load_yaml('config', 'pilz_cartesian_limits.yaml'))
+    robot_description_planning = {'robot_description_planning': planning_limits}
+
+    # Each pipeline's settings live under a namespace named after the pipeline.
+    planning_pipelines = {
+        'planning_pipelines': {'pipeline_names': [OMPL_PIPELINE, PILZ_PIPELINE]},
+        'default_planning_pipeline': OMPL_PIPELINE,
+        OMPL_PIPELINE: _load_yaml('config', 'ompl_planning.yaml'),
+        PILZ_PIPELINE: _load_yaml('config', 'pilz_planning.yaml'),
     }
 
     moveit_controllers = {
@@ -70,6 +86,23 @@ def generate_launch_description():
         'publish_state_updates': True,
         'publish_transforms_updates': True,
     }
+
+    return [
+        robot_description,
+        robot_description_semantic,
+        robot_description_kinematics,
+        robot_description_planning,
+        planning_pipelines,
+        moveit_controllers,
+        trajectory_execution,
+        planning_scene_monitor_parameters,
+        _load_yaml('config', 'moveit_py.yaml'),   # MoveItPy; harmless to move_group
+    ]
+
+
+def generate_launch_description():
+    params = moveit_parameters()
+    robot_description = params[0]
 
     robot_state_publisher = Node(
         package='robot_state_publisher',
@@ -103,16 +136,7 @@ def generate_launch_description():
         package='moveit_ros_move_group',
         executable='move_group',
         output='screen',
-        parameters=[
-            robot_description,
-            robot_description_semantic,
-            robot_description_kinematics,
-            robot_description_planning,
-            ompl_planning_pipeline_config,
-            trajectory_execution,
-            moveit_controllers,
-            planning_scene_monitor_parameters,
-        ],
+        parameters=params,
     )
 
     rviz = Node(
@@ -121,13 +145,7 @@ def generate_launch_description():
         name='rviz2',
         output='log',
         arguments=['-d', _path('config', 'moveit.rviz')],
-        parameters=[
-            robot_description,
-            robot_description_semantic,
-            robot_description_kinematics,
-            robot_description_planning,
-            ompl_planning_pipeline_config,
-        ],
+        parameters=params[:5],     # description, semantic, kinematics, limits, pipelines
     )
 
     return LaunchDescription([

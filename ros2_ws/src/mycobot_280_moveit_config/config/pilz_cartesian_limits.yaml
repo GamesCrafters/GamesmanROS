@@ -1,0 +1,8 @@
+# Cartesian limits for Pilz LIN. Merged into robot_description_planning by
+# demo.launch.py. Deceleration must be negative.
+# TODO: tune on the real arm — these are deliberately slow (SI units: m/s, rad/s).
+cartesian_limits:
+  max_trans_vel: 0.25
+  max_trans_acc: 0.5
+  max_trans_dec: -0.5
+  max_rot_vel: 1.0

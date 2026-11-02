@@ -3,7 +3,9 @@ GamesmanROS launch file.
 
 Bringup order:
   1. joint_state_bridge  — runs on Pi; bridges MyCobot degrees → /joint_states
-  2. MoveIt 2            — loaded separately via moveit launch (not here)
+  2. MoveIt 2            — ros2_control + move_group + RViz via
+                           `ros2 launch mycobot_280_moveit_config demo.launch.py` (not here);
+                           arm_controller's own MoveItPy params are loaded below
   3. arm_controller      — MoveIt 2 motion action server
   4. gripper_controller  — gripper action server
   5. vision_node         — AR tag TF2 listener (optional, set vision:=true)
@@ -16,11 +18,29 @@ Usage:
   ros2 launch gamesmanros gamesmanros.launch.py game_id:=dao
 """
 
+import importlib.util
+import os
+
+from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, GroupAction
 from launch.conditions import IfCondition
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node, LifecycleNode
+
+
+def _moveit_parameters():
+    """MoveIt parameters for arm_controller's MoveItPy instance.
+
+    Loaded from mycobot_280_moveit_config's demo.launch.py so that move_group and
+    arm_controller are always configured identically (both pipelines: ompl + pilz).
+    """
+    path = os.path.join(get_package_share_directory('mycobot_280_moveit_config'),
+                        'launch', 'demo.launch.py')
+    spec = importlib.util.spec_from_file_location('mycobot_280_demo_launch', path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.moveit_parameters()
 
 
 def generate_launch_description():
@@ -47,6 +67,7 @@ def generate_launch_description():
         executable='arm_controller',
         name='arm_controller',
         output='screen',
+        parameters=_moveit_parameters() + [{'game_id': game_id}],
     )
 
     gripper_controller = Node(

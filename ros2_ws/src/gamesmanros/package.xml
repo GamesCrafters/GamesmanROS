@@ -16,6 +16,8 @@
   <depend>tf2_ros</depend>
   <depend>tf_transformations</depend>
   <depend>moveit_msgs</depend>
+  <depend>shape_msgs</depend>
+  <exec_depend>mycobot_280_moveit_config</exec_depend>
   <depend>gamesmanros_interfaces</depend>
 
   <export>
