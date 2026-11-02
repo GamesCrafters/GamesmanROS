@@ -51,7 +51,7 @@ class GripperController(Node):
         goal_handle.publish_feedback(feedback)
 
         msg = MycobotGripperStatus()
-        msg.Status = 1 if open_gripper else 0
+        msg.status = open_gripper
         self._pub.publish(msg)
 
         # Hardware needs time to actuate; no need to spam publishes

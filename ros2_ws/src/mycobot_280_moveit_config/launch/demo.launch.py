@@ -9,6 +9,12 @@ Two planning pipelines are enabled:
   pilz_industrial_motion_planner   straight-line LIN planning — used first
 
   ros2 launch mycobot_280_moveit_config demo.launch.py
+  ros2 launch mycobot_280_moveit_config demo.launch.py hardware:=true   # real arm
+
+With hardware:=true the mock ros2_control stack is NOT started: the real arm's
+driver (mycobot_topics) publishes /joint_states via joint_state_bridge, and
+joint_trajectory serves the follow_joint_trajectory action (both start from
+gamesmanros.launch.py hardware:=true).
 
 moveit_parameters() is shared: gamesmanros.launch.py loads this file and passes
 the same parameters to arm_controller's MoveItPy instance.
@@ -20,6 +26,9 @@ import xacro
 import yaml
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument
+from launch.conditions import UnlessCondition
+from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 
 PKG = 'mycobot_280_moveit_config'
@@ -76,9 +85,16 @@ def moveit_parameters():
     }
     trajectory_execution = {
         'moveit_manage_controllers': True,
+        # MoveIt aborts a trajectory that runs longer than its planned duration x scaling
+        # + margin. On the real arm joint_trajectory deliberately waits for the arm to
+        # arrive, which routinely exceeds that, so the monitor is off (joint_trajectory
+        # bounds the wait itself with `settle_timeout`).
+        'trajectory_execution.execution_duration_monitoring': False,
         'trajectory_execution.allowed_execution_duration_scaling': 1.2,
         'trajectory_execution.allowed_goal_duration_margin': 0.5,
-        'trajectory_execution.allowed_start_tolerance': 0.01,
+        # 0.01 rad is tighter than a real servo arm holds its pose (sag, backlash,
+        # 4 Hz joint states), which makes MoveIt refuse to start a trajectory.
+        'trajectory_execution.allowed_start_tolerance': 0.05,
     }
     planning_scene_monitor_parameters = {
         'publish_planning_scene': True,
@@ -101,6 +117,11 @@ def moveit_parameters():
 
 
 def generate_launch_description():
+    hardware_arg = DeclareLaunchArgument(
+        'hardware', default_value='false',
+        description='true = real arm: do not start the mock ros2_control stack')
+    mock_only = UnlessCondition(LaunchConfiguration('hardware'))
+
     params = moveit_parameters()
     robot_description = params[0]
 
@@ -116,6 +137,7 @@ def generate_launch_description():
         executable='ros2_control_node',
         output='both',
         parameters=[robot_description, _path('config', 'ros2_controllers.yaml')],
+        condition=mock_only,
     )
 
     joint_state_broadcaster_spawner = Node(
@@ -123,6 +145,7 @@ def generate_launch_description():
         executable='spawner',
         arguments=['joint_state_broadcaster', '--controller-manager', '/controller_manager'],
         output='screen',
+        condition=mock_only,
     )
 
     joint_trajectory_controller_spawner = Node(
@@ -130,6 +153,7 @@ def generate_launch_description():
         executable='spawner',
         arguments=['joint_trajectory_controller', '--controller-manager', '/controller_manager'],
         output='screen',
+        condition=mock_only,
     )
 
     move_group = Node(
@@ -149,6 +173,7 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
+        hardware_arg,
         robot_state_publisher,
         ros2_control_node,
         joint_state_broadcaster_spawner,

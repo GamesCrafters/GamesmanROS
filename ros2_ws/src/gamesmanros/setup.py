@@ -29,6 +29,8 @@ setup(
             'vision_node = gamesmanros.vision_node:main',
             'mock_hardware = gamesmanros.mock_hardware:main',
             'reach_sweep = gamesmanros.reach_sweep:main',
+            'mycobot_topics = gamesmanros.mycobot_topics:main',
+            'joint_trajectory = gamesmanros.joint_trajectory:main',
         ],
     },
 )

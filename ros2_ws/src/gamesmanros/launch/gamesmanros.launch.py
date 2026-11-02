@@ -9,6 +9,7 @@ Bringup order:
   3. arm_controller      — MoveIt 2 motion action server
   4. gripper_controller  — gripper action server
   5. vision_node         — AR tag TF2 listener (optional, set vision:=true)
+     mycobot_topics + joint_trajectory — only with hardware:=true (real arm)
   6. robot_control       — Type class executor, depends on arm + gripper
   7. game_manager        — UWAPI game loop, depends on robot_control
 
@@ -16,6 +17,7 @@ Usage:
   ros2 launch gamesmanros gamesmanros.launch.py
   ros2 launch gamesmanros gamesmanros.launch.py vision:=true
   ros2 launch gamesmanros gamesmanros.launch.py game_id:=dao
+  ros2 launch gamesmanros gamesmanros.launch.py hardware:=true port:=/dev/ttyAMA0 baud:=1000000
 """
 
 import importlib.util
@@ -27,6 +29,7 @@ from launch.actions import DeclareLaunchArgument, GroupAction
 from launch.conditions import IfCondition
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node, LifecycleNode
+from launch_ros.parameter_descriptions import ParameterValue
 
 
 def _moveit_parameters():
@@ -52,7 +55,23 @@ def generate_launch_description():
         'game_id', default_value='',
         description='Pre-select game ID (leave empty for interactive selection)')
 
+    eef_orientation_arg = DeclareLaunchArgument(
+        'eef_orientation', default_value='full',
+        description="arm_controller gripper pose: 'full' (rotated+tilted) or 'down' (straight down)")
+
+    hardware_arg = DeclareLaunchArgument(
+        'hardware', default_value='false',
+        description='Real arm: also start mycobot_topics and joint_trajectory')
+    port_arg = DeclareLaunchArgument(
+        'port', default_value='/dev/ttyUSB0',
+        description='Arm serial port (Pi-mounted arm: /dev/ttyAMA0)')
+    baud_arg = DeclareLaunchArgument(
+        'baud', default_value='115200',
+        description='Arm baud rate (Pi-mounted arm: 1000000)')
+
     vision_enabled = LaunchConfiguration('vision')
+    hardware       = LaunchConfiguration('hardware')
+    eef_orientation = LaunchConfiguration('eef_orientation')
     game_id        = LaunchConfiguration('game_id')
 
     joint_state_bridge = Node(
@@ -67,7 +86,26 @@ def generate_launch_description():
         executable='arm_controller',
         name='arm_controller',
         output='screen',
-        parameters=_moveit_parameters() + [{'game_id': game_id}],
+        parameters=_moveit_parameters() + [{'game_id': game_id,
+                                            'eef_orientation': eef_orientation}],
+    )
+
+    mycobot_topics = Node(
+        package='gamesmanros',
+        executable='mycobot_topics',
+        name='mycobot_topics',
+        output='screen',
+        condition=IfCondition(hardware),
+        parameters=[{'port': LaunchConfiguration('port'),
+                     'baud': ParameterValue(LaunchConfiguration('baud'), value_type=int)}],
+    )
+
+    joint_trajectory = Node(
+        package='gamesmanros',
+        executable='joint_trajectory',
+        name='joint_trajectory',
+        output='screen',
+        condition=IfCondition(hardware),
     )
 
     gripper_controller = Node(
@@ -115,7 +153,13 @@ def generate_launch_description():
     return LaunchDescription([
         vision_arg,
         game_id_arg,
+        hardware_arg,
+        port_arg,
+        baud_arg,
+        eef_orientation_arg,
         joint_state_bridge,
+        mycobot_topics,
+        joint_trajectory,
         arm_controller,
         gripper_controller,
         vision_node,

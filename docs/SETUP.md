@@ -127,11 +127,10 @@ dependency, so much of this work is testable as plain Python.
 
 ## Known issues
 
-**`joint_state_bridge` and `gripper_controller` do not currently import.** Both
-depend on `mycobot_interfaces` (`MycobotAngles`, `MycobotGripperStatus`), which is
-not vendored in this repo and is not a stock ROS 2 package — it comes from
-Elephant Robotics' `mycobot_ros2`. We need to either vendor it or define our own
-equivalent messages. **This blocks any hardware bring-up and is unassigned.**
+**Real-arm bring-up:** see `docs/HARDWARE_BRINGUP.md`. `mycobot_interfaces` is now
+vendored in `ros2_ws/src/` (ported from the ROS 1 `mycobot_communication`), so
+`joint_state_bridge` and `gripper_controller` import. The arm itself is driven by
+`mycobot_topics` (needs `pymycobot`) and `joint_trajectory`.
 
 **NumPy is pinned below 2.0** in the Dockerfile. `tf_transformations` (used by
 `arm_controller`) calls `np.maximum_sctype`, which NumPy 2.0 removed. Do not

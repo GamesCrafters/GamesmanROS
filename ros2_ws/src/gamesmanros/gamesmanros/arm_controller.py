@@ -73,6 +73,9 @@ _q1 = quaternion_from_euler(math.pi, 0, 0)
 _q2 = quaternion_from_euler(0, 0, math.pi / 4)
 _q3 = quaternion_from_euler(-math.pi / 16, 0, 0)
 _EEF_ORIENTATION = quaternion_multiply(quaternion_multiply(_q1, _q2), _q3)  # [x,y,z,w]
+# Straight down only: what the FINAL ROS 1 low_level_controller used, because the
+# rotation + tilt above caused NO_IK_SOLUTION on the outer board rows.
+_EEF_ORIENTATION_DOWN = list(_q1)
 
 
 class ArmController(Node):
@@ -84,6 +87,15 @@ class ArmController(Node):
 
         self.declare_parameter('use_lin_first', True)
         self._use_lin_first = self.get_parameter('use_lin_first').value
+
+        # 'full' = rotated + tilted gripper (above); 'down' = straight down only.
+        self.declare_parameter('eef_orientation', 'full')
+        mode = self.get_parameter('eef_orientation').value
+        if mode not in ('full', 'down'):
+            self.get_logger().warn(f"eef_orientation {mode!r} not 'full' or 'down' — using 'full'")
+            mode = 'full'
+        self._orientation = _EEF_ORIENTATION_DOWN if mode == 'down' else _EEF_ORIENTATION
+        self.get_logger().info(f'end-effector orientation: {mode}')
 
         self._lin_params = self._make_params(LIN_PIPELINE, LIN_PLANNER, LIN_SCALING)
         self._ompl_params = self._make_params(OMPL_PIPELINE, OMPL_PLANNER, OMPL_SCALING)
@@ -174,7 +186,7 @@ class ArmController(Node):
         pose.pose.position.x = x
         pose.pose.position.y = y
         pose.pose.position.z = z
-        q = _EEF_ORIENTATION
+        q = self._orientation
         pose.pose.orientation.x = round(q[0], 6)
         pose.pose.orientation.y = round(q[1], 6)
         pose.pose.orientation.z = round(q[2], 6)

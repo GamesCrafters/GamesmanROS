@@ -32,17 +32,9 @@ done
 echo
 echo "3. node imports"
 for m in centers robot_control game_manager vision_node \
-         mock_hardware reach_sweep arm_controller; do
+         mock_hardware reach_sweep arm_controller scene \
+         joint_state_bridge gripper_controller mycobot_topics joint_trajectory; do
   python3 -c "import gamesmanros.$m" 2>/dev/null && ok "$m" || bad "$m"
-done
-# Known blocked: these import mycobot_interfaces, which is not vendored yet.
-# Delete this block once that package exists and fold them into the loop above.
-for m in joint_state_bridge gripper_controller; do
-  if python3 -c "import gamesmanros.$m" 2>/dev/null; then
-    echo "  NOTE  $m now imports — move it into the loop above"
-  else
-    echo "  SKIP  $m (blocked: mycobot_interfaces missing)"
-  fi
 done
 
 echo

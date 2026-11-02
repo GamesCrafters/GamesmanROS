@@ -32,7 +32,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN pip3 install --no-cache-dir \
       "numpy<2" \
       "opencv-contrib-python>=4.7,<6.1" \
-      requests
+      requests \
+      pymycobot
 
 WORKDIR /ws
 

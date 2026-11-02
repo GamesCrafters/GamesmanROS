@@ -1,0 +1,9 @@
+# Joint angle goal for the arm, in DEGREES, with a speed (1-100).
+float32 joint_1
+float32 joint_2
+float32 joint_3
+float32 joint_4
+float32 joint_5
+float32 joint_6
+
+int8 speed
