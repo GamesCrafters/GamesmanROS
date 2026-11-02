@@ -44,7 +44,7 @@ from moveit.planning import MoveItPy, PlanRequestParameters
 
 from gamesmanros_interfaces.action import MoveArm
 
-BASE_FRAME = 'base_link'
+BASE_FRAME = 'g_base'  # root link of mycobot_280_moveit_config's URDF
 LIN_PIPELINE  = 'pilz_industrial_motion_planner'
 LIN_PLANNER   = 'LIN'
 OMPL_PIPELINE = 'ompl'
