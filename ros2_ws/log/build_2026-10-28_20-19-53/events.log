@@ -1,0 +1,1011 @@
+[0.000000] (-) TimerEvent: {}
+[0.001533] (gamesmanros_interfaces) JobQueued: {'identifier': 'gamesmanros_interfaces', 'dependencies': OrderedDict()}
+[0.002654] (mycobot_280_moveit_config) JobQueued: {'identifier': 'mycobot_280_moveit_config', 'dependencies': OrderedDict()}
+[0.003436] (gamesmanros) JobQueued: {'identifier': 'gamesmanros', 'dependencies': OrderedDict([('gamesmanros_interfaces', '/ws/install/gamesmanros_interfaces')])}
+[0.003952] (gamesmanros_interfaces) JobStarted: {'identifier': 'gamesmanros_interfaces'}
+[0.057642] (mycobot_280_moveit_config) JobStarted: {'identifier': 'mycobot_280_moveit_config'}
+[0.095390] (-) TimerEvent: {}
+[0.130566] (gamesmanros_interfaces) JobProgress: {'identifier': 'gamesmanros_interfaces', 'progress': 'cmake'}
+[0.196422] (-) TimerEvent: {}
+[0.205047] (gamesmanros_interfaces) JobProgress: {'identifier': 'gamesmanros_interfaces', 'progress': 'build'}
+[0.207771] (gamesmanros_interfaces) Command: {'cmd': ['/usr/bin/cmake', '--build', '/ws/build/gamesmanros_interfaces', '--', '-j22', '-l22'], 'cwd': '/ws/build/gamesmanros_interfaces', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('HOSTNAME', '74b792876106'), ('SHLVL', '1'), ('LIBGL_ALWAYS_SOFTWARE', '1'), ('LD_LIBRARY_PATH', '/ws/install/gamesmanros_interfaces/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', 'host.docker.internal:0.0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', '0'), ('AMENT_PREFIX_PATH', '/ws/install/mycobot_280_moveit_config:/ws/install/gamesmanros:/ws/install/gamesmanros_interfaces:/opt/ros/humble'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/ws/build/gamesmanros_interfaces'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/ws/build/gamesmanros:/ws/install/gamesmanros/lib/python3.10/site-packages:/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/ws/install/mycobot_280_moveit_config:/ws/install/gamesmanros_interfaces:/ws/install/gamesmanros:/opt/ros/humble')]), 'shell': False}
+[0.253256] (mycobot_280_moveit_config) JobProgress: {'identifier': 'mycobot_280_moveit_config', 'progress': 'cmake'}
+[0.283620] (mycobot_280_moveit_config) JobProgress: {'identifier': 'mycobot_280_moveit_config', 'progress': 'build'}
+[0.285887] (mycobot_280_moveit_config) Command: {'cmd': ['/usr/bin/cmake', '--build', '/ws/build/mycobot_280_moveit_config', '--', '-j22', '-l22'], 'cwd': '/ws/build/mycobot_280_moveit_config', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('HOSTNAME', '74b792876106'), ('SHLVL', '1'), ('LIBGL_ALWAYS_SOFTWARE', '1'), ('LD_LIBRARY_PATH', '/ws/install/gamesmanros_interfaces/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', 'host.docker.internal:0.0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', '0'), ('AMENT_PREFIX_PATH', '/ws/install/mycobot_280_moveit_config:/ws/install/gamesmanros:/ws/install/gamesmanros_interfaces:/opt/ros/humble'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/ws/build/mycobot_280_moveit_config'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/ws/build/gamesmanros:/ws/install/gamesmanros/lib/python3.10/site-packages:/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/ws/install/mycobot_280_moveit_config:/ws/install/gamesmanros_interfaces:/ws/install/gamesmanros:/opt/ros/humble')]), 'shell': False}
+[0.311109] (-) TimerEvent: {}
+[0.412467] (-) TimerEvent: {}
+[0.513454] (-) TimerEvent: {}
+[0.615366] (-) TimerEvent: {}
+[0.716458] (-) TimerEvent: {}
+[0.818452] (-) TimerEvent: {}
+[0.909363] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.919383] (-) TimerEvent: {}
+[1.021400] (-) TimerEvent: {}
+[1.123380] (-) TimerEvent: {}
+[1.163394] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[1.210072] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[1.224456] (-) TimerEvent: {}
+[1.327395] (-) TimerEvent: {}
+[1.373865] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[1.428367] (-) TimerEvent: {}
+[1.530415] (-) TimerEvent: {}
+[1.595411] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.1 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[1.628016] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.630992] (-) TimerEvent: {}
+[1.634175] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[1.731489] (-) TimerEvent: {}
+[1.811454] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.832485] (-) TimerEvent: {}
+[1.853025] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Found builtin_interfaces: 1.2.3 (/opt/ros/humble/share/builtin_interfaces/cmake)\n'}
+[1.879933] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Found std_msgs: 4.9.2 (/opt/ros/humble/share/std_msgs/cmake)\n'}
+[1.933410] (-) TimerEvent: {}
+[2.039418] (-) TimerEvent: {}
+[2.142373] (-) TimerEvent: {}
+[2.232348] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Configuring done\n'}
+[2.243352] (-) TimerEvent: {}
+[2.344427] (-) TimerEvent: {}
+[2.446625] (-) TimerEvent: {}
+[2.548446] (-) TimerEvent: {}
+[2.649432] (-) TimerEvent: {}
+[2.751401] (-) TimerEvent: {}
+[2.853435] (-) TimerEvent: {}
+[2.859564] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Generating done\n'}
+[2.954410] (-) TimerEvent: {}
+[3.055443] (-) TimerEvent: {}
+[3.157491] (-) TimerEvent: {}
+[3.200919] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Build files have been written to: /ws/build/mycobot_280_moveit_config\n'}
+[3.258451] (-) TimerEvent: {}
+[3.359419] (-) TimerEvent: {}
+[3.377412] (mycobot_280_moveit_config) CommandEnded: {'returncode': 0}
+[3.390567] (mycobot_280_moveit_config) JobProgress: {'identifier': 'mycobot_280_moveit_config', 'progress': 'install'}
+[3.460387] (-) TimerEvent: {}
+[3.503363] (mycobot_280_moveit_config) Command: {'cmd': ['/usr/bin/cmake', '--install', '/ws/build/mycobot_280_moveit_config'], 'cwd': '/ws/build/mycobot_280_moveit_config', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('HOSTNAME', '74b792876106'), ('SHLVL', '1'), ('LIBGL_ALWAYS_SOFTWARE', '1'), ('LD_LIBRARY_PATH', '/ws/install/gamesmanros_interfaces/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', 'host.docker.internal:0.0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', '0'), ('AMENT_PREFIX_PATH', '/ws/install/mycobot_280_moveit_config:/ws/install/gamesmanros:/ws/install/gamesmanros_interfaces:/opt/ros/humble'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/ws/build/mycobot_280_moveit_config'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/ws/build/gamesmanros:/ws/install/gamesmanros/lib/python3.10/site-packages:/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/ws/install/mycobot_280_moveit_config:/ws/install/gamesmanros_interfaces:/ws/install/gamesmanros:/opt/ros/humble')]), 'shell': False}
+[3.561390] (-) TimerEvent: {}
+[3.589330] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[3.608673] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[3.662421] (-) TimerEvent: {}
+[3.747131] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/config/joint_limits.yaml\n'}
+[3.763532] (-) TimerEvent: {}
+[3.766628] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/config/kinematics.yaml\n'}
+[3.785139] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/config/moveit.rviz\n'}
+[3.805880] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/config/moveit_controllers.yaml\n'}
+[3.820755] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/config/mycobot.srdf\n'}
+[3.843494] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/config/mycobot.urdf.xacro\n'}
+[3.863478] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/config/ompl_planning.yaml\n'}
+[3.865462] (-) TimerEvent: {}
+[3.880476] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/config/ros2_controllers.yaml\n'}
+[3.931216] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/launch/demo.launch.py\n'}
+[3.966433] (-) TimerEvent: {}
+[4.068436] (-) TimerEvent: {}
+[4.170419] (-) TimerEvent: {}
+[4.272424] (-) TimerEvent: {}
+[4.338849] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/G_base.dae\n'}
+[4.356503] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint1.dae\n'}
+[4.372885] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint1.png\n'}
+[4.374637] (-) TimerEvent: {}
+[4.391232] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint2.dae\n'}
+[4.407669] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint2.png\n'}
+[4.422732] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint3.dae\n'}
+[4.452733] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint3.png\n'}
+[4.471799] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint4.dae\n'}
+[4.475432] (-) TimerEvent: {}
+[4.489440] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint4.png\n'}
+[4.512144] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint5.dae\n'}
+[4.528865] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint5.png\n'}
+[4.548099] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint6.dae\n'}
+[4.564921] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint6.png\n'}
+[4.576471] (-) TimerEvent: {}
+[4.584276] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint7.dae\n'}
+[4.601153] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/meshes/joint7.png\n'}
+[4.619818] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/ament_index/resource_index/package_run_dependencies/mycobot_280_moveit_config\n'}
+[4.643445] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/ament_index/resource_index/parent_prefix_path/mycobot_280_moveit_config\n'}
+[4.665562] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/environment/ament_prefix_path.sh\n'}
+[4.674419] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/environment/ament_prefix_path.dsv\n'}
+[4.678346] (-) TimerEvent: {}
+[4.694922] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/environment/path.sh\n'}
+[4.702398] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/environment/path.dsv\n'}
+[4.725451] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/local_setup.bash\n'}
+[4.740370] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/local_setup.sh\n'}
+[4.761848] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/local_setup.zsh\n'}
+[4.767802] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/local_setup.dsv\n'}
+[4.779393] (-) TimerEvent: {}
+[4.780202] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Symlinking: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/package.dsv\n'}
+[4.880447] (-) TimerEvent: {}
+[4.892376] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/ament_index/resource_index/packages/mycobot_280_moveit_config\n'}
+[4.919180] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/cmake/mycobot_280_moveit_configConfig.cmake\n'}
+[4.922796] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.10.1 (/opt/ros/humble/share/ament_cmake_ros/cmake)\n'}
+[4.935610] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/cmake/mycobot_280_moveit_configConfig-version.cmake\n'}
+[4.951664] (mycobot_280_moveit_config) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/mycobot_280_moveit_config/share/mycobot_280_moveit_config/package.xml\n'}
+[4.956774] (mycobot_280_moveit_config) CommandEnded: {'returncode': 0}
+[4.981427] (-) TimerEvent: {}
+[5.082435] (-) TimerEvent: {}
+[5.184437] (-) TimerEvent: {}
+[5.285371] (-) TimerEvent: {}
+[5.387360] (-) TimerEvent: {}
+[5.488638] (-) TimerEvent: {}
+[5.539746] (mycobot_280_moveit_config) JobEnded: {'identifier': 'mycobot_280_moveit_config', 'rc': 0}
+[5.589414] (-) TimerEvent: {}
+[5.691421] (-) TimerEvent: {}
+[5.793449] (-) TimerEvent: {}
+[5.895447] (-) TimerEvent: {}
+[5.997463] (-) TimerEvent: {}
+[6.099418] (-) TimerEvent: {}
+[6.200425] (-) TimerEvent: {}
+[6.302473] (-) TimerEvent: {}
+[6.408398] (-) TimerEvent: {}
+[6.514389] (-) TimerEvent: {}
+[6.616438] (-) TimerEvent: {}
+[6.718483] (-) TimerEvent: {}
+[6.821405] (-) TimerEvent: {}
+[6.922418] (-) TimerEvent: {}
+[7.027458] (-) TimerEvent: {}
+[7.129419] (-) TimerEvent: {}
+[7.230403] (-) TimerEvent: {}
+[7.332390] (-) TimerEvent: {}
+[7.434422] (-) TimerEvent: {}
+[7.536389] (-) TimerEvent: {}
+[7.648478] (-) TimerEvent: {}
+[7.754423] (-) TimerEvent: {}
+[7.856379] (-) TimerEvent: {}
+[7.958443] (-) TimerEvent: {}
+[8.059478] (-) TimerEvent: {}
+[8.162421] (-) TimerEvent: {}
+[8.263439] (-) TimerEvent: {}
+[8.365422] (-) TimerEvent: {}
+[8.467443] (-) TimerEvent: {}
+[8.573463] (-) TimerEvent: {}
+[8.675426] (-) TimerEvent: {}
+[8.777436] (-) TimerEvent: {}
+[8.881406] (-) TimerEvent: {}
+[8.982445] (-) TimerEvent: {}
+[9.084429] (-) TimerEvent: {}
+[9.185443] (-) TimerEvent: {}
+[9.287436] (-) TimerEvent: {}
+[9.392030] (-) TimerEvent: {}
+[9.500438] (-) TimerEvent: {}
+[9.626433] (-) TimerEvent: {}
+[9.728434] (-) TimerEvent: {}
+[9.833421] (-) TimerEvent: {}
+[9.939476] (-) TimerEvent: {}
+[10.041465] (-) TimerEvent: {}
+[10.146385] (-) TimerEvent: {}
+[10.253438] (-) TimerEvent: {}
+[10.360454] (-) TimerEvent: {}
+[10.462466] (-) TimerEvent: {}
+[10.564403] (-) TimerEvent: {}
+[10.670387] (-) TimerEvent: {}
+[10.772422] (-) TimerEvent: {}
+[10.874468] (-) TimerEvent: {}
+[10.975478] (-) TimerEvent: {}
+[11.077963] (-) TimerEvent: {}
+[11.120646] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[11.178419] (-) TimerEvent: {}
+[11.280414] (-) TimerEvent: {}
+[11.381440] (-) TimerEvent: {}
+[11.489510] (-) TimerEvent: {}
+[11.593465] (-) TimerEvent: {}
+[11.696464] (-) TimerEvent: {}
+[11.799465] (-) TimerEvent: {}
+[11.903414] (-) TimerEvent: {}
+[12.005417] (-) TimerEvent: {}
+[12.107462] (-) TimerEvent: {}
+[12.209458] (-) TimerEvent: {}
+[12.310465] (-) TimerEvent: {}
+[12.411433] (-) TimerEvent: {}
+[12.513426] (-) TimerEvent: {}
+[12.615429] (-) TimerEvent: {}
+[12.717469] (-) TimerEvent: {}
+[12.819399] (-) TimerEvent: {}
+[12.920450] (-) TimerEvent: {}
+[13.022410] (-) TimerEvent: {}
+[13.124459] (-) TimerEvent: {}
+[13.226485] (-) TimerEvent: {}
+[13.329431] (-) TimerEvent: {}
+[13.430404] (-) TimerEvent: {}
+[13.532433] (-) TimerEvent: {}
+[13.635476] (-) TimerEvent: {}
+[13.737429] (-) TimerEvent: {}
+[13.838481] (-) TimerEvent: {}
+[13.940484] (-) TimerEvent: {}
+[14.043432] (-) TimerEvent: {}
+[14.145428] (-) TimerEvent: {}
+[14.247395] (-) TimerEvent: {}
+[14.349421] (-) TimerEvent: {}
+[14.450511] (-) TimerEvent: {}
+[14.552463] (-) TimerEvent: {}
+[14.667387] (-) TimerEvent: {}
+[14.770415] (-) TimerEvent: {}
+[14.871439] (-) TimerEvent: {}
+[14.972454] (-) TimerEvent: {}
+[15.073400] (-) TimerEvent: {}
+[15.174492] (-) TimerEvent: {}
+[15.276453] (-) TimerEvent: {}
+[15.378394] (-) TimerEvent: {}
+[15.479437] (-) TimerEvent: {}
+[15.581425] (-) TimerEvent: {}
+[15.683441] (-) TimerEvent: {}
+[15.786438] (-) TimerEvent: {}
+[15.889465] (-) TimerEvent: {}
+[15.991510] (-) TimerEvent: {}
+[16.093429] (-) TimerEvent: {}
+[16.195432] (-) TimerEvent: {}
+[16.297485] (-) TimerEvent: {}
+[16.405437] (-) TimerEvent: {}
+[16.512505] (-) TimerEvent: {}
+[16.615464] (-) TimerEvent: {}
+[16.724463] (-) TimerEvent: {}
+[16.826545] (-) TimerEvent: {}
+[16.930498] (-) TimerEvent: {}
+[17.037640] (-) TimerEvent: {}
+[17.139370] (-) TimerEvent: {}
+[17.240420] (-) TimerEvent: {}
+[17.343331] (-) TimerEvent: {}
+[17.445437] (-) TimerEvent: {}
+[17.547394] (-) TimerEvent: {}
+[17.651460] (-) TimerEvent: {}
+[17.752426] (-) TimerEvent: {}
+[17.853457] (-) TimerEvent: {}
+[17.955465] (-) TimerEvent: {}
+[18.057549] (-) TimerEvent: {}
+[18.159438] (-) TimerEvent: {}
+[18.266437] (-) TimerEvent: {}
+[18.371419] (-) TimerEvent: {}
+[18.473453] (-) TimerEvent: {}
+[18.575525] (-) TimerEvent: {}
+[18.677479] (-) TimerEvent: {}
+[18.780416] (-) TimerEvent: {}
+[18.882374] (-) TimerEvent: {}
+[18.984406] (-) TimerEvent: {}
+[19.068404] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[19.084482] (-) TimerEvent: {}
+[19.117388] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[19.159203] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[19.163104] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10\n'}
+[19.165384] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so\n'}
+[19.185409] (-) TimerEvent: {}
+[19.286503] (-) TimerEvent: {}
+[19.388610] (-) TimerEvent: {}
+[19.491459] (-) TimerEvent: {}
+[19.592482] (-) TimerEvent: {}
+[19.694450] (-) TimerEvent: {}
+[19.797463] (-) TimerEvent: {}
+[19.899427] (-) TimerEvent: {}
+[20.000408] (-) TimerEvent: {}
+[20.102429] (-) TimerEvent: {}
+[20.204401] (-) TimerEvent: {}
+[20.306473] (-) TimerEvent: {}
+[20.408405] (-) TimerEvent: {}
+[20.510518] (-) TimerEvent: {}
+[20.611416] (-) TimerEvent: {}
+[20.713430] (-) TimerEvent: {}
+[20.815437] (-) TimerEvent: {}
+[20.917428] (-) TimerEvent: {}
+[21.019461] (-) TimerEvent: {}
+[21.123438] (-) TimerEvent: {}
+[21.226483] (-) TimerEvent: {}
+[21.328430] (-) TimerEvent: {}
+[21.431488] (-) TimerEvent: {}
+[21.544477] (-) TimerEvent: {}
+[21.648455] (-) TimerEvent: {}
+[21.750441] (-) TimerEvent: {}
+[21.852420] (-) TimerEvent: {}
+[21.954495] (-) TimerEvent: {}
+[22.056516] (-) TimerEvent: {}
+[22.158458] (-) TimerEvent: {}
+[22.260426] (-) TimerEvent: {}
+[22.361429] (-) TimerEvent: {}
+[22.463459] (-) TimerEvent: {}
+[22.565369] (-) TimerEvent: {}
+[22.666425] (-) TimerEvent: {}
+[22.768451] (-) TimerEvent: {}
+[22.877421] (-) TimerEvent: {}
+[22.991439] (-) TimerEvent: {}
+[23.094456] (-) TimerEvent: {}
+[23.196432] (-) TimerEvent: {}
+[23.300442] (-) TimerEvent: {}
+[23.401477] (-) TimerEvent: {}
+[23.503428] (-) TimerEvent: {}
+[23.605448] (-) TimerEvent: {}
+[23.707465] (-) TimerEvent: {}
+[23.811425] (-) TimerEvent: {}
+[23.912433] (-) TimerEvent: {}
+[24.015422] (-) TimerEvent: {}
+[24.117453] (-) TimerEvent: {}
+[24.219445] (-) TimerEvent: {}
+[24.321410] (-) TimerEvent: {}
+[24.423437] (-) TimerEvent: {}
+[24.526367] (-) TimerEvent: {}
+[24.628407] (-) TimerEvent: {}
+[24.730439] (-) TimerEvent: {}
+[24.833120] (-) TimerEvent: {}
+[24.939378] (-) TimerEvent: {}
+[25.041508] (-) TimerEvent: {}
+[25.142429] (-) TimerEvent: {}
+[25.243407] (-) TimerEvent: {}
+[25.340052] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Configuring done\n'}
+[25.375022] (-) TimerEvent: {}
+[25.477887] (-) TimerEvent: {}
+[25.581430] (-) TimerEvent: {}
+[25.682444] (-) TimerEvent: {}
+[25.784433] (-) TimerEvent: {}
+[25.887472] (-) TimerEvent: {}
+[25.989483] (-) TimerEvent: {}
+[26.091439] (-) TimerEvent: {}
+[26.192424] (-) TimerEvent: {}
+[26.293446] (-) TimerEvent: {}
+[26.395447] (-) TimerEvent: {}
+[26.497422] (-) TimerEvent: {}
+[26.616463] (-) TimerEvent: {}
+[26.717449] (-) TimerEvent: {}
+[26.818416] (-) TimerEvent: {}
+[26.920394] (-) TimerEvent: {}
+[27.021403] (-) TimerEvent: {}
+[27.122455] (-) TimerEvent: {}
+[27.226981] (-) TimerEvent: {}
+[27.335457] (-) TimerEvent: {}
+[27.437407] (-) TimerEvent: {}
+[27.539423] (-) TimerEvent: {}
+[27.649507] (-) TimerEvent: {}
+[27.752441] (-) TimerEvent: {}
+[27.853444] (-) TimerEvent: {}
+[27.955368] (-) TimerEvent: {}
+[28.056413] (-) TimerEvent: {}
+[28.159434] (-) TimerEvent: {}
+[28.260405] (-) TimerEvent: {}
+[28.362467] (-) TimerEvent: {}
+[28.463440] (-) TimerEvent: {}
+[28.566428] (-) TimerEvent: {}
+[28.668517] (-) TimerEvent: {}
+[28.770418] (-) TimerEvent: {}
+[28.872395] (-) TimerEvent: {}
+[28.973433] (-) TimerEvent: {}
+[29.077500] (-) TimerEvent: {}
+[29.179435] (-) TimerEvent: {}
+[29.280457] (-) TimerEvent: {}
+[29.381444] (-) TimerEvent: {}
+[29.486395] (-) TimerEvent: {}
+[29.589435] (-) TimerEvent: {}
+[29.691412] (-) TimerEvent: {}
+[29.794399] (-) TimerEvent: {}
+[29.898489] (-) TimerEvent: {}
+[30.003404] (-) TimerEvent: {}
+[30.105400] (-) TimerEvent: {}
+[30.207420] (-) TimerEvent: {}
+[30.308443] (-) TimerEvent: {}
+[30.409397] (-) TimerEvent: {}
+[30.510416] (-) TimerEvent: {}
+[30.611430] (-) TimerEvent: {}
+[30.713405] (-) TimerEvent: {}
+[30.816406] (-) TimerEvent: {}
+[30.918580] (-) TimerEvent: {}
+[31.035432] (-) TimerEvent: {}
+[31.137483] (-) TimerEvent: {}
+[31.239481] (-) TimerEvent: {}
+[31.341458] (-) TimerEvent: {}
+[31.442449] (-) TimerEvent: {}
+[31.544487] (-) TimerEvent: {}
+[31.647429] (-) TimerEvent: {}
+[31.749425] (-) TimerEvent: {}
+[31.850435] (-) TimerEvent: {}
+[31.935158] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Generating done\n'}
+[31.951408] (-) TimerEvent: {}
+[32.052525] (-) TimerEvent: {}
+[32.154432] (-) TimerEvent: {}
+[32.260443] (-) TimerEvent: {}
+[32.362444] (-) TimerEvent: {}
+[32.470500] (-) TimerEvent: {}
+[32.572398] (-) TimerEvent: {}
+[32.676672] (-) TimerEvent: {}
+[32.778398] (-) TimerEvent: {}
+[32.881113] (-) TimerEvent: {}
+[32.982433] (-) TimerEvent: {}
+[33.083445] (-) TimerEvent: {}
+[33.190378] (-) TimerEvent: {}
+[33.291441] (-) TimerEvent: {}
+[33.392484] (-) TimerEvent: {}
+[33.494490] (-) TimerEvent: {}
+[33.546212] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Build files have been written to: /ws/build/gamesmanros_interfaces\n'}
+[33.595422] (-) TimerEvent: {}
+[33.696389] (-) TimerEvent: {}
+[33.799532] (-) TimerEvent: {}
+[33.902953] (-) TimerEvent: {}
+[34.010610] (-) TimerEvent: {}
+[34.112458] (-) TimerEvent: {}
+[34.214522] (-) TimerEvent: {}
+[34.316451] (-) TimerEvent: {}
+[34.418428] (-) TimerEvent: {}
+[34.519426] (-) TimerEvent: {}
+[34.620697] (-) TimerEvent: {}
+[34.653132] (gamesmanros_interfaces) StdoutLine: {'line': b'[  1%] Built target gamesmanros_interfaces__rs\n'}
+[34.657567] (gamesmanros_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target gamesmanros_interfaces__rosidl_generator_c\x1b[0m\n'}
+[34.721381] (-) TimerEvent: {}
+[34.823047] (-) TimerEvent: {}
+[34.925438] (-) TimerEvent: {}
+[35.027448] (-) TimerEvent: {}
+[35.028645] (gamesmanros_interfaces) StdoutLine: {'line': b'[  1%] Built target ament_cmake_python_symlink_gamesmanros_interfaces\n'}
+[35.128507] (-) TimerEvent: {}
+[35.213414] (gamesmanros_interfaces) StdoutLine: {'line': b'[  3%] Built target gamesmanros_interfaces__cpp\n'}
+[35.229499] (-) TimerEvent: {}
+[35.331414] (-) TimerEvent: {}
+[35.433450] (-) TimerEvent: {}
+[35.512332] (gamesmanros_interfaces) StdoutLine: {'line': b'[  5%] \x1b[32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_generator_c.dir/rosidl_generator_c/gamesmanros_interfaces/msg/detail/game_state__functions.c.o\x1b[0m\n'}
+[35.536181] (-) TimerEvent: {}
+[35.537048] (gamesmanros_interfaces) StdoutLine: {'line': b'[  7%] \x1b[32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_generator_c.dir/rosidl_generator_c/gamesmanros_interfaces/action/detail/move_arm__functions.c.o\x1b[0m\n'}
+[35.581887] (gamesmanros_interfaces) StdoutLine: {'line': b'[  8%] \x1b[32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_generator_c.dir/rosidl_generator_c/gamesmanros_interfaces/action/detail/move_gripper__functions.c.o\x1b[0m\n'}
+[35.636443] (-) TimerEvent: {}
+[35.737504] (-) TimerEvent: {}
+[35.782789] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 10%] \x1b[32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_generator_c.dir/rosidl_generator_c/gamesmanros_interfaces/action/detail/execute_move__functions.c.o\x1b[0m\n'}
+[35.838500] (-) TimerEvent: {}
+[35.939418] (-) TimerEvent: {}
+[36.040421] (-) TimerEvent: {}
+[36.072531] (gamesmanros_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp\x1b[0m\n'}
+[36.114629] (gamesmanros_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target gamesmanros_interfaces__rosidl_typesupport_introspection_cpp\x1b[0m\n'}
+[36.129924] (gamesmanros_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target gamesmanros_interfaces__rosidl_typesupport_cpp\x1b[0m\n'}
+[36.141465] (-) TimerEvent: {}
+[36.172982] (gamesmanros_interfaces) StdoutLine: {'line': b'running egg_info\n'}
+[36.180906] (gamesmanros_interfaces) StdoutLine: {'line': b'writing gamesmanros_interfaces.egg-info/PKG-INFO\n'}
+[36.193965] (gamesmanros_interfaces) StdoutLine: {'line': b'writing dependency_links to gamesmanros_interfaces.egg-info/dependency_links.txt\n'}
+[36.213160] (gamesmanros_interfaces) StdoutLine: {'line': b'writing top-level names to gamesmanros_interfaces.egg-info/top_level.txt\n'}
+[36.242458] (-) TimerEvent: {}
+[36.294893] (gamesmanros_interfaces) StdoutLine: {'line': b"reading manifest file 'gamesmanros_interfaces.egg-info/SOURCES.txt'\n"}
+[36.343361] (-) TimerEvent: {}
+[36.347676] (gamesmanros_interfaces) StdoutLine: {'line': b"writing manifest file 'gamesmanros_interfaces.egg-info/SOURCES.txt'\n"}
+[36.444417] (-) TimerEvent: {}
+[36.520778] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 10%] Built target ament_cmake_python_build_gamesmanros_interfaces_egg\n'}
+[36.545387] (-) TimerEvent: {}
+[36.569850] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 12%] \x1b[32m\x1b[1mLinking C shared library libgamesmanros_interfaces__rosidl_generator_c.so\x1b[0m\n'}
+[36.646391] (-) TimerEvent: {}
+[36.747402] (-) TimerEvent: {}
+[36.848462] (-) TimerEvent: {}
+[36.950432] (-) TimerEvent: {}
+[37.052468] (-) TimerEvent: {}
+[37.139881] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 14%] Built target gamesmanros_interfaces__rosidl_generator_c\n'}
+[37.153372] (-) TimerEvent: {}
+[37.255518] (-) TimerEvent: {}
+[37.357405] (-) TimerEvent: {}
+[37.459534] (-) TimerEvent: {}
+[37.561427] (-) TimerEvent: {}
+[37.662447] (-) TimerEvent: {}
+[37.764443] (-) TimerEvent: {}
+[37.866520] (-) TimerEvent: {}
+[37.884093] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/gamesmanros_interfaces/action/move_arm__type_support.cpp.o\x1b[0m\n'}
+[37.933891] (gamesmanros_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target gamesmanros_interfaces__rosidl_typesupport_c\x1b[0m\n'}
+[37.967460] (-) TimerEvent: {}
+[37.998114] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 17%] \x1b[32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/gamesmanros_interfaces/action/move_gripper__type_support.cpp.o\x1b[0m\n'}
+[38.068442] (-) TimerEvent: {}
+[38.120914] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 19%] \x1b[32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/gamesmanros_interfaces/action/execute_move__type_support.cpp.o\x1b[0m\n'}
+[38.158748] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 21%] \x1b[32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/gamesmanros_interfaces/action/detail/move_arm__type_support.cpp.o\x1b[0m\n'}
+[38.169495] (-) TimerEvent: {}
+[38.212131] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 23%] \x1b[32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/gamesmanros_interfaces/msg/detail/game_state__type_support.cpp.o\x1b[0m\n'}
+[38.270441] (-) TimerEvent: {}
+[38.357778] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/gamesmanros_interfaces/msg/game_state__type_support.cpp.o\x1b[0m\n'}
+[38.371435] (-) TimerEvent: {}
+[38.395548] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 26%] \x1b[32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/action/detail/dds_fastrtps/move_arm__type_support.cpp.o\x1b[0m\n'}
+[38.442766] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 28%] \x1b[32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/msg/detail/dds_fastrtps/game_state__type_support.cpp.o\x1b[0m\n'}
+[38.472548] (-) TimerEvent: {}
+[38.553835] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/gamesmanros_interfaces/action/detail/execute_move__type_support.cpp.o\x1b[0m\n'}
+[38.564172] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/action/detail/dds_fastrtps/execute_move__type_support.cpp.o\x1b[0m\n'}
+[38.573390] (-) TimerEvent: {}
+[38.604687] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 33%] \x1b[32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/gamesmanros_interfaces/action/detail/move_gripper__type_support.cpp.o\x1b[0m\n'}
+[38.674459] (-) TimerEvent: {}
+[38.679584] (gamesmanros_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target gamesmanros_interfaces__rosidl_typesupport_fastrtps_c\x1b[0m\n'}
+[38.765970] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/gamesmanros_interfaces/action/detail/dds_fastrtps/move_gripper__type_support.cpp.o\x1b[0m\n'}
+[38.775473] (-) TimerEvent: {}
+[38.876500] (-) TimerEvent: {}
+[38.918455] (gamesmanros_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target gamesmanros_interfaces__rosidl_typesupport_introspection_c\x1b[0m\n'}
+[38.977426] (-) TimerEvent: {}
+[39.078468] (-) TimerEvent: {}
+[39.180387] (-) TimerEvent: {}
+[39.281382] (-) TimerEvent: {}
+[39.383453] (-) TimerEvent: {}
+[39.410053] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 37%] \x1b[32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/gamesmanros_interfaces/action/move_arm__type_support.cpp.o\x1b[0m\n'}
+[39.482980] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 39%] \x1b[32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/gamesmanros_interfaces/action/move_gripper__type_support.cpp.o\x1b[0m\n'}
+[39.485563] (-) TimerEvent: {}
+[39.529837] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 41%] \x1b[32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/gamesmanros_interfaces/action/execute_move__type_support.cpp.o\x1b[0m\n'}
+[39.569800] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 42%] \x1b[32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/gamesmanros_interfaces/msg/game_state__type_support.cpp.o\x1b[0m\n'}
+[39.586409] (-) TimerEvent: {}
+[39.687376] (-) TimerEvent: {}
+[39.789428] (-) TimerEvent: {}
+[39.891441] (-) TimerEvent: {}
+[39.909995] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 46%] \x1b[32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/gamesmanros_interfaces/action/detail/move_arm__type_support.c.o\x1b[0m\n'}
+[39.924244] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 46%] \x1b[32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/gamesmanros_interfaces/msg/detail/game_state__type_support.c.o\x1b[0m\n'}
+[39.962803] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/gamesmanros_interfaces/action/detail/execute_move__type_support.c.o\x1b[0m\n'}
+[39.966653] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/gamesmanros_interfaces/action/detail/move_gripper__type_support.c.o\x1b[0m\n'}
+[39.992403] (-) TimerEvent: {}
+[40.096463] (-) TimerEvent: {}
+[40.180840] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 51%] \x1b[32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/gamesmanros_interfaces/msg/detail/game_state__type_support_c.cpp.o\x1b[0m\n'}
+[40.197497] (-) TimerEvent: {}
+[40.298529] (-) TimerEvent: {}
+[40.302037] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 53%] \x1b[32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/gamesmanros_interfaces/action/detail/move_arm__type_support_c.cpp.o\x1b[0m\n'}
+[40.358031] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 55%] \x1b[32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/gamesmanros_interfaces/action/detail/execute_move__type_support_c.cpp.o\x1b[0m\n'}
+[40.399503] (-) TimerEvent: {}
+[40.416072] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 57%] \x1b[32mBuilding CXX object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/gamesmanros_interfaces/action/detail/move_gripper__type_support_c.cpp.o\x1b[0m\n'}
+[40.473123] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 58%] \x1b[32m\x1b[1mLinking CXX shared library libgamesmanros_interfaces__rosidl_typesupport_c.so\x1b[0m\n'}
+[40.500381] (-) TimerEvent: {}
+[40.602428] (-) TimerEvent: {}
+[40.703617] (-) TimerEvent: {}
+[40.806444] (-) TimerEvent: {}
+[40.908440] (-) TimerEvent: {}
+[41.009399] (-) TimerEvent: {}
+[41.111475] (-) TimerEvent: {}
+[41.162223] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 60%] \x1b[32m\x1b[1mLinking C shared library libgamesmanros_interfaces__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[41.212444] (-) TimerEvent: {}
+[41.262184] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 62%] Built target gamesmanros_interfaces__rosidl_typesupport_c\n'}
+[41.313403] (-) TimerEvent: {}
+[41.414397] (-) TimerEvent: {}
+[41.516489] (-) TimerEvent: {}
+[41.618540] (-) TimerEvent: {}
+[41.720387] (-) TimerEvent: {}
+[41.821417] (-) TimerEvent: {}
+[41.924364] (-) TimerEvent: {}
+[41.933913] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 64%] Built target gamesmanros_interfaces__rosidl_typesupport_introspection_c\n'}
+[42.025389] (-) TimerEvent: {}
+[42.127553] (-) TimerEvent: {}
+[42.229477] (-) TimerEvent: {}
+[42.331531] (-) TimerEvent: {}
+[42.433873] (-) TimerEvent: {}
+[42.535424] (-) TimerEvent: {}
+[42.637522] (-) TimerEvent: {}
+[42.739513] (-) TimerEvent: {}
+[42.841483] (-) TimerEvent: {}
+[42.944472] (-) TimerEvent: {}
+[42.951652] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 66%] \x1b[32m\x1b[1mLinking CXX shared library libgamesmanros_interfaces__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[43.045478] (-) TimerEvent: {}
+[43.052431] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 67%] \x1b[32m\x1b[1mLinking CXX shared library libgamesmanros_interfaces__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[43.146480] (-) TimerEvent: {}
+[43.248778] (-) TimerEvent: {}
+[43.352501] (-) TimerEvent: {}
+[43.454774] (-) TimerEvent: {}
+[43.556598] (-) TimerEvent: {}
+[43.658414] (-) TimerEvent: {}
+[43.761494] (-) TimerEvent: {}
+[43.863616] (-) TimerEvent: {}
+[43.965994] (-) TimerEvent: {}
+[44.069435] (-) TimerEvent: {}
+[44.172380] (-) TimerEvent: {}
+[44.223322] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 69%] Built target gamesmanros_interfaces__rosidl_typesupport_cpp\n'}
+[44.273466] (-) TimerEvent: {}
+[44.375454] (-) TimerEvent: {}
+[44.403561] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 71%] Built target gamesmanros_interfaces__rosidl_typesupport_fastrtps_c\n'}
+[44.476456] (-) TimerEvent: {}
+[44.503397] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 73%] \x1b[32m\x1b[1mLinking CXX shared library libgamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[44.559475] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 75%] \x1b[32m\x1b[1mLinking CXX shared library libgamesmanros_interfaces__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[44.577383] (-) TimerEvent: {}
+[44.679543] (-) TimerEvent: {}
+[44.781446] (-) TimerEvent: {}
+[44.882464] (-) TimerEvent: {}
+[44.985990] (-) TimerEvent: {}
+[45.091419] (-) TimerEvent: {}
+[45.193446] (-) TimerEvent: {}
+[45.295449] (-) TimerEvent: {}
+[45.398431] (-) TimerEvent: {}
+[45.503003] (-) TimerEvent: {}
+[45.605439] (-) TimerEvent: {}
+[45.647989] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 76%] Built target gamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp\n'}
+[45.706429] (-) TimerEvent: {}
+[45.796426] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 78%] Built target gamesmanros_interfaces__rosidl_typesupport_introspection_cpp\n'}
+[45.807413] (-) TimerEvent: {}
+[45.908466] (-) TimerEvent: {}
+[46.010425] (-) TimerEvent: {}
+[46.111435] (-) TimerEvent: {}
+[46.176413] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 78%] Built target gamesmanros_interfaces\n'}
+[46.212437] (-) TimerEvent: {}
+[46.314419] (-) TimerEvent: {}
+[46.416404] (-) TimerEvent: {}
+[46.517439] (-) TimerEvent: {}
+[46.619452] (-) TimerEvent: {}
+[46.686703] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 80%] Built target gamesmanros_interfaces__py\n'}
+[46.720392] (-) TimerEvent: {}
+[46.821490] (-) TimerEvent: {}
+[46.922421] (-) TimerEvent: {}
+[46.926657] (gamesmanros_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target gamesmanros_interfaces__rosidl_generator_py\x1b[0m\n'}
+[47.023401] (-) TimerEvent: {}
+[47.127430] (-) TimerEvent: {}
+[47.229394] (-) TimerEvent: {}
+[47.331429] (-) TimerEvent: {}
+[47.432438] (-) TimerEvent: {}
+[47.534416] (-) TimerEvent: {}
+[47.635452] (-) TimerEvent: {}
+[47.737379] (-) TimerEvent: {}
+[47.841403] (-) TimerEvent: {}
+[47.944392] (-) TimerEvent: {}
+[48.050395] (-) TimerEvent: {}
+[48.094246] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 82%] \x1b[32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_generator_py.dir/rosidl_generator_py/gamesmanros_interfaces/msg/_game_state_s.c.o\x1b[0m\n'}
+[48.151372] (-) TimerEvent: {}
+[48.194075] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_generator_py.dir/rosidl_generator_py/gamesmanros_interfaces/action/_move_arm_s.c.o\x1b[0m\n'}
+[48.199809] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 85%] \x1b[32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_generator_py.dir/rosidl_generator_py/gamesmanros_interfaces/action/_move_gripper_s.c.o\x1b[0m\n'}
+[48.252377] (-) TimerEvent: {}
+[48.265821] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 87%] \x1b[32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_generator_py.dir/rosidl_generator_py/gamesmanros_interfaces/action/_execute_move_s.c.o\x1b[0m\n'}
+[48.353402] (-) TimerEvent: {}
+[48.455384] (-) TimerEvent: {}
+[48.556439] (-) TimerEvent: {}
+[48.658447] (-) TimerEvent: {}
+[48.760381] (-) TimerEvent: {}
+[48.864546] (-) TimerEvent: {}
+[48.966399] (-) TimerEvent: {}
+[49.067424] (-) TimerEvent: {}
+[49.169404] (-) TimerEvent: {}
+[49.271390] (-) TimerEvent: {}
+[49.373408] (-) TimerEvent: {}
+[49.467442] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 89%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/gamesmanros_interfaces/libgamesmanros_interfaces__rosidl_generator_py.so\x1b[0m\n'}
+[49.474378] (-) TimerEvent: {}
+[49.575449] (-) TimerEvent: {}
+[49.676474] (-) TimerEvent: {}
+[49.778400] (-) TimerEvent: {}
+[49.880449] (-) TimerEvent: {}
+[49.927997] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 89%] Built target gamesmanros_interfaces__rosidl_generator_py\n'}
+[49.981430] (-) TimerEvent: {}
+[50.083437] (-) TimerEvent: {}
+[50.187421] (-) TimerEvent: {}
+[50.269406] (gamesmanros_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target gamesmanros_interfaces__rosidl_typesupport_introspection_c__pyext\x1b[0m\n'}
+[50.288723] (-) TimerEvent: {}
+[50.290375] (gamesmanros_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target gamesmanros_interfaces__rosidl_typesupport_fastrtps_c__pyext\x1b[0m\n'}
+[50.297019] (gamesmanros_interfaces) StdoutLine: {'line': b'\x1b[35m\x1b[1mConsolidate compiler generated dependencies of target gamesmanros_interfaces__rosidl_typesupport_c__pyext\x1b[0m\n'}
+[50.389396] (-) TimerEvent: {}
+[50.491428] (-) TimerEvent: {}
+[50.592419] (-) TimerEvent: {}
+[50.694418] (-) TimerEvent: {}
+[50.796424] (-) TimerEvent: {}
+[50.898415] (-) TimerEvent: {}
+[51.004382] (-) TimerEvent: {}
+[51.106414] (-) TimerEvent: {}
+[51.169413] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 91%] \x1b[32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/gamesmanros_interfaces/_gamesmanros_interfaces_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[51.207449] (-) TimerEvent: {}
+[51.239489] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 94%] \x1b[32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/gamesmanros_interfaces/_gamesmanros_interfaces_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[51.244066] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 94%] \x1b[32mBuilding C object CMakeFiles/gamesmanros_interfaces__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/gamesmanros_interfaces/_gamesmanros_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[51.308424] (-) TimerEvent: {}
+[51.410418] (-) TimerEvent: {}
+[51.512396] (-) TimerEvent: {}
+[51.613420] (-) TimerEvent: {}
+[51.715411] (-) TimerEvent: {}
+[51.817421] (-) TimerEvent: {}
+[51.919388] (-) TimerEvent: {}
+[52.021848] (-) TimerEvent: {}
+[52.123618] (-) TimerEvent: {}
+[52.225428] (-) TimerEvent: {}
+[52.316385] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 96%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/gamesmanros_interfaces/gamesmanros_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[52.326363] (-) TimerEvent: {}
+[52.428410] (-) TimerEvent: {}
+[52.529442] (-) TimerEvent: {}
+[52.607721] (gamesmanros_interfaces) StdoutLine: {'line': b'[ 98%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/gamesmanros_interfaces/gamesmanros_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[52.630398] (-) TimerEvent: {}
+[52.673791] (gamesmanros_interfaces) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/gamesmanros_interfaces/gamesmanros_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[52.731433] (-) TimerEvent: {}
+[52.833456] (-) TimerEvent: {}
+[52.865030] (gamesmanros_interfaces) StdoutLine: {'line': b'[100%] Built target gamesmanros_interfaces__rosidl_typesupport_c__pyext\n'}
+[52.934394] (-) TimerEvent: {}
+[53.036378] (-) TimerEvent: {}
+[53.108787] (gamesmanros_interfaces) StdoutLine: {'line': b'[100%] Built target gamesmanros_interfaces__rosidl_typesupport_introspection_c__pyext\n'}
+[53.137408] (-) TimerEvent: {}
+[53.158806] (gamesmanros_interfaces) StdoutLine: {'line': b'[100%] Built target gamesmanros_interfaces__rosidl_typesupport_fastrtps_c__pyext\n'}
+[53.238419] (-) TimerEvent: {}
+[53.339429] (-) TimerEvent: {}
+[53.425875] (gamesmanros_interfaces) CommandEnded: {'returncode': 0}
+[53.440382] (-) TimerEvent: {}
+[53.466820] (gamesmanros_interfaces) JobProgress: {'identifier': 'gamesmanros_interfaces', 'progress': 'install'}
+[53.482238] (gamesmanros_interfaces) Command: {'cmd': ['/usr/bin/cmake', '--install', '/ws/build/gamesmanros_interfaces'], 'cwd': '/ws/build/gamesmanros_interfaces', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('HOSTNAME', '74b792876106'), ('SHLVL', '1'), ('LIBGL_ALWAYS_SOFTWARE', '1'), ('LD_LIBRARY_PATH', '/ws/install/gamesmanros_interfaces/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', 'host.docker.internal:0.0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', '0'), ('AMENT_PREFIX_PATH', '/ws/install/mycobot_280_moveit_config:/ws/install/gamesmanros:/ws/install/gamesmanros_interfaces:/opt/ros/humble'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/ws/build/gamesmanros_interfaces'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/ws/build/gamesmanros:/ws/install/gamesmanros/lib/python3.10/site-packages:/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/ws/install/mycobot_280_moveit_config:/ws/install/gamesmanros_interfaces:/ws/install/gamesmanros:/opt/ros/humble')]), 'shell': False}
+[53.541415] (-) TimerEvent: {}
+[53.584469] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[53.595698] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[53.631399] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/ament_index/resource_index/rosidl_interfaces/gamesmanros_interfaces\n'}
+[53.642468] (-) TimerEvent: {}
+[53.744410] (-) TimerEvent: {}
+[53.754241] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__functions.h\n'}
+[53.780579] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__struct.h\n'}
+[53.801816] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__type_support.h\n'}
+[53.821415] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__functions.h\n'}
+[53.839873] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__struct.h\n'}
+[53.845393] (-) TimerEvent: {}
+[53.860912] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__type_support.h\n'}
+[53.892174] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__functions.h\n'}
+[53.911387] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__struct.h\n'}
+[53.929834] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__type_support.h\n'}
+[53.946394] (-) TimerEvent: {}
+[53.949626] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/execute_move.h\n'}
+[53.967443] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/move_arm.h\n'}
+[53.983773] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/move_gripper.h\n'}
+[53.997412] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/board_state.h\n'}
+[54.009970] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/board_state__functions.h\n'}
+[54.027679] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/board_state__struct.h\n'}
+[54.040254] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/board_state__type_support.h\n'}
+[54.047431] (-) TimerEvent: {}
+[54.059435] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__functions.h\n'}
+[54.077945] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__struct.h\n'}
+[54.098435] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__type_support.h\n'}
+[54.106675] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/piece_detection__functions.h\n'}
+[54.119856] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/piece_detection__struct.h\n'}
+[54.137985] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/piece_detection__type_support.h\n'}
+[54.148377] (-) TimerEvent: {}
+[54.167238] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/game_state.h\n'}
+[54.175442] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/piece_detection.h\n'}
+[54.204230] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/rosidl_generator_c__visibility_control.h\n'}
+[54.237746] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/environment/library_path.sh\n'}
+[54.249470] (-) TimerEvent: {}
+[54.251961] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/environment/library_path.dsv\n'}
+[54.328604] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__rosidl_typesupport_fastrtps_c.h\n'}
+[54.350339] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__rosidl_typesupport_fastrtps_c.h\n'}
+[54.352544] (-) TimerEvent: {}
+[54.372350] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__rosidl_typesupport_fastrtps_c.h\n'}
+[54.388909] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/board_state__rosidl_typesupport_fastrtps_c.h\n'}
+[54.407131] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__rosidl_typesupport_fastrtps_c.h\n'}
+[54.415274] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/piece_detection__rosidl_typesupport_fastrtps_c.h\n'}
+[54.444265] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[54.453384] (-) TimerEvent: {}
+[54.517157] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__rosidl_typesupport_introspection_c.h\n'}
+[54.535357] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__rosidl_typesupport_introspection_c.h\n'}
+[54.554435] (-) TimerEvent: {}
+[54.555366] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__rosidl_typesupport_introspection_c.h\n'}
+[54.563660] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/board_state__rosidl_typesupport_introspection_c.h\n'}
+[54.583678] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__rosidl_typesupport_introspection_c.h\n'}
+[54.591635] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/piece_detection__rosidl_typesupport_introspection_c.h\n'}
+[54.610101] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[54.655413] (-) TimerEvent: {}
+[54.719475] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__builder.hpp\n'}
+[54.738486] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__struct.hpp\n'}
+[54.756473] (-) TimerEvent: {}
+[54.757384] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__traits.hpp\n'}
+[54.777015] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__type_support.hpp\n'}
+[54.794440] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__builder.hpp\n'}
+[54.813942] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__struct.hpp\n'}
+[54.834935] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__traits.hpp\n'}
+[54.853739] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__type_support.hpp\n'}
+[54.857423] (-) TimerEvent: {}
+[54.872486] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__builder.hpp\n'}
+[54.896184] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__struct.hpp\n'}
+[54.918152] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__traits.hpp\n'}
+[54.939420] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__type_support.hpp\n'}
+[54.956249] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/execute_move.hpp\n'}
+[54.960535] (-) TimerEvent: {}
+[54.972644] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/move_arm.hpp\n'}
+[54.990113] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/move_gripper.hpp\n'}
+[55.001253] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/board_state.hpp\n'}
+[55.014879] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/board_state__builder.hpp\n'}
+[55.022722] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/board_state__struct.hpp\n'}
+[55.031132] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/board_state__traits.hpp\n'}
+[55.038575] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/board_state__type_support.hpp\n'}
+[55.061395] (-) TimerEvent: {}
+[55.067004] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__builder.hpp\n'}
+[55.085748] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__struct.hpp\n'}
+[55.108653] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__traits.hpp\n'}
+[55.126805] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__type_support.hpp\n'}
+[55.137337] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/piece_detection__builder.hpp\n'}
+[55.152545] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/piece_detection__struct.hpp\n'}
+[55.162373] (-) TimerEvent: {}
+[55.168379] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/piece_detection__traits.hpp\n'}
+[55.183384] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/piece_detection__type_support.hpp\n'}
+[55.211882] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/game_state.hpp\n'}
+[55.222349] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/piece_detection.hpp\n'}
+[55.251488] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[55.263380] (-) TimerEvent: {}
+[55.344309] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[55.364368] (-) TimerEvent: {}
+[55.374464] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[55.409184] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[55.421571] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/board_state__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[55.458656] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[55.465400] (-) TimerEvent: {}
+[55.487698] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/piece_detection__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[55.514433] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[55.566388] (-) TimerEvent: {}
+[55.587355] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/execute_move__rosidl_typesupport_introspection_cpp.hpp\n'}
+[55.607703] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_arm__rosidl_typesupport_introspection_cpp.hpp\n'}
+[55.629933] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/action/detail/move_gripper__rosidl_typesupport_introspection_cpp.hpp\n'}
+[55.639940] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/board_state__rosidl_typesupport_introspection_cpp.hpp\n'}
+[55.666001] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/game_state__rosidl_typesupport_introspection_cpp.hpp\n'}
+[55.667381] (-) TimerEvent: {}
+[55.674164] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/include/gamesmanros_interfaces/gamesmanros_interfaces/msg/detail/piece_detection__rosidl_typesupport_introspection_cpp.hpp\n'}
+[55.702436] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/environment/pythonpath.sh\n'}
+[55.716714] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/environment/pythonpath.dsv\n'}
+[55.748325] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces-0.1.0-py3.10.egg-info/PKG-INFO\n'}
+[55.764509] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces-0.1.0-py3.10.egg-info/SOURCES.txt\n'}
+[55.768100] (-) TimerEvent: {}
+[55.790478] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces-0.1.0-py3.10.egg-info/dependency_links.txt\n'}
+[55.799461] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces-0.1.0-py3.10.egg-info/top_level.txt\n'}
+[55.843095] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/__init__.py\n'}
+[55.861943] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/_gamesmanros_interfaces_s.ep.rosidl_typesupport_c.c\n'}
+[55.868387] (-) TimerEvent: {}
+[55.880044] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/_gamesmanros_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[55.901258] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/_gamesmanros_interfaces_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[55.922106] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/__init__.py\n'}
+[55.941663] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/_execute_move.py\n'}
+[55.961509] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/_execute_move_s.c\n'}
+[55.969408] (-) TimerEvent: {}
+[55.979632] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/_move_arm.py\n'}
+[55.996250] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/_move_arm_s.c\n'}
+[56.016493] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/_move_gripper.py\n'}
+[56.034827] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/_move_gripper_s.c\n'}
+[56.063116] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/gamesmanros_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[56.070427] (-) TimerEvent: {}
+[56.088333] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/gamesmanros_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[56.111848] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/gamesmanros_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[56.130338] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/libgamesmanros_interfaces__rosidl_generator_py.so\n'}
+[56.156626] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/msg/__init__.py\n'}
+[56.165765] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/msg/_board_state.py\n'}
+[56.171355] (-) TimerEvent: {}
+[56.180210] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/msg/_board_state_s.c\n'}
+[56.203401] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/msg/_game_state.py\n'}
+[56.222507] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/msg/_game_state_s.c\n'}
+[56.232646] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/msg/_piece_detection.py\n'}
+[56.249840] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/msg/_piece_detection_s.c\n'}
+[56.259663] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/gamesmanros_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[56.272379] (-) TimerEvent: {}
+[56.277165] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/gamesmanros_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[56.292169] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/gamesmanros_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[56.373439] (-) TimerEvent: {}
+[56.429559] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/rust/Cargo.toml\n'}
+[56.453513] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/rust/build.rs\n'}
+[56.474446] (-) TimerEvent: {}
+[56.480726] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/rust/src/action.rs\n'}
+[56.505152] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/rust/src/action/rmw.rs\n'}
+[56.524080] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/rust/src/lib.rs\n'}
+[56.543416] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/rust/src/msg.rs\n'}
+[56.567566] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/rust/src/msg/rmw.rs\n'}
+[56.575400] (-) TimerEvent: {}
+[56.585006] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/msg/GameState.idl\n'}
+[56.609799] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/action/MoveArm.idl\n'}
+[56.634282] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/action/MoveGripper.idl\n'}
+[56.656064] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/action/ExecuteMove.idl\n'}
+[56.674347] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/msg/GameState.msg\n'}
+[56.677530] (-) TimerEvent: {}
+[56.693057] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/action/MoveArm.action\n'}
+[56.711000] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/action/MoveGripper.action\n'}
+[56.731632] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/action/ExecuteMove.action\n'}
+[56.764310] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/ament_index/resource_index/package_run_dependencies/gamesmanros_interfaces\n'}
+[56.778492] (-) TimerEvent: {}
+[56.785618] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/ament_index/resource_index/parent_prefix_path/gamesmanros_interfaces\n'}
+[56.817117] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/environment/ament_prefix_path.sh\n'}
+[56.825475] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/environment/ament_prefix_path.dsv\n'}
+[56.851437] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/environment/path.sh\n'}
+[56.860308] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/environment/path.dsv\n'}
+[56.879454] (-) TimerEvent: {}
+[56.885693] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/local_setup.bash\n'}
+[56.907070] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/local_setup.sh\n'}
+[56.926390] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/local_setup.zsh\n'}
+[56.934151] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/local_setup.dsv\n'}
+[56.944549] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Symlinking: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/package.dsv\n'}
+[56.980360] (-) TimerEvent: {}
+[57.039573] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/ament_index/resource_index/packages/gamesmanros_interfaces\n'}
+[57.061662] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/rosidl_cmake-extras.cmake\n'}
+[57.081396] (-) TimerEvent: {}
+[57.082844] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[57.109321] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[57.133148] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[57.153946] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[57.173987] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[57.182445] (-) TimerEvent: {}
+[57.192330] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[57.216576] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/rosidl_cmake_aggregate_target-extras.cmake\n'}
+[57.238257] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/gamesmanros_interfacesConfig.cmake\n'}
+[57.261505] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/gamesmanros_interfacesConfig-version.cmake\n'}
+[57.283434] (-) TimerEvent: {}
+[57.284732] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date symlink: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/package.xml\n'}
+[57.292539] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Installing: /ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_generator_c.so\n'}
+[57.360584] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_generator_c.so" to ""\n'}
+[57.377767] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Installing: /ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_fastrtps_c.so\n'}
+[57.384381] (-) TimerEvent: {}
+[57.441697] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[57.464725] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Installing: /ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_introspection_c.so\n'}
+[57.485401] (-) TimerEvent: {}
+[57.527910] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_introspection_c.so" to ""\n'}
+[57.555704] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Installing: /ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_c.so\n'}
+[57.586372] (-) TimerEvent: {}
+[57.626881] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_c.so" to ""\n'}
+[57.645589] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Installing: /ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.so\n'}
+[57.687418] (-) TimerEvent: {}
+[57.732547] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[57.755427] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Installing: /ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_introspection_cpp.so\n'}
+[57.788400] (-) TimerEvent: {}
+[57.827204] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[57.850611] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Installing: /ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_cpp.so\n'}
+[57.889424] (-) TimerEvent: {}
+[57.913641] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_typesupport_cpp.so" to ""\n'}
+[57.990424] (-) TimerEvent: {}
+[58.093457] (-) TimerEvent: {}
+[58.195420] (-) TimerEvent: {}
+[58.300377] (-) TimerEvent: {}
+[58.401428] (-) TimerEvent: {}
+[58.503388] (-) TimerEvent: {}
+[58.605541] (-) TimerEvent: {}
+[58.656490] (gamesmanros_interfaces) StdoutLine: {'line': b"Listing '/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces'...\n"}
+[58.658875] (gamesmanros_interfaces) StdoutLine: {'line': b"Compiling '/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/__init__.py'...\n"}
+[58.663511] (gamesmanros_interfaces) StdoutLine: {'line': b"Listing '/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action'...\n"}
+[58.665308] (gamesmanros_interfaces) StdoutLine: {'line': b"Compiling '/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/__init__.py'...\n"}
+[58.668492] (gamesmanros_interfaces) StdoutLine: {'line': b"Compiling '/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/_execute_move.py'...\n"}
+[58.670485] (gamesmanros_interfaces) StdoutLine: {'line': b"Compiling '/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/_move_arm.py'...\n"}
+[58.672913] (gamesmanros_interfaces) StdoutLine: {'line': b"Compiling '/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/action/_move_gripper.py'...\n"}
+[58.674842] (gamesmanros_interfaces) StdoutLine: {'line': b"Listing '/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/msg'...\n"}
+[58.677514] (gamesmanros_interfaces) StdoutLine: {'line': b"Compiling '/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/msg/__init__.py'...\n"}
+[58.679235] (gamesmanros_interfaces) StdoutLine: {'line': b"Compiling '/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages/gamesmanros_interfaces/msg/_game_state.py'...\n"}
+[58.683366] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Installing: /ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_generator_py.so\n'}
+[58.706364] (-) TimerEvent: {}
+[58.731647] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Set runtime path of "/ws/install/gamesmanros_interfaces/lib/libgamesmanros_interfaces__rosidl_generator_py.so" to ""\n'}
+[58.762164] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/export_gamesmanros_interfaces__rosidl_generator_cExport.cmake\n'}
+[58.770150] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/export_gamesmanros_interfaces__rosidl_generator_cExport-noconfig.cmake\n'}
+[58.781778] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/export_gamesmanros_interfaces__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[58.792682] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/export_gamesmanros_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[58.806114] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/gamesmanros_interfaces__rosidl_typesupport_introspection_cExport.cmake\n'}
+[58.808284] (-) TimerEvent: {}
+[58.815417] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/gamesmanros_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[58.830256] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/gamesmanros_interfaces__rosidl_typesupport_cExport.cmake\n'}
+[58.839065] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/gamesmanros_interfaces__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[58.850815] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/export_gamesmanros_interfaces__rosidl_generator_cppExport.cmake\n'}
+[58.860707] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/export_gamesmanros_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[58.871498] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/export_gamesmanros_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[58.896237] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/gamesmanros_interfaces__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[58.902284] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/gamesmanros_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[58.909395] (-) TimerEvent: {}
+[58.912821] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/gamesmanros_interfaces__rosidl_typesupport_cppExport.cmake\n'}
+[58.930955] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/gamesmanros_interfaces__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[58.944286] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/export_gamesmanros_interfaces__rosidl_generator_pyExport.cmake\n'}
+[58.952377] (gamesmanros_interfaces) StdoutLine: {'line': b'-- Up-to-date: /ws/install/gamesmanros_interfaces/share/gamesmanros_interfaces/cmake/export_gamesmanros_interfaces__rosidl_generator_pyExport-noconfig.cmake\n'}
+[58.968378] (gamesmanros_interfaces) CommandEnded: {'returncode': 0}
+[59.010434] (-) TimerEvent: {}
+[59.113466] (-) TimerEvent: {}
+[59.217402] (-) TimerEvent: {}
+[59.321404] (-) TimerEvent: {}
+[59.424355] (-) TimerEvent: {}
+[59.528452] (-) TimerEvent: {}
+[59.632363] (-) TimerEvent: {}
+[59.733460] (-) TimerEvent: {}
+[59.834425] (-) TimerEvent: {}
+[59.938376] (-) TimerEvent: {}
+[60.041127] (-) TimerEvent: {}
+[60.152537] (-) TimerEvent: {}
+[60.255355] (-) TimerEvent: {}
+[60.318864] (gamesmanros_interfaces) JobEnded: {'identifier': 'gamesmanros_interfaces', 'rc': 0}
+[60.326495] (gamesmanros) JobStarted: {'identifier': 'gamesmanros'}
+[60.356355] (-) TimerEvent: {}
+[60.457365] (-) TimerEvent: {}
+[60.560408] (-) TimerEvent: {}
+[60.661426] (-) TimerEvent: {}
+[60.763607] (-) TimerEvent: {}
+[60.866467] (-) TimerEvent: {}
+[60.968377] (-) TimerEvent: {}
+[61.070389] (-) TimerEvent: {}
+[61.172448] (-) TimerEvent: {}
+[61.274412] (-) TimerEvent: {}
+[61.375430] (-) TimerEvent: {}
+[61.476360] (-) TimerEvent: {}
+[61.579402] (-) TimerEvent: {}
+[61.681378] (-) TimerEvent: {}
+[61.782455] (-) TimerEvent: {}
+[61.884343] (-) TimerEvent: {}
+[62.001464] (-) TimerEvent: {}
+[62.147369] (-) TimerEvent: {}
+[62.249431] (-) TimerEvent: {}
+[62.254801] (gamesmanros) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'develop', '--editable', '--build-directory', '/ws/build/gamesmanros/build', '--no-deps', 'symlink_data'], 'cwd': '/ws/build/gamesmanros', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('HOSTNAME', '74b792876106'), ('SHLVL', '1'), ('LIBGL_ALWAYS_SOFTWARE', '1'), ('LD_LIBRARY_PATH', '/ws/install/gamesmanros_interfaces/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('COLCON_PREFIX_PATH', '/ws/install'), ('ROS_DISTRO', 'humble'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('QT_X11_NO_MITSHM', '1'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', 'host.docker.internal:0.0'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('ROS_DOMAIN_ID', '0'), ('AMENT_PREFIX_PATH', '/ws/install/mycobot_280_moveit_config:/ws/install/gamesmanros:/ws/install/gamesmanros_interfaces:/opt/ros/humble'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('PWD', '/ws/build/gamesmanros'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/ws/build/gamesmanros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/ws/install/gamesmanros/lib/python3.10/site-packages:/ws/build/gamesmanros:/ws/install/gamesmanros/lib/python3.10/site-packages:/ws/install/gamesmanros_interfaces/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/ws/install/gamesmanros_interfaces:/ws/install/mycobot_280_moveit_config')]), 'shell': False}
+[62.350376] (-) TimerEvent: {}
+[62.452441] (-) TimerEvent: {}
+[62.494454] (gamesmanros) StdoutLine: {'line': b'running develop\n'}
+[62.553360] (-) TimerEvent: {}
+[62.656361] (-) TimerEvent: {}
+[62.694053] (gamesmanros) StdoutLine: {'line': b'running egg_info\n'}
+[62.697659] (gamesmanros) StdoutLine: {'line': b'writing gamesmanros.egg-info/PKG-INFO\n'}
+[62.703941] (gamesmanros) StdoutLine: {'line': b'writing dependency_links to gamesmanros.egg-info/dependency_links.txt\n'}
+[62.710803] (gamesmanros) StdoutLine: {'line': b'writing entry points to gamesmanros.egg-info/entry_points.txt\n'}
+[62.714587] (gamesmanros) StdoutLine: {'line': b'writing requirements to gamesmanros.egg-info/requires.txt\n'}
+[62.718801] (gamesmanros) StdoutLine: {'line': b'writing top-level names to gamesmanros.egg-info/top_level.txt\n'}
+[62.757394] (-) TimerEvent: {}
+[62.858385] (-) TimerEvent: {}
+[62.858931] (gamesmanros) StdoutLine: {'line': b"reading manifest file 'gamesmanros.egg-info/SOURCES.txt'\n"}
+[62.925755] (gamesmanros) StdoutLine: {'line': b"writing manifest file 'gamesmanros.egg-info/SOURCES.txt'\n"}
+[62.930398] (gamesmanros) StdoutLine: {'line': b'running build_ext\n'}
+[62.934456] (gamesmanros) StdoutLine: {'line': b'Creating /ws/install/gamesmanros/lib/python3.10/site-packages/gamesmanros.egg-link (link to .)\n'}
+[62.946999] (gamesmanros) StdoutLine: {'line': b'Installing arm_controller script to /ws/install/gamesmanros/lib/gamesmanros\n'}
+[62.959139] (-) TimerEvent: {}
+[62.962674] (gamesmanros) StdoutLine: {'line': b'Installing game_manager script to /ws/install/gamesmanros/lib/gamesmanros\n'}
+[62.991688] (gamesmanros) StdoutLine: {'line': b'Installing gripper_controller script to /ws/install/gamesmanros/lib/gamesmanros\n'}
+[63.008789] (gamesmanros) StdoutLine: {'line': b'Installing joint_state_bridge script to /ws/install/gamesmanros/lib/gamesmanros\n'}
+[63.032256] (gamesmanros) StdoutLine: {'line': b'Installing robot_control script to /ws/install/gamesmanros/lib/gamesmanros\n'}
+[63.054273] (gamesmanros) StdoutLine: {'line': b'Installing vision_node script to /ws/install/gamesmanros/lib/gamesmanros\n'}
+[63.059398] (-) TimerEvent: {}
+[63.074427] (gamesmanros) StdoutLine: {'line': b'\n'}
+[63.076776] (gamesmanros) StdoutLine: {'line': b'Installed /ws/build/gamesmanros\n'}
+[63.080530] (gamesmanros) StdoutLine: {'line': b'running symlink_data\n'}
+[63.160503] (-) TimerEvent: {}
+[63.205979] (gamesmanros) CommandEnded: {'returncode': 0}
+[63.261373] (-) TimerEvent: {}
+[63.363380] (-) TimerEvent: {}
+[63.465428] (-) TimerEvent: {}
+[63.519950] (gamesmanros) JobEnded: {'identifier': 'gamesmanros', 'rc': 0}
+[63.528007] (-) EventReactorShutdown: {}

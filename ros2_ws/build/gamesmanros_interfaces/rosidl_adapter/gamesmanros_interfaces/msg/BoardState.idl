@@ -1,0 +1,34 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from gamesmanros_interfaces/msg/BoardState.msg
+// generated code does not contain a copyright notice
+
+#include "gamesmanros_interfaces/msg/PieceDetection.idl"
+#include "std_msgs/msg/Header.idl"
+
+module gamesmanros_interfaces {
+  module msg {
+    @verbatim (language="comment", text=
+      "Full board observation from vision_node.")
+    struct BoardState {
+      std_msgs::msg::Header header;
+
+      @verbatim (language="comment", text=
+        "One character per cell: '1' player one, '2' player two, '-' empty." "\n"
+        "Kept for consumers that only need occupancy.")
+      string occupancy;
+
+      @verbatim (language="comment", text=
+        "Per-piece detections, which occupancy cannot express: piece identity and" "\n"
+        "true position. Used to correct pick coordinates.")
+      sequence<gamesmanros_interfaces::msg::PieceDetection> pieces;
+
+      @verbatim (language="comment", text=
+        "were all four corner markers visible this frame")
+      boolean board_located;
+
+      @verbatim (language="comment", text=
+        "how many frames this state was agreed across")
+      int32 frames_voted;
+    };
+  };
+};

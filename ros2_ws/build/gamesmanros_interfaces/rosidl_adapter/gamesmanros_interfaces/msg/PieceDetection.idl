@@ -1,0 +1,30 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from gamesmanros_interfaces/msg/PieceDetection.msg
+// generated code does not contain a copyright notice
+
+
+module gamesmanros_interfaces {
+  module msg {
+    @verbatim (language="comment", text=
+      "One AR-tagged game piece seen on the board.")
+    struct PieceDetection {
+      @verbatim (language="comment", text=
+        "ArUco marker ID — identifies the specific physical piece")
+      int32 tag_id;
+
+      @verbatim (language="comment", text=
+        "index into centers.py for this game, or -1 if off-board")
+      int32 cell_index;
+
+      @verbatim (language="comment", text=
+        "position in board cell units (same space as centers.py)")
+      double board_x;
+
+      double board_y;
+
+      @verbatim (language="comment", text=
+        "distance from the ideal centre of cell_index, in mm")
+      double offset_mm;
+    };
+  };
+};

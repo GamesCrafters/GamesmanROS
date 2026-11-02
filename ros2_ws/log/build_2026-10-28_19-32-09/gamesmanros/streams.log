@@ -1,0 +1,24 @@
+[3.010s] Invoking command in '/ws/build/gamesmanros': PYTHONPATH=/ws/build/gamesmanros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/ws/install/gamesmanros/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /ws/build/gamesmanros/build --no-deps symlink_data
+[3.426s] running develop
+[3.784s] running egg_info
+[3.795s] writing gamesmanros.egg-info/PKG-INFO
+[3.811s] writing dependency_links to gamesmanros.egg-info/dependency_links.txt
+[3.830s] writing entry points to gamesmanros.egg-info/entry_points.txt
+[3.837s] writing requirements to gamesmanros.egg-info/requires.txt
+[3.850s] writing top-level names to gamesmanros.egg-info/top_level.txt
+[4.012s] reading manifest file 'gamesmanros.egg-info/SOURCES.txt'
+[4.198s] writing manifest file 'gamesmanros.egg-info/SOURCES.txt'
+[4.208s] running build_ext
+[4.212s] Creating /ws/install/gamesmanros/lib/python3.10/site-packages/gamesmanros.egg-link (link to .)
+[4.253s] Installing arm_controller script to /ws/install/gamesmanros/lib/gamesmanros
+[4.283s] Installing game_manager script to /ws/install/gamesmanros/lib/gamesmanros
+[4.331s] Installing gripper_controller script to /ws/install/gamesmanros/lib/gamesmanros
+[4.376s] Installing joint_state_bridge script to /ws/install/gamesmanros/lib/gamesmanros
+[4.459s] Installing mock_hardware script to /ws/install/gamesmanros/lib/gamesmanros
+[4.536s] Installing reach_sweep script to /ws/install/gamesmanros/lib/gamesmanros
+[4.568s] Installing robot_control script to /ws/install/gamesmanros/lib/gamesmanros
+[4.628s] Installing vision_node script to /ws/install/gamesmanros/lib/gamesmanros
+[4.691s] 
+[4.695s] Installed /ws/build/gamesmanros
+[4.699s] running symlink_data
+[4.855s] Invoked command in '/ws/build/gamesmanros' returned '0': PYTHONPATH=/ws/build/gamesmanros/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/ws/install/gamesmanros/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /ws/build/gamesmanros/build --no-deps symlink_data

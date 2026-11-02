@@ -9,4 +9,6 @@ gamesmanros_interfaces/action/_execute_move.py
 gamesmanros_interfaces/action/_move_arm.py
 gamesmanros_interfaces/action/_move_gripper.py
 gamesmanros_interfaces/msg/__init__.py
+gamesmanros_interfaces/msg/_board_state.py
 gamesmanros_interfaces/msg/_game_state.py
+gamesmanros_interfaces/msg/_piece_detection.py
