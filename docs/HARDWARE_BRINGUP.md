@@ -1,83 +1,93 @@
-# Real-arm bring-up
+# Real-arm runbook (Raspberry Pi)
 
-How a planned move reaches the real MyCobot (all ported from the ROS 1 system in
-`catkin_ws/`):
+You'll use 2 terminals, plus a third for emergencies. Every command is one line — paste only the command, not the code fences.
+
+**Before you start:** the Pi needs the latest code (push from your laptop, then `git pull` on the Pi). Power on the arm, clear the area, and keep your hand near the power switch.
+
+## Terminal 1: the container and the launch
+
+Run these on the Pi over SSH:
 
 ```
-arm_controller (MoveItPy: LIN, then OMPL)
-   └─ execute ─▶ joint_trajectory ──▶ /mycobot/angles_goal ─▶ mycobot_topics ─▶ serial ─▶ arm
-                                                                       ▲
- /joint_states ◀── joint_state_bridge ◀── /mycobot/angles_real ◀──────┘
- gripper_controller ──▶ /mycobot/gripper_status ─▶ mycobot_topics
+cd ~/GamesmanROS
+docker run -it --rm --name gm --net=host --ipc=host -w /ws --device=/dev/ttyAMA0 -v $HOME/GamesmanROS/ros2_ws:/ws -v $HOME/GamesmanROS/scripts:/scripts gamesmanros:humble
 ```
 
-| New piece | Ported from (ROS 1) |
-|---|---|
-| `mycobot_interfaces` (messages) | `mycobot_communication/msg` |
-| `mycobot_topics` | `mycobot_communication/scripts/mycobot_topics.py` |
-| `joint_trajectory` | `gamesmanros/src/joint_trajectory.py` |
+The prompt becomes `root@…:/ws#`. Rebuild only if the code changed since your last build:
 
-**Run everything on the one machine the arm is plugged into** (the Pi, or a Linux
-laptop). DDS between Docker on Windows/macOS and another machine is unreliable
-(see `SETUP.md`).
+```
+colcon build --symlink-install
+source install/setup.bash
+```
 
-## Before touching the arm
+Then start everything:
 
-1. **Rebuild** (new package + new dependencies): `colcon build --symlink-install`, then
-   `source install/setup.bash`. The Dockerfile now installs `pymycobot`; in an
-   old container run `pip3 install pymycobot`.
-2. **Rehearse on the mock first.** With the demo up (`demo.launch.py`) and
-   `gamesmanros.launch.py game_id:=dodgem`, a full move should now complete,
-   gripper included (one line — do not wrap it):
-   ```
-   ros2 action send_goal /execute_move gamesmanros_interfaces/action/ExecuteMove "{game_id: dodgem, move_string: M_12_13_x, current_position: a, new_position: b}" --feedback
-   ```
-3. **Run everything on the Pi, not on your laptop.** Nothing on the laptop changes;
-   use it only to SSH in (and to commit/push this branch so the Pi can pull it). On
-   the Pi, with Docker installed:
-   ```
-   git pull
-   docker build -f docker/Dockerfile -t gamesmanros:humble docker/
-   docker run -it --rm --net=host --ipc=host -w /ws \
-       --device=/dev/ttyUSB0 -v "$PWD/ros2_ws:/ws" gamesmanros:humble
-   ```
-   `--device` hands the **Pi's** serial port to the container. Use `/dev/ttyAMA0` for
-   a Pi-mounted arm. Pass it on the command line like this — do not uncomment
-   `devices:` in `docker/docker-compose.yml`, which is shared with laptops. You may
-   need to add your user to the `dialout` group, and for `/dev/ttyAMA0` enable the
-   Pi's serial port (and turn off its login console) first.
+```
+ros2 launch gamesmanros gamesmanros.launch.py game_id:=dodgem hardware:=true port:=/dev/ttyAMA0 baud:=1000000 eef_orientation:=down
+```
 
-## At the robot (hand on the power switch)
+Wait for `MycobotTopics ready`, `JointTrajectoryActionServer ready` and `ArmController ready`. Leave this terminal running.
 
-Ports/baud: USB arm `/dev/ttyUSB0` @ 115200; Pi-mounted arm `/dev/ttyAMA0` @ 1000000.
+## Terminal 2: checks and commands
 
-| # | Step | Pass if |
-|---|---|---|
-| 1 | `ros2 run gamesmanros mycobot_topics --ros-args -p port:=/dev/ttyUSB0 -p baud:=115200` and `ros2 topic echo /mycobot/angles_real --once` | six plausible angles, in degrees |
-| 2 | add `ros2 run gamesmanros joint_state_bridge`; open RViz via `demo.launch.py hardware:=true` | the model in RViz matches the real arm's pose (ROS 1 used this same plain degrees→radians mapping) |
-| 3 | `ros2 action send_goal /move_gripper gamesmanros_interfaces/action/MoveGripper "{open: true}"` then `false` | gripper opens, then closes |
-| 4 | Stop 1–3. Start: `ros2 launch mycobot_280_moveit_config demo.launch.py hardware:=true`, then `ros2 launch gamesmanros gamesmanros.launch.py game_id:=dodgem hardware:=true port:=/dev/ttyUSB0 baud:=115200` | logs show `MycobotTopics ready`, `JointTrajectoryActionServer ready`, `ArmController ready` |
-| 5 | **Slow down first:** `ros2 param set /joint_trajectory speed 20` | (default is 40, the ROS 1 value) |
-| 6 | One move to hover above the board centre: `ros2 action send_goal /move_arm gamesmanros_interfaces/action/MoveArm "{x: -0.05, y: 0.2125, z: 0.185}" --feedback` | arm moves there, result `success: true` |
-| 7 | `ros2 run gamesmanros reach_sweep --ros-args -p game:=dodgem -p mode:=cells -p settle:=1.0` | same reachable cells as the mock sweep |
-| 8 | One full move: the `/execute_move` command from step 2 above | piece picked and placed |
-| 9 | `ros2 run gamesmanros game_manager` | a game |
+```
+docker exec -it gm bash
+ros2 topic echo /mycobot/angles_real --once
+```
 
-## Know before you go
+**Look at the angles.** Every joint must be inside its planning limit: J1 ±165°, J2 ±132°, J3 ±147°, J4 ±142°, J5 ±162°, J6 ±177°. If one isn't, see the tip at the bottom before going on.
 
-* **Gripper orientation.** `arm_controller` defaults to the rotated+tilted gripper
-  pose; the ROS 1 controller dropped it because of IK failures on the outer rows.
-  Compare sweeps with `eef_orientation:=down` (launch argument) and pick one.
-* **Board calibration.** Cell positions use the ROS 1 constants unchanged
-  (`robot_control.py`). Check one cell by eye before running a game.
-* **Execution is not verified.** `arm_controller` does not check MoveIt's execution
-  result, and `joint_trajectory` only *warns* if the arm does not reach the final
-  point within `settle_timeout` (6 s). A stalled arm will not stop the game.
-* **Joint states arrive at ~4 Hz** (the ROS 1 driver's poll rate), so
-  `allowed_start_tolerance` was loosened from 0.01 to 0.05 rad.
-* MoveIt's trajectory-duration monitor is **off** (`execution_duration_monitoring`),
-  because the executor waits for the arm to arrive; it bounds that wait itself.
-* **Gripper actuation** is a fixed 1.5 s wait, as in ROS 1.
-* **No failure recovery yet.** A failed move leaves the game state wrong; see
-  `docs/FAILURE_RECOVERY.md` once that lands.
-* Joint position limits are still ±π in the URDF; tighten to the manufacturer's values.
+```
+ros2 topic hz /joint_states
+ros2 param set /joint_trajectory speed 20
+```
+
+`/joint_states` should print a steady rate.
+
+**First move** (board centre, travel height):
+
+```
+ros2 action send_goal /move_arm gamesmanros_interfaces/action/MoveArm "{x: -0.05, y: 0.2125, z: 0.185}" --feedback
+```
+
+Watch the path. Cut the power if anything looks wrong. A good run ends with `success: true`.
+
+**Then a short hop** (cell 14), and back:
+
+```
+ros2 action send_goal /move_arm gamesmanros_interfaces/action/MoveArm "{x: -0.0312, y: 0.1562, z: 0.185}" --feedback
+ros2 action send_goal /move_arm gamesmanros_interfaces/action/MoveArm "{x: -0.05, y: 0.2125, z: 0.185}" --feedback
+```
+
+The numbers are metres from the base, not radians. Stay at z = 0.185 for now.
+
+## Terminal 3 (only when needed): make the arm limp
+
+Support the arm with one hand first, since it drops. Cut the power switch, or Ctrl-C Terminal 1 and then run this in a container shell:
+
+```
+python3 -c "from pymycobot import MyCobot; MyCobot('/dev/ttyAMA0', 1000000).release_all_servos()"
+```
+
+## Tip: stiff arm, or a joint outside its range
+
+The arm rejects any angle outside its own range (J1 ±168°, J2 ±135°). If a joint is resting beyond that, the first point of every trajectory (the current pose) is rejected, so the arm does not move even though the log says `Executing trajectory`. Ctrl-C alone does **not** release the servos; they keep holding their last pose, which is why the arm stays stiff.
+
+**To fix it: release the servos and restart.**
+
+1. Ctrl-C the launch in Terminal 1, so nothing else holds the serial port.
+2. Support the arm, then run the release command from the Terminal 3 section.
+3. Move the arm by hand until every joint is inside its planning limit (an upright pose is a good target).
+   If a joint will not move even when released, stop — that is a mechanical problem. Do not force it. Power-cycle the arm and try again.
+4. Restart the launch in Terminal 1.
+5. In Terminal 2, run `ros2 topic echo /mycobot/angles_real --once` and check the angles against the limits above, then retry the first move.
+
+To lock the servos again without power-cycling, run `MyCobot('/dev/ttyAMA0', 1000000).focus_all_servos()` the same way, or send any joint command. The arm then holds wherever it is.
+
+## If planning fails
+
+With `2>&1 | tee ~/b.log` added to the end of the launch line, this shows the likely cause:
+
+```
+grep -n -i -E "start state|collision|bounds|IK solution|Planning failed|died" ~/b.log | tail -30
+```

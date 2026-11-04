@@ -1,12 +1,19 @@
 # Overrides/augments the limits in the URDF. The MoveIt 1 file had every joint at
 # max_velocity 0 with limits disabled, which cannot be time-parameterized.
 # Pilz LIN additionally needs has_deceleration_limits/max_deceleration (negative).
-# TODO: tighten position limits to the manufacturer's values before real hardware.
+# Position limits: the arm itself rejects angles outside these ranges (pymycobot:
+# "has invalid angle ... should be -168 ~ 168"), so MoveIt must never plan past them.
+# Joint 1 (+-168) was confirmed by the arm's own error; joints 2-6 are the myCobot 280
+# spec values (135, 150, 145, 165, 180) — verify against pymycobot (an out-of-range send_angles prints the real range).
+# Each is shrunk by a 3 degree margin so rounding never lands on the edge.
 default_velocity_scaling_factor: 0.3
 default_acceleration_scaling_factor: 0.3
 
 joint_limits:
   joint2_to_joint1:
+    has_position_limits: true      # arm accepts +-168 deg; 3 deg margin
+    min_position: -2.8798
+    max_position: 2.8798
     has_velocity_limits: true
     max_velocity: 1.0
     has_acceleration_limits: true
@@ -14,6 +21,9 @@ joint_limits:
     has_deceleration_limits: true   # Pilz only; must be negative
     max_deceleration: -2.0
   joint3_to_joint2:
+    has_position_limits: true      # arm accepts +-135 deg; 3 deg margin
+    min_position: -2.3038
+    max_position: 2.3038
     has_velocity_limits: true
     max_velocity: 1.0
     has_acceleration_limits: true
@@ -21,6 +31,9 @@ joint_limits:
     has_deceleration_limits: true   # Pilz only; must be negative
     max_deceleration: -2.0
   joint4_to_joint3:
+    has_position_limits: true      # arm accepts +-150 deg; 3 deg margin
+    min_position: -2.5656
+    max_position: 2.5656
     has_velocity_limits: true
     max_velocity: 1.0
     has_acceleration_limits: true
@@ -28,6 +41,9 @@ joint_limits:
     has_deceleration_limits: true   # Pilz only; must be negative
     max_deceleration: -2.0
   joint5_to_joint4:
+    has_position_limits: true      # arm accepts +-145 deg; 3 deg margin
+    min_position: -2.4784
+    max_position: 2.4784
     has_velocity_limits: true
     max_velocity: 1.0
     has_acceleration_limits: true
@@ -35,6 +51,9 @@ joint_limits:
     has_deceleration_limits: true   # Pilz only; must be negative
     max_deceleration: -2.0
   joint6_to_joint5:
+    has_position_limits: true      # arm accepts +-165 deg; 3 deg margin
+    min_position: -2.8274
+    max_position: 2.8274
     has_velocity_limits: true
     max_velocity: 1.0
     has_acceleration_limits: true
@@ -42,6 +61,9 @@ joint_limits:
     has_deceleration_limits: true   # Pilz only; must be negative
     max_deceleration: -2.0
   joint6output_to_joint6:
+    has_position_limits: true      # arm accepts +-180 deg; 3 deg margin
+    min_position: -3.0892
+    max_position: 3.0892
     has_velocity_limits: true
     max_velocity: 1.0
     has_acceleration_limits: true
