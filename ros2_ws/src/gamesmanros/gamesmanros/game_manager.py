@@ -72,6 +72,7 @@ class GameManager(LifecycleNode):
         # Set after configure
         self._url          = ''
         self._game_id      = ''
+        self._variant_id   = ''
         self._human_a      = False
         self._human_b      = False
         self._show_values  = False
@@ -137,6 +138,7 @@ class GameManager(LifecycleNode):
             print(f'  {j}: {v["id"]}')
         variant_idx = int(input('Pick variant index: '))
         variant = variants[variant_idx]['id']
+        self._variant_id = variant
 
         url += variant + '/'
         data = requests.get(url).json()
@@ -189,6 +191,7 @@ class GameManager(LifecycleNode):
 
         goal = ExecuteMove.Goal()
         goal.game_id          = self._game_id
+        goal.variant_id       = self._variant_id
         goal.move_string      = move_str
         goal.current_position = current_pos
         goal.new_position     = new_pos

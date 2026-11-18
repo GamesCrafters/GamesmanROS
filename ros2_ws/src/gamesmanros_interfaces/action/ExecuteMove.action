@@ -1,5 +1,6 @@
 # Goal: decoded UWAPI move for the robot to execute
 string game_id
+string variant_id
 string move_string
 string current_position
 string new_position
