@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ethan — Week 10</title>
+<style>
+  @page { size: 10in 5.625in; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root{
+    --bg:#1B212C; --green:#82C7A5; --blue:#0145AC;
+    --txt:#E4E7EB; --txt-2:#AEB6C2; --txt-3:#7F8896;
+    --warn:#E8B84B; --bad:#E8796B; --good:#82C7A5;
+  }
+  html,body{background:#555}
+  body{font-family:Roboto,-apple-system,'Helvetica Neue',Arial,sans-serif;color:var(--txt);-webkit-font-smoothing:antialiased}
+
+  .slide{width:960px;height:540px;background:var(--bg);position:relative;overflow:hidden;
+         page-break-after:always;padding:46px 54px 38px 54px}
+  .slide:last-child{page-break-after:auto}
+
+  /* chevron motif, top-left */
+  .chev{position:absolute;left:30px;top:26px;width:86px;height:46px}
+
+  h1{font-size:30px;font-weight:400;letter-spacing:.1px;color:#F2F4F7;margin-left:96px;line-height:1.15}
+  .sub{margin-left:96px;margin-top:5px;font-size:13.5px;color:var(--txt-3)}
+  .body{margin-top:30px}
+
+  ul{list-style:none}
+  li{font-size:16.5px;line-height:1.42;color:var(--txt);padding-left:22px;position:relative;margin-bottom:11px}
+  li::before{content:'●';position:absolute;left:0;top:0;font-size:11px;line-height:1.55;color:#9BA5B3}
+  li ul{margin-top:7px}
+  li li{font-size:14.5px;color:var(--txt-2);margin-bottom:6px;padding-left:21px}
+  li li::before{content:'○';font-size:10px;line-height:1.55;color:#7F8896}
+
+  .cols{display:flex;gap:30px}
+  .col{flex:1}
+
+  .mono{font-family:'Roboto Mono','SF Mono',Menlo,monospace;font-size:.88em;color:#C9D3E0}
+  .hi{color:#F2F4F7;font-weight:500}
+  .good{color:var(--good)} .bad{color:var(--bad)} .warn{color:var(--warn)}
+
+  .pane{border:1px solid #2E3744;border-radius:7px;padding:15px 17px;background:#202834}
+  .pane h3{font-size:14px;font-weight:500;color:#F2F4F7;margin-bottom:9px;letter-spacing:.2px}
+  .pane.g{border-color:#3A5E51;background:#1E2A28}
+  .pane.r{border-color:#5E3A36;background:#2A2020}
+
+  .tight{margin-top:20px !important}
+  .tight li{margin-bottom:7px}
+  .tight li li{margin-bottom:4px}
+  .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--txt-3);margin-bottom:9px}
+
+  .stat{text-align:center}
+  .stat .n{font-size:38px;font-weight:300;color:var(--green);line-height:1}
+  .stat .c{font-size:12px;color:var(--txt-3);margin-top:7px;line-height:1.35}
+
+  .pagenum{position:absolute;right:54px;bottom:20px;font-size:11px;color:#4C5667}
+
+  /* title slide */
+  .title{padding:0;display:flex;flex-direction:column;justify-content:center}
+  .title .big-chev{position:absolute;left:38px;top:34px;width:300px;height:230px;opacity:.95}
+  .title h1{margin-left:0;font-size:44px;font-weight:300;line-height:1.16;color:#F2F4F7}
+  .title .inner{padding-left:360px;padding-right:60px}
+  .title .who{margin-top:26px;font-size:14px;color:var(--txt-3)}
+
+  svg text{font-family:Roboto,-apple-system,Arial,sans-serif}
+  .nl{font-size:11.5px;fill:#E4E7EB}
+  .ns{font-size:9.5px;fill:#8E97A5}
+  .nm{font-family:'Roboto Mono',Menlo,monospace;font-size:9px;fill:#9FB4CE}
+</style>
+</head>
+<body>
+
+<!-- ============ 1 TITLE ============ -->
+<section class="slide title">
+  <svg class="big-chev" viewBox="0 0 300 230">
+    <polygon points="0,30 88,30 196,200 108,200" fill="#0145AC"/>
+    <polygon points="92,0 180,0 288,170 200,170" fill="none" stroke="#82C7A5" stroke-width="13"/>
+  </svg>
+  <div class="inner">
+    <h1>GamesmanROS<br>Week 10</h1>
+    <div class="who">Ethan &middot; Fall 2026</div>
+  </div>
+</section>
+
+<!-- ============ 2 WHERE WE ARE ============ -->
+<section class="slide">
+  <svg class="chev" viewBox="0 0 86 46">
+    <polygon points="0,4 24,4 46,42 22,42" fill="#0145AC"/>
+    <polygon points="30,4 54,4 76,42 52,42" fill="#82C7A5"/>
+  </svg>
+  <h1>GamesmanROS &mdash; where we are</h1>
+
+  <div class="body cols">
+    <div class="col">
+      <ul>
+        <li><span class="hi">The ROS 2 rewrite runs end to end</span>
+          <ul>
+            <li>6 nodes, lifecycle-managed, talking over typed actions</li>
+            <li>A failed move now <span class="hi">reports back</span> instead of being silently dropped</li>
+          </ul>
+        </li>
+        <li><span class="hi">Dodgem plays itself</span> &mdash; 19 solver-driven moves, 171 motion commands
+          <ul>
+            <li>Real UWAPI values, real coordinate maths, simulated arm</li>
+          </ul>
+        </li>
+        <li><span class="hi">CV is in</span>, not "future work" anymore
+          <ul>
+            <li>AR tags + homography, no camera calibration step</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="col">
+      <ul>
+        <li>Docker environment so everyone builds the same thing
+          <ul><li><span class="mono">SETUP.md</span> + one-command regression (19 checks)</li></ul>
+        </li>
+        <li>First tests this project has ever had</li>
+        <li>3 tracks, each person owns one, interfaces defined up front</li>
+        <li class="warn">Still nothing on the physical robot &mdash; blocked, see next slides</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pagenum">2</div>
+</section>
+
+<!-- ============ 3 ARCHITECTURE ============ -->
+<section class="slide">
+  <svg class="chev" viewBox="0 0 86 46">
+    <polygon points="0,4 24,4 46,42 22,42" fill="#0145AC"/>
+    <polygon points="30,4 54,4 76,42 52,42" fill="#82C7A5"/>
+  </svg>
+  <h1>New architecture</h1>
+  <div class="sub">replaces the old blueprint &mdash; every hop is now a typed interface, not a function call</div>
+
+  <svg width="852" height="300" viewBox="0 0 852 300" style="margin-top:22px;margin-left:54px">
+    <defs>
+      <marker id="ag" markerWidth="8" markerHeight="8" refX="6.6" refY="2.8" orient="auto">
+        <path d="M0,0 L6.6,2.8 L0,5.6 z" fill="#82C7A5"/></marker>
+      <marker id="an" markerWidth="8" markerHeight="8" refX="6.6" refY="2.8" orient="auto">
+        <path d="M0,0 L6.6,2.8 L0,5.6 z" fill="#6E7A8A"/></marker>
+    </defs>
+
+    <rect x="0" y="16" width="132" height="34" rx="5" fill="#273040" stroke="#3A4556"/>
+    <text x="66" y="37" class="nl" text-anchor="middle">UWAPI</text>
+    <line x1="66" y1="50" x2="66" y2="74" stroke="#6E7A8A" stroke-width="1.3" marker-end="url(#an)"/>
+
+    <rect x="0" y="76" width="132" height="46" rx="5" fill="#202834" stroke="#0145AC" stroke-width="1.6"/>
+    <text x="66" y="95" class="nl" text-anchor="middle">game_manager</text>
+    <text x="66" y="110" class="ns" text-anchor="middle">lifecycle · game loop</text>
+
+    <line x1="132" y1="99" x2="212" y2="99" stroke="#82C7A5" stroke-width="1.7" marker-end="url(#ag)"/>
+    <text x="172" y="92" class="nm" fill="#82C7A5" text-anchor="middle">ExecuteMove</text>
+
+    <rect x="214" y="76" width="146" height="46" rx="5" fill="#1E2A28" stroke="#82C7A5" stroke-width="1.6"/>
+    <text x="287" y="95" class="nl" text-anchor="middle">robot_control</text>
+    <text x="287" y="110" class="ns" text-anchor="middle">game types · async</text>
+
+    <path d="M 360 90 C 410 90, 420 54, 468 54" fill="none" stroke="#82C7A5" stroke-width="1.7" marker-end="url(#ag)"/>
+    <text x="414" y="46" class="nm" fill="#82C7A5" text-anchor="middle">MoveArm</text>
+    <path d="M 360 110 C 410 110, 420 150, 468 150" fill="none" stroke="#82C7A5" stroke-width="1.7" marker-end="url(#ag)"/>
+    <text x="414" y="166" class="nm" fill="#82C7A5" text-anchor="middle">MoveGripper</text>
+
+    <rect x="470" y="32" width="150" height="44" rx="5" fill="#273040" stroke="#3A4556"/>
+    <text x="545" y="50" class="nl" text-anchor="middle">arm_controller</text>
+    <text x="545" y="65" class="ns" text-anchor="middle">MoveIt 2 · LIN → OMPL</text>
+
+    <rect x="470" y="128" width="150" height="44" rx="5" fill="#273040" stroke="#3A4556"/>
+    <text x="545" y="146" class="nl" text-anchor="middle">gripper_controller</text>
+    <text x="545" y="161" class="ns" text-anchor="middle">reliable QoS</text>
+
+    <line x1="620" y1="54"  x2="676" y2="54"  stroke="#6E7A8A" stroke-width="1.3" marker-end="url(#an)"/>
+    <line x1="620" y1="150" x2="676" y2="150" stroke="#6E7A8A" stroke-width="1.3" marker-end="url(#an)"/>
+    <rect x="678" y="78" width="150" height="48" rx="5" fill="#2A2020" stroke="#5E3A36"/>
+    <text x="753" y="97" class="nl" text-anchor="middle" fill="#E8796B">MyCobot 280</text>
+    <text x="753" y="112" class="ns" text-anchor="middle" fill="#C98A80">blocked — see next</text>
+
+    <rect x="214" y="222" width="146" height="44" rx="5" fill="#273040" stroke="#3A4556"/>
+    <text x="287" y="240" class="nl" text-anchor="middle">vision_node</text>
+    <text x="287" y="255" class="ns" text-anchor="middle">AR tags · homography</text>
+    <path d="M 287 222 L 287 128" fill="none" stroke="#6E7A8A" stroke-width="1.3"
+          marker-end="url(#an)" stroke-dasharray="4 3"/>
+    <text x="296" y="180" class="nm">/vision/board_state</text>
+
+    <rect x="0" y="222" width="132" height="44" rx="5" fill="#273040" stroke="#3A4556"/>
+    <text x="66" y="247" class="nl" text-anchor="middle">USB camera</text>
+    <line x1="132" y1="244" x2="210" y2="244" stroke="#6E7A8A" stroke-width="1.3" marker-end="url(#an)"/>
+
+    <line x1="470" y1="284" x2="498" y2="284" stroke="#82C7A5" stroke-width="1.7" marker-end="url(#ag)"/>
+    <text x="508" y="288" class="ns">ROS 2 action (goal → result)</text>
+    <line x1="676" y1="284" x2="704" y2="284" stroke="#6E7A8A" stroke-width="1.3" marker-end="url(#an)" stroke-dasharray="4 3"/>
+    <text x="714" y="288" class="ns">topic</text>
+  </svg>
+
+  <div class="pagenum">3</div>
+</section>
+
+<!-- ============ 4 THE ORDEAL ============ -->
+<section class="slide">
+  <svg class="chev" viewBox="0 0 86 46">
+    <polygon points="0,4 24,4 46,42 22,42" fill="#0145AC"/>
+    <polygon points="30,4 54,4 76,42 52,42" fill="#82C7A5"/>
+  </svg>
+  <h1>The GamesmanROS Ordeal, part 2</h1>
+  <div class="sub">writing the documentation turned into an audit &mdash; these are all things we found by trying to run it</div>
+
+  <div class="body cols">
+    <div class="col">
+      <ul>
+        <li class="bad"><span class="hi">6 of our 9 games have wrong board coordinates</span>
+          <ul>
+            <li>Off by up to <span class="hi">44&nbsp;mm</span> at the far corner &mdash; more than a full square</li>
+            <li>Found it by writing a validator; 5 still quarantined behind a failing test</li>
+          </ul>
+        </li>
+        <li class="bad"><span class="hi"><span class="mono">mycobot_interfaces</span> doesn't exist in the repo</span>
+          <ul>
+            <li>2 of 6 nodes can't even import &mdash; and they're the two that run on the Pi</li>
+            <li>This is what's blocking all hardware testing</li>
+          </ul>
+        </li>
+        <li class="bad"><span class="hi">A failed move still advances the game</span>
+          <ul><li>Solver keeps playing against a board that doesn't exist</li></ul>
+        </li>
+      </ul>
+    </div>
+    <div class="col">
+      <ul>
+        <li>Deadlock in the motion sequencer (blocking calls in an async callback) &mdash; <span class="good">fixed</span></li>
+        <li>NumPy 2.0 broke motion planning entirely &mdash; <span class="good">pinned</span></li>
+        <li>Ubuntu's OpenCV is 4.5.4, too old for the AR API we need &mdash; <span class="good">fixed in Docker</span></li>
+        <li>Build artifacts were committed to git (27k lines of churn, instant merge conflicts) &mdash; <span class="good">untracked</span></li>
+      </ul>
+      <div class="pane" style="margin-top:14px">
+        <h3>All of it is now caught automatically</h3>
+        <p style="font-size:13px;color:var(--txt-2);line-height:1.45">
+          <span class="mono">scripts/smoke.sh</span> builds, imports every node, runs the tests
+          and plays a real solver move through the whole stack. 19 checks, all green.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagenum">4</div>
+</section>
+
+<!-- ============ 5 TESTING WITHOUT ROBOT ============ -->
+<section class="slide">
+  <svg class="chev" viewBox="0 0 86 46">
+    <polygon points="0,4 24,4 46,42 22,42" fill="#0145AC"/>
+    <polygon points="30,4 54,4 76,42 52,42" fill="#82C7A5"/>
+  </svg>
+  <h1>Testing without the robot 🤖</h1>
+  <div class="sub">one robot, three people, and the robot isn't ready &mdash; so we built a fake one</div>
+
+  <div class="body cols">
+    <div class="col" style="flex:1.15">
+      <ul>
+        <li><span class="hi">Simulated arm + gripper</span> that speak the same action interface
+          <ul>
+            <li>Whole stack runs with nothing plugged in</li>
+            <li>Can inject failures on purpose (unreachable poses) to test the error paths</li>
+          </ul>
+        </li>
+        <li><span class="hi">Dodgem played 19 moves against itself</span>
+          <ul>
+            <li>Real UWAPI, real coordinates, 171 motion commands, zero deadlocks</li>
+            <li>Proved the architecture before the hardware existed</li>
+          </ul>
+        </li>
+        <li>All three of us work in parallel instead of queueing for the arm</li>
+      </ul>
+    </div>
+    <div class="col" style="flex:0.85">
+      <div class="cols" style="gap:14px;margin-top:4px">
+        <div class="col stat"><div class="n">19</div><div class="c">moves played<br>end to end</div></div>
+        <div class="col stat"><div class="n">171</div><div class="c">motion commands<br>no deadlocks</div></div>
+      </div>
+      <div class="cols" style="gap:14px;margin-top:26px">
+        <div class="col stat"><div class="n">19</div><div class="c">automated checks<br>all passing</div></div>
+        <div class="col stat"><div class="n">0</div><div class="c">tests in this repo<br>before this term</div></div>
+      </div>
+      <div class="pane g" style="margin-top:24px">
+        <p style="font-size:12.5px;color:var(--txt-2);line-height:1.45">
+          Same harness Track A will use to measure how often the planner actually fails,
+          the moment the MoveIt config loads.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagenum">5</div>
+</section>
+
+<!-- ============ 6 CV MODEL ============ -->
+<section class="slide">
+  <svg class="chev" viewBox="0 0 86 46">
+    <polygon points="0,4 24,4 46,42 22,42" fill="#0145AC"/>
+    <polygon points="30,4 54,4 76,42 52,42" fill="#82C7A5"/>
+  </svg>
+  <h1>CV Model &mdash; status</h1>
+  <div class="sub">rebuilt around AR tags &mdash; we went back to them after reading last semester's thesis</div>
+
+  <div class="body cols tight">
+    <div class="col">
+      <div class="lbl">Problems with the old vision stack</div>
+      <ul>
+        <li><span class="hi">Errors cascaded</span>
+          <ul><li>A piece placed 2&ndash;3&nbsp;cm off became hard to pick up next turn, and got worse every move</li></ul>
+        </li>
+        <li><span class="hi">Four stacked dependencies to locate one tag</span>
+          <ul><li>camera intrinsics &rarr; extrinsics &rarr; TF tree &rarr; tag pose. Each one a failure point</li></ul>
+        </li>
+        <li><span class="hi">2&ndash;3&nbsp;cm localisation error</span>
+          <ul><li>Our cells are 37.5&nbsp;mm &mdash; that's most of a square</li></ul>
+        </li>
+        <li>Colour detection can't tell two same-coloured pieces apart, and burns Pi cycles</li>
+      </ul>
+    </div>
+    <div class="col">
+      <div class="lbl">What we built</div>
+      <ul>
+        <li><span class="good">AR tag = piece identity</span>
+          <ul><li>Works for any game and any piece shape &mdash; this is what makes generalising possible</li></ul>
+        </li>
+        <li><span class="good">4 corner markers &rarr; homography</span>
+          <ul>
+            <li><span class="hi">No intrinsics, no TF tree, no calibration step</span> &mdash; the whole chain above is gone</li>
+            <li>2D throughout, so no depth estimate &mdash; that was the main source of the 2&ndash;3&nbsp;cm error</li>
+          </ul>
+        </li>
+        <li><span class="good">Pick where the piece <i>is</i>, place where it <i>should be</i></span>
+          <ul><li>Stops errors compounding, without drifting off the ideal grid</li></ul>
+        </li>
+        <li><span class="good">Temporal voting (5 frames)</span> &mdash; a hand over the board can't move the state</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pane r" style="margin-top:9px;padding:12px 15px">
+    <p style="font-size:12.5px;color:var(--txt-2);line-height:1.4">
+      <span class="hi">Not done:</span> never run against a real camera yet. Corner marker IDs
+      currently clash with the piece tag IDs, irregular boards still aren't supported, and
+      game-state validation isn't written.
+    </p>
+  </div>
+
+  <div class="pagenum">6</div>
+</section>
+
+<!-- ============ 7 PLANS ============ -->
+<section class="slide">
+  <svg class="chev" viewBox="0 0 86 46">
+    <polygon points="0,4 24,4 46,42 22,42" fill="#0145AC"/>
+    <polygon points="30,4 54,4 76,42 52,42" fill="#82C7A5"/>
+  </svg>
+  <h1><i>PLANS FOR 15-WEEK</i></h1>
+
+  <div class="body cols">
+    <div class="col">
+      <ul>
+        <li><span class="hi">Be able to play Dodgem</span> &mdash; on the actual robot
+          <ul>
+            <li>Blocker: <span class="mono">mycobot_interfaces</span>, then MoveIt config</li>
+            <li>Everything above that line already works in simulation</li>
+          </ul>
+        </li>
+        <li><span class="hi">Have CV working on the robot</span>
+          <ul>
+            <li>Pipeline is written; needs a tag-ID scheme and a real camera</li>
+            <li>Corner markers currently clash with the piece tag IDs</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="col">
+      <ul>
+        <li>Fix the remaining 5 games' coordinates</li>
+        <li>Decide what happens when a move fails (currently: nothing, which is the bug)</li>
+        <li>Measure how often the planner actually falls back &mdash; tool is ready</li>
+        <li class="warn">Stretch: support non-grid boards
+          <ul><li>Pong Hau K'i is 5 cells in a graph, not a grid &mdash; it breaks every coordinate assumption we have</li></ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="pane r" style="margin-top:14px">
+    <p style="font-size:13px;color:var(--txt-2);line-height:1.45">
+      <span class="hi">Honest risk:</span> we found the <span class="mono">mycobot_interfaces</span> gap
+      in week 5 and it's still open in week 10. Nothing reaches the robot until it closes, and both
+      15-week goals depend on it.
+    </p>
+  </div>
+
+  <div class="pagenum">7</div>
+</section>
+
+</body>
+</html>

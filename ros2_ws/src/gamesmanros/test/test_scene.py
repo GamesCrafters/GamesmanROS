@@ -22,7 +22,11 @@ from gamesmanros.robot_control import CoordConverter, PICKUP_Z_MM   # noqa: E402
 
 
 def dodgem():
-    return CoordConverter(get_dim('dodgem')), get_centers('dodgem')
+    # Ryan's centers.py fetches geometry from UWAPI by (game, variant); the
+    # converter now takes physical board size from calibration.py, not a cell
+    # count. Off-board/metadata entries come back as None and are skipped.
+    centers = [c for c in get_centers('dodgem', 'regular') if c is not None]
+    return CoordConverter(), centers
 
 
 def test_board_box_covers_every_cell_and_pieces_sit_on_it():

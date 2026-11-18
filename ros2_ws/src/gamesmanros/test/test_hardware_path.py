@@ -131,7 +131,7 @@ def driver(monkeypatch):
 def test_driver_forwards_goals_to_the_arm(driver):
     from mycobot_interfaces.msg import MycobotSetAngles
     m = MycobotSetAngles()
-    m.joint_1, m.joint_2, m.joint_3, m.joint_4, m.joint_5, m.joint_6 = 10, 20, 30, 40, 50, 60
+    m.joint_1, m.joint_2, m.joint_3, m.joint_4, m.joint_5, m.joint_6 = 10.0, 20.0, 30.0, 40.0, 50.0, 60.0
     m.speed = 40
     driver._on_goal(m)
     assert driver._mc.sent == [([10, 20, 30, 40, 50, 60], 40)]
