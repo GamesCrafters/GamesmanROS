@@ -55,6 +55,10 @@ def generate_launch_description():
         'game_id', default_value='',
         description='Pre-select game ID (leave empty for interactive selection)')
 
+    variant_id_arg = DeclareLaunchArgument(
+        'variant_id', default_value='regular',
+        description='Board variant; vision_node fetches cell layout for (game_id, variant_id)')
+
     eef_orientation_arg = DeclareLaunchArgument(
         'eef_orientation', default_value='full',
         description="arm_controller gripper pose: 'full' (rotated+tilted) or 'down' (straight down)")
@@ -73,6 +77,7 @@ def generate_launch_description():
     hardware       = LaunchConfiguration('hardware')
     eef_orientation = LaunchConfiguration('eef_orientation')
     game_id        = LaunchConfiguration('game_id')
+    variant_id     = LaunchConfiguration('variant_id')
 
     joint_state_bridge = Node(
         package='gamesmanros',
@@ -123,14 +128,16 @@ def generate_launch_description():
         condition=IfCondition(vision_enabled),
         parameters=[{
             'camera_index': 0,
-            'grid_rows':    4,
-            'grid_cols':    4,
+            # Cell layout is fetched from UWAPI for this (game, variant), so
+            # irregular and non-grid boards need no extra configuration.
+            'game':         game_id,
+            'variant':      variant_id,
+            'snap_radius':  0.12,
             'debug_view':   False,
-            # HSV ranges tuned for default red/blue pieces — override at runtime
-            'p1_hsv_lower': [0,   120, 70],
-            'p1_hsv_upper': [10,  255, 255],
-            'p2_hsv_lower': [100, 120, 70],
-            'p2_hsv_upper': [130, 255, 255],
+            # TODO(calibrate): assign real tag IDs. These must not overlap
+            # corner_ids (default [0,1,2,3]) — see docs/MERGE-ISSUES.md.
+            'p1_tag_ids':   [],
+            'p2_tag_ids':   [],
         }],
     )
 
@@ -153,6 +160,7 @@ def generate_launch_description():
     return LaunchDescription([
         vision_arg,
         game_id_arg,
+        variant_id_arg,
         hardware_arg,
         port_arg,
         baud_arg,

@@ -74,13 +74,11 @@ Fails: `test_scene.py::test_board_box_covers_every_cell_and_pieces_sit_on_it`,
 
 **Owner:** Manlin + Ryan.
 
-## 3. `reach_sweep.py` — broken, non-blocking
+## 3. `reach_sweep.py` — FIXED
 
-Same three calls, same cause. It is a measurement tool, so nothing depends on
-it, but it is how we planned to measure the LIN-vs-OMPL fallback rate on real
-hardware.
-
-**Owner:** Ethan.
+Ported to the new API: `get_centers(game, variant)`, bare `CoordConverter()`,
+and `normalized_to_meters()` in place of `svg_to_meters()`. Takes a `variant`
+parameter now. Verified against mock hardware.
 
 ## 4. `pymycobot` is undeclared
 

@@ -32,18 +32,21 @@ from rclpy.node import Node
 from rclpy.action import ActionClient
 
 from gamesmanros_interfaces.action import MoveArm
-from .centers import get_centers, get_dim
-from .robot_control import CoordConverter, PICKUP_Z_MM, LIFT_Z_MM
+from .centers import GeometryError, get_centers
+from .coords import CoordConverter, CoordinateError
+from .calibration import PICKUP_Z_MM, LIFT_Z_MM
 
 
 class ReachSweep(Node):
     def __init__(self):
         super().__init__('reach_sweep')
         self.declare_parameter('game', 'dodgem')
+        self.declare_parameter('variant', 'regular')
         self.declare_parameter('mode', 'cells')
         self.declare_parameter('settle', 0.0)
 
         self.game = self.get_parameter('game').value
+        self.variant = self.get_parameter('variant').value
         self.mode = self.get_parameter('mode').value
         self.settle = self.get_parameter('settle').value
 
@@ -64,18 +67,21 @@ class ReachSweep(Node):
         return res.success, (res.message or '')
 
     def run(self):
-        centers = get_centers(self.game)
-        dim = get_dim(self.game)
-        if not centers or not dim:
-            self.get_logger().error(f'no centers/dim for {self.game!r}')
+        try:
+            centers = [c for c in get_centers(self.game, self.variant) if c is not None]
+        except GeometryError as e:
+            self.get_logger().error(f'no geometry for {self.game}/{self.variant}: {e}')
+            return 1
+        if not centers:
+            self.get_logger().error(f'no usable cells for {self.game}/{self.variant}')
             return 1
 
         if not self._client.wait_for_server(timeout_sec=15.0):
             self.get_logger().error('/move_arm not available — is arm_controller running?')
             return 1
 
-        conv = CoordConverter(dim)
-        print(f'\nReachability sweep — {self.game}, dim={dim}, {len(centers)} cells, mode={self.mode}\n')
+        conv = CoordConverter()
+        print(f'\nReachability sweep — {self.game}/{self.variant}, {len(centers)} cells, mode={self.mode}\n')
 
         if self.mode == 'pairs':
             return self._sweep_pairs(conv, centers)
@@ -86,11 +92,11 @@ class ReachSweep(Node):
         print('-' * 62)
         bad = []
         for i, svg in enumerate(centers):
-            x, y, _ = conv.svg_to_meters(svg, PICKUP_Z_MM)
+            x, y, _ = conv.normalized_to_meters(svg, PICKUP_Z_MM)
             reach = math.hypot(x, y) * 1000
             row = []
             for z_mm in (PICKUP_Z_MM, LIFT_Z_MM):
-                _, _, z = conv.svg_to_meters(svg, z_mm)
+                _, _, z = conv.normalized_to_meters(svg, z_mm)
                 ok, msg = self.send(x, y, z)
                 row.append(f'{"OK" if ok else "FAIL"} {msg}'.strip()[:13])
                 if not ok:
@@ -109,13 +115,13 @@ class ReachSweep(Node):
         print(f'walking {n*(n-1)} ordered transitions at travel height {LIFT_Z_MM:.0f} mm\n')
         fails, lin, ompl = [], 0, 0
         for a in range(n):
-            ax, ay, az = conv.svg_to_meters(centers[a], LIFT_Z_MM)
+            ax, ay, az = conv.normalized_to_meters(centers[a], LIFT_Z_MM)
             if not self.send(ax, ay, az)[0]:
                 continue                        # cannot stage here; skip its row
             for b in range(n):
                 if a == b:
                     continue
-                bx, by, bz = conv.svg_to_meters(centers[b], LIFT_Z_MM)
+                bx, by, bz = conv.normalized_to_meters(centers[b], LIFT_Z_MM)
                 ok, msg = self.send(bx, by, bz)
                 if not ok:
                     fails.append((a, b))

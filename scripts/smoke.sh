@@ -53,7 +53,7 @@ sleep 6
 
 OUT=$(ros2 action send_goal /execute_move \
   gamesmanros_interfaces/action/ExecuteMove \
-  "{game_id: dodgem, move_string: M_4_5_x, current_position: \"1_----o---o----xx-\", new_position: \"2_-----o--o----xx-\"}" 2>&1)
+  "{game_id: dodgem, variant_id: regular, move_string: M_4_5_x, current_position: \"1_----o---o----xx-\", new_position: \"2_-----o--o----xx-\"}" 2>&1)
 
 echo "$OUT" | grep -q "success: true" && ok "ExecuteMove succeeded" || bad "ExecuteMove"
 N=$(grep -c "arm #"  /tmp/mock.log 2>/dev/null); N=${N:-0}
