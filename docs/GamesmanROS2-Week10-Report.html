@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GamesmanROS Week 10 Report</title>
+<style>
+  @page { size: 13.333in 7.5in; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink:#16202F; --ink-2:#45566E; --ink-3:#7B8DA6; --rule:#D8E0EA;
+    --bg:#FFFFFF; --bg-soft:#F4F7FB; --cal:#003262; --gold:#C89A1E;
+    --bad:#C0392B; --bad-soft:#FCEEEC; --good:#0E7C63; --good-soft:#E9F5F2;
+    --warn:#7A5E10; --warn-soft:#FDF8EA; --warn-bd:#E8D9A8;
+  }
+  html,body{background:#555}
+  body{font-family:-apple-system,'SF Pro Display','Helvetica Neue',Arial,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .slide{width:1280px;height:720px;background:var(--bg);position:relative;overflow:hidden;page-break-after:always;padding:52px 64px 46px}
+  .slide:last-child{page-break-after:auto}
+  h1{font-size:33px;font-weight:700;letter-spacing:-0.5px;color:var(--cal)}
+  h2{font-size:14px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:9px}
+  p{font-size:15px;line-height:1.55;color:var(--ink-2)}
+  code,.mono{font-family:'SF Mono',Menlo,Consolas,monospace;font-size:0.9em}
+  code{background:var(--bg-soft);padding:1px 5px;border-radius:3px;color:var(--cal)}
+  .hrule{height:3px;width:52px;background:var(--gold);margin:13px 0 22px;border-radius:2px}
+  .pagenum{position:absolute;right:64px;bottom:24px;font-size:12px;color:var(--ink-3)}
+  .footmark{position:absolute;left:64px;bottom:24px;font-size:12px;color:var(--ink-3)}
+  .title-slide{padding:0;display:flex;flex-direction:column;justify-content:center}
+  .title-band{position:absolute;left:0;top:0;width:14px;height:100%;background:var(--cal)}
+  .title-inner{padding:0 90px}
+  .title-slide h1{font-size:52px;line-height:1.1;letter-spacing:-1.2px}
+  .kicker{font-size:14px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+  .lede{font-size:19px;color:var(--ink-2);margin-top:20px;line-height:1.5;max-width:820px}
+  .title-meta{margin-top:38px;padding-top:20px;border-top:1px solid var(--rule);font-size:14px;color:var(--ink-3);max-width:820px}
+  .cols{display:flex;gap:22px}
+  .col{flex:1}
+  .stack{display:flex;flex-direction:column;gap:12px}
+  .card{border:1px solid var(--rule);border-radius:9px;padding:17px 19px;background:var(--bg)}
+  .card h3{font-size:16px;font-weight:650;margin-bottom:6px;color:var(--ink)}
+  .card p{font-size:13.5px;line-height:1.5}
+  .card-bad{border-color:#EFC9C3;background:var(--bad-soft)}
+  .card-good{border-color:#B8DDD3;background:var(--good-soft)}
+  .card-warn{border-color:var(--warn-bd);background:var(--warn-soft)}
+  .card-bad h3{color:var(--bad)} .card-good h3{color:var(--good)} .card-warn h3{color:var(--warn)}
+  .tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;padding:3px 9px;border-radius:4px;margin-bottom:8px}
+  .tag-good{background:#CBEADF;color:#0A5D4A}
+  .tag-warn{background:#F2E4BC;color:#7A5E10}
+  .tag-bad{background:#F6D7D1;color:#98291B}
+  .tag-blue{background:#DCE5F0;color:#003262}
+  ul{list-style:none}
+  li{font-size:14px;line-height:1.5;color:var(--ink-2);padding-left:16px;position:relative;margin-bottom:6px}
+  li::before{content:'';position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+  table{border-collapse:collapse;width:100%;font-size:13px}
+  th{text-align:left;font-size:10.5px;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3);font-weight:650;padding:0 11px 8px 0;border-bottom:1.5px solid var(--rule)}
+  td{padding:8px 11px 8px 0;border-bottom:1px solid #EDF1F6;color:var(--ink-2);vertical-align:top;line-height:1.4}
+  td.em{color:var(--ink);font-weight:550}
+  td.file{font-family:'SF Mono',Menlo,monospace;font-size:12px;color:var(--cal)}
+  .note{font-size:13px;color:var(--ink-3);font-style:italic;border-left:2.5px solid var(--rule);padding-left:12px;line-height:1.5}
+  .big{font-size:40px;font-weight:700;letter-spacing:-1px;line-height:1}
+  .big-lbl{font-size:12px;color:var(--ink-3);margin-top:6px;line-height:1.35}
+  svg text{font-family:-apple-system,'SF Pro Text','Helvetica Neue',Arial,sans-serif}
+  .lbl{font-size:12.5px;fill:#16202F;font-weight:550}
+  .lbl-s{font-size:10.5px;fill:#7B8DA6}
+  .lbl-m{font-family:'SF Mono',Menlo,monospace;font-size:10px;fill:#45566E}
+</style>
+</head>
+<body>
+
+<!-- 1 TITLE -->
+<section class="slide title-slide">
+  <div class="title-band"></div>
+  <div class="title-inner">
+    <div class="kicker">GamesCrafters &middot; Robotics &middot; Fall 2026</div>
+    <h1>GamesmanROS<br>Week 10 Report</h1>
+    <div class="lede">
+      Progress against the 5, 10 and 15 week deliverables &mdash; what landed,
+      what did not, and what we learned that changes the plan.
+    </div>
+    <div class="title-meta">
+      Team of 3 &middot; ROS 2 Humble &middot; MoveIt 2 &middot; OpenCV<br>
+      <span style="color:var(--ink-2)">Week 5 exceeded &middot; Week 10 missed &middot; Week 15 better specified than when we promised it</span>
+    </div>
+  </div>
+</section>
+
+<!-- 2 THE PROMISES -->
+<section class="slide">
+  <h2>Scorecard</h2>
+  <h1>What we promised, and where we are</h1>
+  <div class="hrule"></div>
+
+  <table style="font-size:13.5px">
+    <tr><th style="width:92px">Week</th><th style="width:400px">Promised</th><th style="width:120px">Status</th><th>Reality</th></tr>
+    <tr>
+      <td class="em">5</td>
+      <td class="em">Complete documentation of GamesmanROS &mdash; every file and the ROS node structure drawn out. Identify the specific issues with the system.</td>
+      <td><span class="tag tag-good" style="margin:0">Exceeded</span></td>
+      <td>Two decks (23 slides), a setup guide, and issues not just identified but <strong>measured</strong></td>
+    </tr>
+    <tr>
+      <td class="em">10</td>
+      <td class="em">Pong Hau K'i fully functional.</td>
+      <td><span class="tag tag-bad" style="margin:0">Not met</span></td>
+      <td>Dodgem runs end to end in simulation. Pong Hau K'i is not registered in the system at all &mdash; and we now know why it is harder than it looked</td>
+    </tr>
+    <tr>
+      <td class="em">15</td>
+      <td class="em">Generalise GamesmanROS to support all games; keep the code clear. Computer vision as future work.</td>
+      <td><span class="tag tag-warn" style="margin:0">On track</span></td>
+      <td>Vision moved forward from "future work" to shipped. Generalisation now has a named blocker instead of being a vague goal</td>
+    </tr>
+  </table>
+
+  <div class="cols" style="margin-top:26px">
+    <div class="col card card-good">
+      <h3 style="font-size:15px">The honest summary</h3>
+      <p>We over-delivered on understanding the system and under-delivered on
+      making a new game work. The reason is the same in both cases: the system
+      had more wrong with it than last semester's write-up suggested.</p>
+    </div>
+    <div class="col card">
+      <h3 style="font-size:15px">What changed the plan</h3>
+      <p>Two things we did not anticipate &mdash; a missing hardware dependency that
+      blocks all physical testing, and a structural assumption in the coordinate
+      system that rules out exactly the kind of game Pong Hau K'i is.</p>
+    </div>
+  </div>
+
+  <div class="footmark">Scorecard</div><div class="pagenum">02</div>
+</section>
+
+<!-- 3 WEEK 5 — DOCUMENTATION -->
+<section class="slide">
+  <h2>Week 5 &middot; Delivered</h2>
+  <h1>Documentation: the anatomy, written down</h1>
+  <div class="hrule"></div>
+
+  <div class="cols">
+    <div class="col stack" style="flex:1.1">
+      <div class="card card-good">
+        <span class="tag tag-good">Shipped</span>
+        <h3 style="font-size:15px">Architecture deck &mdash; 11 slides</h3>
+        <p>Why the ROS 1 system failed, the full node graph, the interface
+        contracts, and a file-by-file map with line counts. This is the
+        "GamesmanROS Anatomy" the deliverable asked for.</p>
+      </div>
+      <div class="card card-good">
+        <span class="tag tag-good">Shipped</span>
+        <h3 style="font-size:15px">Onboarding deck &mdash; 12 slides</h3>
+        <p>Written for a new contributor: which four files to read and in what
+        order, how one move traces end to end through real function names, the
+        coordinate maths with worked examples, and where each of three people
+        plugs in.</p>
+      </div>
+      <div class="card card-good">
+        <span class="tag tag-good">Shipped</span>
+        <h3 style="font-size:15px">SETUP.md + reproducible environment</h3>
+        <p>A Docker image that builds identically on any host, with a four-step
+        verification. New contributors reach a working build without a day of
+        environment debugging.</p>
+      </div>
+    </div>
+
+    <div class="col" style="flex:0.95">
+      <div class="card" style="height:100%">
+        <h3 style="font-size:15px">Why this went beyond the promise</h3>
+        <p>The deliverable asked for documentation of the system as it existed.
+        Writing it honestly meant running it &mdash; and running it meant finding
+        that several documented behaviours were not real.</p>
+        <p style="margin-top:10px">So the documentation effort became the
+        audit. Every issue on the next slide was found while trying to write
+        down how something worked and discovering it did not.</p>
+        <p style="margin-top:10px">The decks are in <code>docs/</code> and the
+        environment in <code>docker/</code>, both in the repository, so the next
+        team starts from here rather than from scratch.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footmark">Week 5 &mdash; documentation</div><div class="pagenum">03</div>
+</section>
+
+<!-- 4 WEEK 5 — ISSUES -->
+<section class="slide">
+  <h2>Week 5 &middot; Delivered</h2>
+  <h1>Issues found &mdash; measured, not just listed</h1>
+  <div class="hrule"></div>
+
+  <table style="font-size:13px">
+    <tr><th style="width:250px">Issue</th><th style="width:300px">How we found it</th><th>Impact</th></tr>
+    <tr>
+      <td class="em">Coordinate scaling wrong in 6 of 9 games</td>
+      <td>Wrote a validator for the board-dimension invariant</td>
+      <td class="em" style="color:var(--bad)">Up to 44 mm error at the far corner &mdash; more than one full board square</td>
+    </tr>
+    <tr>
+      <td class="em"><code>mycobot_interfaces</code> missing entirely</td>
+      <td>Building the workspace in a clean container</td>
+      <td class="em" style="color:var(--bad)">Two of six nodes cannot import. Blocks all hardware testing</td>
+    </tr>
+    <tr>
+      <td class="em">Failed moves corrupt game state</td>
+      <td>Forced a planning failure with simulated hardware</td>
+      <td class="em" style="color:var(--bad)">Solver reasons about a board that no longer exists; error compounds every turn</td>
+    </tr>
+    <tr>
+      <td class="em">Deadlock in the motion sequencer</td>
+      <td>Code review, confirmed under load</td>
+      <td>Blocking calls inside an action callback; fixed with an async rewrite</td>
+    </tr>
+    <tr>
+      <td class="em">NumPy 2.0 breaks motion planning</td>
+      <td>Clean container build</td>
+      <td><code>tf_transformations</code> calls a function NumPy 2 removed &mdash; arm node would not import</td>
+    </tr>
+    <tr>
+      <td class="em">Ubuntu's OpenCV too old for our AR API</td>
+      <td>Clean container build</td>
+      <td>apt ships 4.5.4; <code>cv2.aruco.ArucoDetector</code> needs 4.7+</td>
+    </tr>
+    <tr>
+      <td class="em">Build artifacts committed to git</td>
+      <td>Reviewing a diff with 27,000 changed lines</td>
+      <td>Guaranteed merge conflicts for a three-person team</td>
+    </tr>
+  </table>
+
+  <p class="note" style="margin-top:22px;max-width:1140px">
+    Each of these is now covered by an automated check. <code>scripts/smoke.sh</code>
+    builds, imports every node, runs the test suite and plays a real solver-driven
+    move through the whole stack &mdash; currently 19 checks, all passing.
+  </p>
+
+  <div class="footmark">Week 5 &mdash; issues</div><div class="pagenum">04</div>
+</section>
+
+<!-- 5 WEEK 10 — HONEST -->
+<section class="slide">
+  <h2>Week 10 &middot; Missed</h2>
+  <h1>Pong Hau K'i is not running</h1>
+  <div class="hrule"></div>
+
+  <div class="cols" style="align-items:flex-start">
+    <div class="col" style="flex:1.05">
+      <div class="card card-bad">
+        <h3 style="font-size:15px">Where it actually stands</h3>
+        <p>Pong Hau K'i is not registered in <code>centers.py</code> or in the game-type
+        map. No board coordinates exist for it. It has never been attempted on
+        hardware, because no game has &mdash; the hardware path is blocked by a missing
+        dependency we only discovered in week 5.</p>
+      </div>
+
+      <div class="card card-good" style="margin-top:14px">
+        <h3 style="font-size:15px">What does run</h3>
+        <p><strong>Dodgem plays itself end to end.</strong> Nineteen solver-driven
+        moves, 171 motion commands, real UWAPI values, the full coordinate
+        pipeline, against a simulated arm.</p>
+        <p style="margin-top:9px">That exercises every layer of the system except
+        the physical one &mdash; and it is how we know the architecture works before
+        the robot is available.</p>
+      </div>
+    </div>
+
+    <div class="col" style="flex:0.95">
+      <div class="card" style="height:100%">
+        <h3 style="font-size:15px">Two reasons, one avoidable</h3>
+        <p><strong style="color:var(--bad)">1. A blocked hardware path.</strong>
+        Two nodes depend on a message package that is not in the repository and is
+        not a stock ROS 2 package. Nothing reaches the robot until it is resolved.
+        We found this in week 5 and have not yet closed it &mdash; that delay is on us.</p>
+        <p style="margin-top:12px"><strong style="color:var(--warn)">2. Pong Hau K'i
+        does not fit the system's shape.</strong> This one is not a scheduling
+        problem. The board is not a grid, and every coordinate and vision component
+        we have assumes one. Explained on the next slide.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="note" style="margin-top:20px;max-width:1150px">
+    Choosing Pong Hau K'i was reasonable &mdash; it is one of the simplest games in
+    GamesmanUni, five cells and two pieces each. It turned out to be simple as a
+    <em>game</em> and awkward as a <em>board</em>.
+  </p>
+
+  <div class="footmark">Week 10 &mdash; status</div><div class="pagenum">05</div>
+</section>
+
+<!-- 6 WHY — THE GRID ASSUMPTION -->
+<section class="slide">
+  <h2>Week 10 &middot; Root cause</h2>
+  <h1>The board is a graph, not a grid</h1>
+  <div class="hrule"></div>
+
+  <div class="cols" style="align-items:flex-start">
+    <div class="col" style="flex:1.05">
+      <svg width="600" height="300" viewBox="0 0 600 300">
+        <!-- LEFT: grid game -->
+        <rect x="6" y="6" width="282" height="248" rx="9" fill="#E9F5F2" stroke="#B8DDD3"/>
+        <text x="147" y="32" class="lbl" fill="#0E7C63" text-anchor="middle">Dodgem &mdash; what the system expects</text>
+        <g stroke="#9CC9BC" fill="none" stroke-width="1.2">
+          <rect x="62" y="56" width="170" height="170"/>
+          <line x1="104.5" y1="56" x2="104.5" y2="226"/>
+          <line x1="147"   y1="56" x2="147"   y2="226"/>
+          <line x1="189.5" y1="56" x2="189.5" y2="226"/>
+          <line x1="62" y1="98.5"  x2="232" y2="98.5"/>
+          <line x1="62" y1="141"   x2="232" y2="141"/>
+          <line x1="62" y1="183.5" x2="232" y2="183.5"/>
+        </g>
+        <text x="147" y="248" class="lbl-s" text-anchor="middle">uniform 4 x 4 &mdash; index = row x cols + col</text>
+
+        <!-- RIGHT: pong hau ki -->
+        <rect x="312" y="6" width="282" height="248" rx="9" fill="#FDF8EA" stroke="#E8D9A8"/>
+        <text x="453" y="32" class="lbl" fill="#7A5E10" text-anchor="middle">Pong Hau K'i &mdash; 5 cells, no grid</text>
+        <g stroke="#C9B169" stroke-width="1.6">
+          <line x1="378" y1="78" x2="528" y2="78"/>
+          <line x1="378" y1="78" x2="378" y2="198"/>
+          <line x1="528" y1="78" x2="528" y2="198"/>
+          <line x1="378" y1="198" x2="528" y2="198"/>
+          <line x1="378" y1="78" x2="453" y2="138"/>
+          <line x1="528" y1="78" x2="453" y2="138"/>
+          <line x1="378" y1="198" x2="453" y2="138"/>
+          <line x1="528" y1="198" x2="453" y2="138"/>
+        </g>
+        <circle cx="378" cy="78"  r="13" fill="#2B6CB0"/>
+        <circle cx="528" cy="78"  r="13" fill="#2B6CB0"/>
+        <circle cx="453" cy="138" r="13" fill="#FFFFFF" stroke="#7A5E10" stroke-width="2"/>
+        <circle cx="378" cy="198" r="13" fill="#C0392B"/>
+        <circle cx="528" cy="198" r="13" fill="#C0392B"/>
+        <text x="378" y="83" fill="#FFF" text-anchor="middle" style="font-size:12px;font-weight:700;font-family:-apple-system,Arial">0</text>
+        <text x="528" y="83" fill="#FFF" text-anchor="middle" style="font-size:12px;font-weight:700;font-family:-apple-system,Arial">1</text>
+        <text x="453" y="143" fill="#7A5E10" text-anchor="middle" style="font-size:12px;font-weight:700;font-family:-apple-system,Arial">2</text>
+        <text x="378" y="203" fill="#FFF" text-anchor="middle" style="font-size:12px;font-weight:700;font-family:-apple-system,Arial">3</text>
+        <text x="528" y="203" fill="#FFF" text-anchor="middle" style="font-size:12px;font-weight:700;font-family:-apple-system,Arial">4</text>
+        <text x="453" y="232" class="lbl-m" fill="#7A5E10" text-anchor="middle">startPosition: 1_oo-xx</text>
+        <text x="453" y="248" class="lbl-s" text-anchor="middle">adjacency matters; position does not tile</text>
+
+        <text x="300" y="288" class="lbl-s" text-anchor="middle">Legality comes from which cells connect &mdash; there are no rows or columns to index</text>
+      </svg>
+    </div>
+
+    <div class="col stack" style="flex:0.95">
+      <div class="card card-warn">
+        <h3 style="font-size:15px">Three components assume a grid</h3>
+        <ul style="margin-top:4px">
+          <li><code>centers.py</code> &mdash; one <code>dim</code> per game, scaling is <code>150 / dim</code></li>
+          <li><code>CoordConverter</code> &mdash; square board, flips rows against <code>dim</code></li>
+          <li><code>vision_node</code> &mdash; divides the image into <code>rows &times; cols</code> cells</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">Not a special case</h3>
+        <p>The same assumption already breaks two games we do have:
+        <code>1dchess</code> is 8&times;1, and <code>dinododgem</code> has an
+        irregular exit region. Pong Hau K'i is the third instance, not an
+        exception.</p>
+      </div>
+      <div class="card card-good">
+        <h3 style="font-size:15px">Why this is the useful finding</h3>
+        <p>The week 15 promise is "support all games". That was a goal without a
+        plan. It now has one: replace the grid model with an explicit cell list
+        and adjacency. Missing week 10 is what turned week 15 from aspiration
+        into a specification.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footmark">Week 10 &mdash; root cause</div><div class="pagenum">06</div>
+</section>
+
+<!-- 7 UNPROMISED WORK -->
+<section class="slide">
+  <h2>Beyond the deliverables</h2>
+  <h1>What we built that nobody asked for</h1>
+  <div class="hrule"></div>
+
+  <div class="cols">
+    <div class="col card card-good">
+      <span class="tag tag-good">Unblocked the team</span>
+      <h3 style="font-size:15px">Simulated hardware</h3>
+      <p>One robot, three people, and the robot is not ready. We built a stand-in
+      for the arm and gripper, so the entire stack runs with nothing plugged in.</p>
+      <p style="margin-top:9px">All three workstreams proceed in parallel instead
+      of queueing for hardware &mdash; and the architecture was proven correct
+      before the robot was available.</p>
+    </div>
+    <div class="col card card-good">
+      <span class="tag tag-good">Fixed a whole class of bug</span>
+      <h3 style="font-size:15px">Failures now travel</h3>
+      <p>In the old system a failed motion returned <code>false</code> and was
+      discarded &mdash; the robot silently skipped moves. Every long operation is now
+      an action that reports success or failure to its caller.</p>
+      <p style="margin-top:9px">This is what makes the hybrid planner on the next
+      slide possible: you cannot fall back from a failure you never hear about.</p>
+    </div>
+    <div class="col card card-good">
+      <span class="tag tag-good">Pulled forward from week 15</span>
+      <h3 style="font-size:15px">Vision, early</h3>
+      <p>The proposal listed computer vision as future work for later semesters.
+      It is implemented now: AR tags on pieces, located through a four-marker
+      homography, with no camera calibration step.</p>
+      <p style="margin-top:9px">It also corrects pick positions &mdash; the robot reaches
+      for where a piece actually is, not where it should be.</p>
+    </div>
+  </div>
+
+  <div class="cols" style="margin-top:18px">
+    <div class="col" style="text-align:center;border-right:1px solid var(--rule)">
+      <div class="big" style="color:var(--cal)">19</div>
+      <div class="big-lbl">solver-driven moves<br>played end to end</div>
+    </div>
+    <div class="col" style="text-align:center;border-right:1px solid var(--rule)">
+      <div class="big" style="color:var(--cal)">171</div>
+      <div class="big-lbl">motion commands<br>no deadlocks</div>
+    </div>
+    <div class="col" style="text-align:center;border-right:1px solid var(--rule)">
+      <div class="big" style="color:var(--cal)">19</div>
+      <div class="big-lbl">automated checks<br>all passing</div>
+    </div>
+    <div class="col" style="text-align:center">
+      <div class="big" style="color:var(--cal)">0</div>
+      <div class="big-lbl">tests in the repository<br>before this semester</div>
+    </div>
+  </div>
+
+  <div class="footmark">Unpromised work</div><div class="pagenum">07</div>
+</section>
+
+<!-- 8 REVERSALS -->
+<section class="slide">
+  <h2>Course corrections</h2>
+  <h1>Two decisions we reversed, and why</h1>
+  <div class="hrule"></div>
+
+  <p style="margin-bottom:18px;max-width:1120px">
+    Partway through we read last semester's thesis properly. It showed that two
+    things we were replacing had been chosen deliberately, with data behind them.
+    We reverted both.
+  </p>
+
+  <div class="cols">
+    <div class="col stack">
+      <div class="card card-bad">
+        <h3 style="font-size:15px">We planned: replace the motion planner</h3>
+        <p>The previous planner fails when no straight-line path exists. We
+        intended to swap it for one that searches joint space instead.</p>
+      </div>
+      <div class="card card-good">
+        <h3 style="font-size:15px">We learned: it was chosen for a reason</h3>
+        <p>Straight-line motion is <em>predictable</em> above a dense board &mdash; it
+        will not swing the arm through neighbouring pieces. The thesis reports
+        92% success, and the failures were gripper collisions, not planning.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">We did: both</h3>
+        <p>Straight-line first, joint-space only when it fails. Predictable by
+        default, robust at the edges. We also wrote a tool to measure how often
+        the fallback is actually needed, rather than arguing about it.</p>
+      </div>
+    </div>
+
+    <div class="col stack">
+      <div class="card card-bad">
+        <h3 style="font-size:15px">We planned: replace AR tags with colour detection</h3>
+        <p>Colour thresholding needs no markers on the pieces and no training
+        data. It seemed simpler.</p>
+      </div>
+      <div class="card card-good">
+        <h3 style="font-size:15px">We learned: they had already rejected it</h3>
+        <p>Colour fails when two pieces share a colour, and costs processing time
+        on a Raspberry Pi. The thesis evaluated it explicitly and chose AR tags
+        instead &mdash; because the tag identifies the <em>specific piece</em>,
+        not its appearance.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">We did: AR tags, better plumbed</h3>
+        <p>Kept their approach, dropped the fragile part &mdash; the camera
+        calibration and transform chain &mdash; and replaced it with a homography
+        from four board-corner markers. Same robustness, far fewer moving parts.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="note" style="margin-top:20px;max-width:1150px">
+    Both reversals cost time. Both were cheaper than discovering the same things
+    on hardware in week 14 &mdash; and the generalisation argument for AR tags is
+    what makes the week 15 deliverable plausible at all.
+  </p>
+
+  <div class="footmark">Course corrections</div><div class="pagenum">08</div>
+</section>
+
+<!-- 9 WEEK 15 -->
+<section class="slide">
+  <h2>Week 15 &middot; Outlook</h2>
+  <h1>What "support all games" now requires</h1>
+  <div class="hrule"></div>
+
+  <div class="cols" style="align-items:flex-start">
+    <div class="col" style="flex:1.1">
+      <table style="font-size:13px">
+        <tr><th style="width:230px">Requirement</th><th style="width:96px">State</th><th>Note</th></tr>
+        <tr><td class="em">Piece detection independent of piece appearance</td>
+            <td><span class="tag tag-good" style="margin:0">Done</span></td>
+            <td>AR tags; identity comes from the marker</td></tr>
+        <tr><td class="em">Board printing at a fixed physical size</td>
+            <td><span class="tag tag-good" style="margin:0">Exists</span></td>
+            <td>Previous team's SVG-to-PDF pipeline, 150 mm standard</td></tr>
+        <tr><td class="em">Reusable pieces across games</td>
+            <td><span class="tag tag-good" style="margin:0">Exists</span></td>
+            <td>3D-printed flat-top pieces, already built</td></tr>
+        <tr><td class="em">Game logic decoupled from the robot</td>
+            <td><span class="tag tag-good" style="margin:0">Done</span></td>
+            <td>Solver decides; the robot only executes</td></tr>
+        <tr><td class="em">Non-grid board support</td>
+            <td><span class="tag tag-bad" style="margin:0">Blocker</span></td>
+            <td class="em" style="color:var(--bad)">The one real obstacle &mdash; identified this term</td></tr>
+        <tr><td class="em">Correct coordinates for existing games</td>
+            <td><span class="tag tag-warn" style="margin:0">5 of 9</span></td>
+            <td>Quarantined with a failing test until fixed</td></tr>
+        <tr><td class="em">Hardware validation</td>
+            <td><span class="tag tag-bad" style="margin:0">Blocked</span></td>
+            <td>Missing message package; motion config in progress</td></tr>
+      </table>
+    </div>
+
+    <div class="col stack" style="flex:0.9">
+      <div class="card card-warn">
+        <h3 style="font-size:15px">Revised week 15 target</h3>
+        <p>Supporting <em>every</em> game is not reachable in five weeks with
+        hardware still unvalidated. A target we can defend:</p>
+        <ul style="margin-top:8px">
+          <li>Replace the grid model with explicit cell lists and adjacency</li>
+          <li>Pong Hau K'i and Dodgem both running on the physical robot</li>
+          <li>All 9 existing games passing the coordinate check</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">Why that is the right scope</h3>
+        <p>Removing the grid assumption is the single change that unlocks the most
+        games, and it is the one we can only make now that we know it is the
+        obstacle. Two games running on real hardware proves the pipeline
+        end to end; nine games passing the check proves the data layer.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footmark">Week 15 outlook</div><div class="pagenum">09</div>
+</section>
+
+<!-- 10 RISKS -->
+<section class="slide">
+  <h2>Risks</h2>
+  <h1>What stands between here and week 15</h1>
+  <div class="hrule"></div>
+
+  <div class="cols">
+    <div class="col stack">
+      <div class="card card-bad">
+        <span class="tag tag-bad">Highest risk</span>
+        <h3 style="font-size:15px">Missing message package</h3>
+        <p>Two nodes import a package that is not in the repository and is not a
+        stock ROS 2 package. Until it is resolved, nothing runs on the robot and
+        the week 15 hardware goal is unreachable.</p>
+        <p style="margin-top:8px"><strong>Mitigation:</strong> vendor the vendor's
+        package. Their driver publishes those exact types, and ROS 2 matches
+        messages by package name, so defining our own would not interoperate.</p>
+      </div>
+      <div class="card card-warn">
+        <h3 style="font-size:15px">Hardware never validated</h3>
+        <p>Everything is proven in simulation. Physical measurements &mdash; where the
+        board sits, whether every square is reachable &mdash; are still unconfirmed.
+        A measurement tool is written and ready to run.</p>
+      </div>
+    </div>
+
+    <div class="col stack">
+      <div class="card card-warn">
+        <h3 style="font-size:15px">Five games still mis-scaled</h3>
+        <p>Three use a different coordinate convention, one has no dimension at
+        all, one is both. Each is quarantined behind a failing test so none can be
+        forgotten.</p>
+      </div>
+      <div class="card card-warn">
+        <h3 style="font-size:15px">Failed moves corrupt game state</h3>
+        <p>Known, reproducible, and small. The fix is not the hard part &mdash;
+        deciding what should happen on failure is. Assigned.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:15px">Single point of knowledge</h3>
+        <p>Most architectural context sits with one person. The onboarding deck
+        and the three-track split exist to spread it; the test suite exists so
+        mistakes surface without needing that context.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footmark">Risks</div><div class="pagenum">10</div>
+</section>
+
+<!-- 11 SUMMARY -->
+<section class="slide">
+  <h2>In one slide</h2>
+  <h1>Where we actually are at week 10</h1>
+  <div class="hrule"></div>
+
+  <div class="cols">
+    <div class="col card card-good" style="flex:1">
+      <span class="tag tag-good">Ahead</span>
+      <ul style="margin-top:4px">
+        <li>Documentation beyond what was promised &mdash; 23 slides plus a setup guide</li>
+        <li>Seven concrete defects found and measured</li>
+        <li>Computer vision shipped, three semesters early</li>
+        <li>Whole stack validated end to end without hardware</li>
+        <li>First automated tests in the project's history</li>
+        <li>Three people working in parallel on one robot</li>
+      </ul>
+    </div>
+    <div class="col card card-bad" style="flex:1">
+      <span class="tag tag-bad">Behind</span>
+      <ul style="margin-top:4px">
+        <li>Pong Hau K'i not running &mdash; not registered in the system</li>
+        <li>Nothing validated on the physical robot</li>
+        <li>Hardware dependency found in week 5, still open in week 10</li>
+        <li>Five of nine games still have wrong coordinates</li>
+        <li>Original week 15 scope no longer realistic as written</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:22px;border-color:var(--cal);border-width:1.5px">
+    <h3 style="font-size:17px;color:var(--cal)">The through-line</h3>
+    <p style="font-size:15px;margin-top:4px">
+      We promised to understand the system and then extend it. We understood it
+      better than expected and extended it less than planned &mdash; because
+      understanding it revealed that the obstacles were structural rather than
+      incremental. The grid assumption that blocks Pong Hau K'i is the same one
+      that blocks general game support, and we would not have found it by
+      building one more game on top of the existing model.
+    </p>
+  </div>
+
+  <div class="footmark">Summary</div><div class="pagenum">11</div>
+</section>
+
+</body>
+</html>
