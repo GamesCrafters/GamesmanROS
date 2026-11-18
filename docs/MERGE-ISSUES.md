@@ -1,6 +1,6 @@
 # Merge issues — `3fee54c`
 
-State after merging `upstream/meow` (Manlin) and `upstream/centers` (Ryan) onto `meow`.
+State after merging (Manlin) and (Ryan) onto `meow`.
 
 **Builds:** 4 packages, clean.
 **Tests:** 16 of 18 pass.
@@ -17,7 +17,7 @@ each other, not a conflict-resolution error.
 Ryan's `centers.py` rewrite changed the coordinate API. Three consumers still
 call the old one.
 
-| | before | after (Ryan) |
+| | before | after (Merge) |
 |---|---|---|
 | geometry lookup | `get_dim(game)` → `int` | `get_dim(game, variant, theme=None)` → `(w, h)` |
 | converter | `CoordConverter(dim)` | `CoordConverter(board_width_mm, board_height_mm, …)` — defaults from `calibration.py` |
@@ -84,7 +84,7 @@ hardware.
 
 ## 4. `pymycobot` is undeclared
 
-`mycobot_topics.py` needs it, imports it lazily, and mentions it only in a
+`mycobot_topics.py` needs it, imports it, and mentions it only in a
 docstring. It is in neither `package.xml` nor the Dockerfile, so a clean
 container cannot run the serial driver.
 
